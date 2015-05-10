@@ -8,7 +8,8 @@
 	abstract class Creator
 	{
 	    protected abstract function factoryMethod(IPage $page, IView $view);
-	    public function doFactory($pageNow, $viewNow)
+
+        public function doFactory($pageNow, $viewNow)
 	    {
 	        $mfg=$this->factoryMethod($pageNow, $viewNow);
 		} 

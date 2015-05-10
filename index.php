@@ -9,5 +9,4 @@
 
 	$mainController = new \Control\Main();
 
-//ciao
 ?>
