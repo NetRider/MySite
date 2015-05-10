@@ -4,13 +4,15 @@
 
 	use Entity\User;
 	
-	require_once '../Classes/Foundation/Database.php';
+	require_once 'Database.php';
 	require_once '../Classes/Entity/User.php';
 
-	Class UserDatabase extends Database
+	Class UserDatabase
 	{
+        private $connection;
+
 		public function __construct(){
-			parent::__construct();
+			$this->connection = Database::doConnect();
 		}
 
 		public function storeUser($user)

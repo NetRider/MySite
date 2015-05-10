@@ -9,6 +9,7 @@
 	class HomePage implements IPage
 	{
 
+
 		public function getPage(IView $view)
 		{
 			$view->fetchTemplate('home.tpl');
