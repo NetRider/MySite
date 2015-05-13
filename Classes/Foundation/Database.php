@@ -11,7 +11,7 @@
      * della classe .
 	*/
 
-	class Database implements IDatabaseConfig
+	class  Database implements IDatabaseConfig
     {
         private static $server=IDatabaseConfig::HOST;
         private static $currentDB=IDatabaseConfig::DBNAME;
