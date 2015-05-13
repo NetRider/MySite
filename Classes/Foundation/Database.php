@@ -13,26 +13,23 @@
 
 	class  Database implements IDatabaseConfig
     {
-        private static $server=IDatabaseConfig::HOST;
-        private static $currentDB=IDatabaseConfig::DBNAME;
-        private static $user=IDatabaseConfig::UNAME;
-        private static $pass=IDatabaseConfig::PW;
+        private static $server = IDatabaseConfig::HOST;
+        private static $currentDB = IDatabaseConfig::DBNAME;
+        private static $user = IDatabaseConfig::UNAME;
+        private static $pass = IDatabaseConfig::PW;
         private static $connection;
 
         public static function doConnect()
         {
             self::$connection = mysqli_connect(self::$server, self::$user, self::$pass, self::$currentDB);
 
-            if(self::$connection)
-            {
+            if (self::$connection) {
                 echo "Successul connection to MySQL";
-            }
-            elseif (mysqli_connect_error(self::$connection))
-            {
-                echo('here is why it failded: '  . mysqli_connect_error());
+            } elseif (mysqli_connect_error(self::$connection)) {
+                echo('here is why it failded: ' . mysqli_connect_error());
             }
 
             return self::$connection;
         }
-	}
+    }
 ?>
