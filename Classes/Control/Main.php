@@ -10,9 +10,9 @@
 	require_once('PageFactory.php');
 	require_once('HomePage.php');
 	require_once('RegistrationPage.php');
-	require_once(dirname(__FILE__).'/../View/DesktopView.php');
+	require_once(dirname(__FILE__) . '/../View/MainView.php');
 
-	use View\DesktopView;
+	use View\MainView;
 	
 	/**
  	*It is the main project controller,
@@ -40,7 +40,7 @@
 			else
 				$pageRequest = "Control\\".$pageRequest;
 
-			$data = $this->pageFactory->doFactory(new $pageRequest, new DesktopView());
+			$this->pageFactory->createPage(new $pageRequest, new MainView());
 
 		}
 		/**

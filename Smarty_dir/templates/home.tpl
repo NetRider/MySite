@@ -6,7 +6,7 @@
 	<BODY>
 		<H1>Il mio blog</H1> <br>
 
-        <a href="index.php?controllerAction=RegistrationPage">Registrati</a>
+        <a href="index.php?controllerAction=RegistrationPage&registrationAction=getRegistrationPage">Registrati</a>
 
         <H6>Ultimi 3 articoli caricati recentemente </H6>
 

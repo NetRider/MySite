@@ -3,7 +3,7 @@
 
 	require('./Library/Smarty-3.1.18/libs/Smarty.class.php');
 
-	class DesktopView implements IView
+	class MainView
 	{
 		private $smarty;
 

@@ -1,17 +1,16 @@
 <?php
 
     namespace Control;
-    
-    include_once('Creator.php');
-    include_once('IPage.php');
-    include_once(dirname(__FILE__).'/../View/IView.php');
 
-    use View\IView;
+    include_once('IPage.php');
+    include_once(dirname(__FILE__).'/../View/MainView.php');
+
+    use View\MainView;
 
     /**PageFactory implements the abstract function factoryMethod.
      */
 
-    class PageFactory extends Creator
+    class PageFactory
     {
         private $currentPage;
         private $currentView;
@@ -19,11 +18,10 @@
         /**
          * factoryMethod launch the getPage method on the IPage object parameter 
          * and pass him a IView object. 
-         * @param  IPage  $page 
-         * @param  IView  $view 
+         * @param  IPage  $page
          * @return void
          */
-        protected function factoryMethod(IPage $page, IView $view)
+        public function createPage(IPage $page, MainView $view)
         {
             $this->currentPage=$page;
             $this->currentView=$view;

@@ -1,9 +1,9 @@
 <?php
 	namespace Control;
 
-	include_once(dirname(__FILE__).'/../View/IView.php');
+	include_once(dirname(__FILE__).'/../View/MainView.php');
 
-    use View\IView;
+    use View\MainView;
 
     /**
      * Interface IPage is responsable of the signature of each pageController that 
@@ -12,6 +12,6 @@
      */
 	interface IPage
 	{
-		public function getPage(IView $view);
+		public function getPage(MainView $view);
 	}
 ?>

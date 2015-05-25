@@ -1,15 +1,15 @@
 <?php
 	namespace Control;
 	include_once('IPage.php');
-	include_once(dirname(__FILE__).'/../View/IView.php');
+	include_once(dirname(__FILE__).'/../View/MainView.php');
 
-    use View\IView;
+    use View\MainView;
 
 	class RegistrationPage implements IPage
     {
-		public function getPage(IView $view)
+		public function getPage(MainView $view)
 		{
-
+            /*
             switch($this->get('registrationAction'))
             {
                 case 'getRegistrationPage':
@@ -22,7 +22,8 @@
 
                 case 'checkUsername':
                     break;
-            }
+            }*/
+            $view->fetchTemplate('registrationForm.tpl');
 		}
 
         private function storeUser(){
