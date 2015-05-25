@@ -1,6 +1,7 @@
 <?php
 
-	namespace Foundation;
+    namespace Foundation;
+
 	use mysqli;
 
     include_once(dirname(__FILE__).'/../Configuration Files/databaseConfing.php');

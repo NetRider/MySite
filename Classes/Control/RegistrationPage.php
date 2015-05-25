@@ -6,10 +6,27 @@
     use View\IView;
 
 	class RegistrationPage implements IPage
-	{
+    {
 		public function getPage(IView $view)
 		{
-			$view->fetchTemplate('registrationForm.tpl');
+
+            switch($this->get('registrationAction'))
+            {
+                case 'getRegistrationPage':
+                    $view->fetchTemplate('registrationForm.tpl');
+                    break;
+
+                case 'addNewUser':
+                    $this->storeUser();
+                    break;
+
+                case 'checkUsername':
+                    break;
+            }
 		}
+
+        private function storeUser(){
+
+        }
 	}
 ?>

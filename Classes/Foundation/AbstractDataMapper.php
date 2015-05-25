@@ -13,7 +13,7 @@ abstract class AbstractDataMapper
     protected $adapter;
     protected $entityTable;
 
-    public function __construct( Database $adapter) {
+    public function __construct(Database $adapter) {
         $this->adapter = $adapter;
     }
 

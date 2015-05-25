@@ -28,7 +28,7 @@ class UserMapper extends AbstractDataMapper
         return $this->adapter->delete($this->entityTable, array("id=$id"));
     }
 
-    public function existUserName() {
+    public function existUserName($userName) {
 
     }
 

@@ -41,6 +41,7 @@
 				$pageRequest = "Control\\".$pageRequest;
 
 			$data = $this->pageFactory->doFactory(new $pageRequest, new DesktopView());
+
 		}
 		/**
 		 * This function return the request of a Post

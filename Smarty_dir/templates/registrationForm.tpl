@@ -1,11 +1,12 @@
 <HTML>
 	<HEAD>
 		<TITLE>Area Registrazione</TITLE>
+        <script src="Smarty_dir/templates/javascript/registration.js"></script>
 	</HEAD>
 
 	<BODY>
 		<H1>FORM REGISTRAZIONE</H1>
-		<FORM action = "./Control/userRegistration.php" method = "POST">
+		<FORM action =  method = "POST">
 			Nickname: 			<input type="text" name="nickname"/> <br>
 			Email: 				<input type="text" name="email"/> <br>
 			Password:			<input type="password" name="password"> </select>

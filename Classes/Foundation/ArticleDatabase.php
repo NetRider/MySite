@@ -8,8 +8,7 @@
 	//require_once '$_SERVER['Article.php']';
 	require_once dirname(__FILE__).'/../Entity/Article.php';
 
-	Class ArticleDatabase extends Database{
-
+	Class ArticleDatabase extends Database {
 		public function __construct(){
 			parent::__construct();
 		}
