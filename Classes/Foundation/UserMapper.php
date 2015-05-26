@@ -7,6 +7,7 @@
  */
 
 namespace Foundation;
+require_once 'AbstractDataMapper.php';
 
 use Entity\User;
 

@@ -25,35 +25,29 @@
 	class Main
 	{
 		private $pageFactory;
+        private $pageToExecute;
+        private $mainView;
 
 		public function __construct()
 		{
 			$this->pageFactory = new PageFactory();
+            $this->mainView = new MainView();
 
 			/*
 			Here is assembled the string that contains the name of class of the page to be
 			instantiated. Default is HomePage.
 			 */
-			$pageRequest = $this->get('controllerAction');
+
+			$pageRequest = $_REQUEST['controllerAction'];
+
 			if(!$pageRequest)
 				$pageRequest = 'Control\HomePage';	
 			else
-				$pageRequest = "Control\\".$pageRequest;
+				$pageRequest = "Control\\".$pageRequest; //Type Hinting in action
 
-			$this->pageFactory->createPage(new $pageRequest, new MainView());
+            $this->pageToExecute = new $pageRequest($_REQUEST);
 
-		}
-		/**
-		 * This function return the request of a Post
-		 * @param  string $key 
-		 * @return mixed
-		 */
-		private function get($key)
-		{
-			if (isset($_REQUEST[$key]))
-				return $_REQUEST[$key];
-			else
-				return false;	
+			$this->pageFactory->createPage($this->pageToExecute,$this->mainView);
 		}
 	}
 ?>

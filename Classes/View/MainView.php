@@ -26,5 +26,6 @@
 		{
 				$this->smarty->assign($reference, $data);
 		}
+
 }
 ?>

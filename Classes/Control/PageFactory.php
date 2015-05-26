@@ -2,7 +2,7 @@
 
     namespace Control;
 
-    include_once('IPage.php');
+    include_once('Page.php');
     include_once(dirname(__FILE__).'/../View/MainView.php');
 
     use View\MainView;
@@ -21,7 +21,7 @@
          * @param  IPage  $page
          * @return void
          */
-        public function createPage(IPage $page, MainView $view)
+        public function createPage(Page $page, MainView $view)
         {
             $this->currentPage=$page;
             $this->currentView=$view;

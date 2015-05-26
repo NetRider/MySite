@@ -1,8 +1,8 @@
 <HTML>
 	<HEAD>
-		<TITLE>Area Registrazione</TITLE>
         <script src="Library/jquery-1.11.3.min.js"></script>
         <script src="Smarty_dir/templates/javascript/registration.js"></script>
+        <TITLE>Area Registrazione</TITLE>
 	</HEAD>
 
 	<BODY>
