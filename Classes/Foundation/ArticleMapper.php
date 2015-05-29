@@ -7,8 +7,17 @@
  */
 
 namespace Foundation;
+require_once 'AbstractDataMapper.php';
+
+use Entity\Article;
+
+class ArticleMapper extends AbstractDataMapper  {
 
 
-class ArticleMapper {
 
+    protected function createEntity(array $row){
+
+        return new Article($row["nickname"], $row["email"], $row["password"]);
+
+    }
 }

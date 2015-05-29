@@ -17,63 +17,62 @@
 		private $vote;
 		private $comments;
 
-		public function __construct($title, $text){
+		public function __construct($title, $text, $vote, $comments) {
 			$this->title = $title;
 			$this->text = $text;
-			$this->comments = array(); 
+            $this->vote = $vote;
+            $this->comments = $comments;
 		}
 
-		public function addComment($comment){
-			if($commet instanceof Comment)
-				array_push($this->comments, $comment);
-			else
-				return false;
+		public function addComment($comment) {
+
 		}
 
-		public function removeComment()
-		{
-			//da vedere in seguito
+		public function removeComment() {
 			
 		}
 
 
 		//GET FUNCTIONS
 
-		public function getComments(){
+		public function getComments() {
 			if(count($this->comments) != 0)
 				return $this->comments;
 			else
 				return false;
 		}
 
-		public function getNumberOfComments(){
+		public function getNumberOfComments() {
 			return count($this->comments);
 		}
 
-		public function getTitle(){
-			return $this->title;
+		public function getTitle() {
 		}
 
-		public function getText(){
+		public function getText() {
 			return $this->text;
 		}
 
-		public function getVote(){
+		public function getVote() {
 			return $this->vote;
 		}
 
 		//SET FUNCTIONS
 
-		public function setTitle($title){
+		public function setTitle($title) {
 			$this->title = $title;
 		}
 
-		public function setText($text){
+		public function setText($text) {
 			$this->text = $text;
 		}
 
-		public function setVote($vote){
+		public function setVote($vote) {
 			$this->vote = $vote;
 		}
+
+        public function setComments($comments) {
+            $this->comments = $comments;
+        }
 	}
 ?>

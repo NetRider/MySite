@@ -7,10 +7,15 @@
 	class Comment
 	{
 		private $text;
-		private $user;
+        private $date;
+        private $userId;
+        private $articleID;
 
-		public function __construct($text){
+		public function __construct($text, $date, $userId , $articleId){
 			$this->text = $text;
+            $this->date = $date;
+            $this->userId = $userId;
+            $this->articleID = $articleId;
 		}
 
 		//GET FUNCTIONS
@@ -19,9 +24,18 @@
 			return $this->text;
 		}
 
-		public function getUserNickname(){
-			return $this->user->getNickname();
-		}
+        public function getDate(){
+            return $this->date;
+        }
+
+        public function getUserId(){
+            return $this->userId;
+        }
+
+        public function getArticleId()
+        {
+            return $this->articleID;
+        }
 
 		//SET FUNCTIONS
 
@@ -29,12 +43,19 @@
 			$this->text = $text;
 		}
 
-		public function setUser($user)
+		public function setUserId($userId)
 		{
-			if($user instanceof User)
-				$this->user = $user;
-			else
-				echo "Error You must pass a User instance";
-		}	
+			$this->userId = $userId;
+		}
+
+        public function setArticleId($articleId)
+        {
+            $this->articleID = $articleId;
+        }
+
+        public function setDate($date)
+        {
+           $this->date = $date;
+        }
 	}
 ?>

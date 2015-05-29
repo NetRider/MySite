@@ -11,8 +11,7 @@ require_once 'AbstractDataMapper.php';
 
 use Entity\User;
 
-class UserMapper extends AbstractDataMapper
-{
+class UserMapper extends AbstractDataMapper {
     protected $entiyTable = "user";
 
     public function insert(User $user)
