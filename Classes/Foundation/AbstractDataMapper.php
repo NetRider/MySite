@@ -21,22 +21,10 @@ abstract class AbstractDataMapper
         return $this->adapter;
     }
 
-    public function findByID($id)
-    {
-        $this->adapter->select($this->entityTable, array('id' => $id));
-
-        if (!$row = $this->adapter->fetch()) {
-            return null;
-        }
-
-        return $this->createEntity($row);
-    }
-
-    public function findAll(array $conditions = array())
+    public function find(array $bind = array(), array $cond = array(), $op)
     {
         $entities = array();
-        $this->adapter->select($this->entityTable, $conditions);
-        $rows = $this->adapter->fetchAll;
+        $rows = $this->adapter->select($this->entityTable, $bind, $cond, $op);
 
         if($rows)
         {

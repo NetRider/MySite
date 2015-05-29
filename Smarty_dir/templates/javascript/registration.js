@@ -19,15 +19,8 @@ $(function() {
 });
 
 function submitButton(btn) {
-    $("#registrationForm").change(function(){
-        if(isFormCompleted()){
-            btn.removeAttr("disabled");
-        }
-        else
-            btn.attr("disabled","disabled");
-    });
 
-    $("#registrationForm").submit(function(event){
+    $("#registrationForm").submit(function (event) {
         event.preventDefault();
 
         var formData = new FormData(this);
@@ -37,13 +30,13 @@ function submitButton(btn) {
             type: 'POST',
             data: formData,
             processData: false,
-            contentType: false})
-            .done(function(data){
-                changePage(data);
-            });
+            contentType: false
+        }).done(function (data) {
+            $("#containerRegistrationForm").remove();
+            $("#containerRegistrationStatus").append(data);
+        });
     });
 }
-
 function isFormCompleted(formMaxChars){
     /*var completed = false;
 

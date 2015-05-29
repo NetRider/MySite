@@ -4,6 +4,7 @@
 	include_once(dirname(__FILE__).'/../View/MainView.php');
     include_once(dirname(__FILE__).'/../Entity/User.php');
     include_once(dirname(__FILE__).'/../Foundation/UserMapper.php');
+    include_once(dirname(__FILE__).'/../Foundation/Database.php');
 
     use Entity\User;
     use Foundation\Database;
@@ -28,11 +29,13 @@
                     break;
             }
 		}
-        private function storeUser(){
+        private function storeUser() {
+
             $databaseAdapter = new Database();
             $userMapper = new UserMapper($databaseAdapter);
-            $user = new User("pasquale", "pasqualesalvatimailcom", "pippo");
+            $user = new User($this->get('nickname'), $this->get('email'),$this->get('password'));
             $userMapper->insert($user);
+
         }
 	}
 ?>

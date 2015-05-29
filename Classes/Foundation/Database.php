@@ -2,179 +2,153 @@
 
     namespace Foundation;
 
-	use mysqli;
+    use mysqli;
 
-    include_once(dirname(__FILE__).'/../Configuration Files/databaseConfing.php');
+    include_once(dirname(__FILE__) . '/../../ConfigurationFiles/databaseConfig.php');
 
-	/**
-	* La classe Database implementa l'interfaccia IDatabaseConfig, in particolare il metodo doConnect() e in più
-     * utilizza le varie costanti di connessione. Il motivo per cui si utilizzano proprietà statiche
-     * della classe .
-	*/
+    /**
+     * Class Database
+     * @package Foundation
+     *
+     * Questa classe è responsabile della connessione al database e implementa le funzioni CRUD.
+     * Attualmente non supporta SQL query sanitation.
+     */
 
 	class Database
     {
         protected $config;
-        protected $connection;
+        protected $dbConnection;
         protected $statement;
-        protected $fetchMode = PDO::FETCH_ASSOC;
 
         public function __construct() {
-            global $mysqlConfig; //This variable is define in databaseConfig.php
-            $this->$config = $mysqlConfig;
-        }
+            //This variable is define in databaseConfig.php
+            global $mysqlConfig;
 
-        public function getStatement(){
-            if($this->statement === null){
-                throw new PDOException("There is no PDO Statement object for use.");
-            }
-
-            return $this->statement;
+            $this->config = $mysqlConfig;
         }
 
         public function connect() {
-            //if there is ad PDO object already, return early
-            if ($this->connection) {
+            //if there is ad dbConnection object already, return early
+            if ($this->dbConnection) {
                 return;
             }
+            $this->dbConnection = new mysqli($this->config['host'], $this->config['username'], $this->config['password'], $this->config['database']);
 
-            try {
-                $this->connection = new \PDO('mysql:host=localhost; dbname=blog', $this->config['username'], $this->config['password']);
-                $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $this->connection->setAttribute(PDO::ATTR_EMULATE_PREPARES,false );
-            }
-            catch(\PDOException $e)
-            {
-                throw new \RuntimeException($e->getMessage());
+            if($this->dbConnection->connect_error){
+                trigger_error('Unable to connect to database [' . $this->$dbConnection->connect_error . ']');
             }
         }
 
+        //Probabilmente non è necessaria perché la connessione viene chiusa automaticamente
+        //dopo che lo script è terminato.
         public function disconnect() {
-            $this->connection = null;
+            $this->dbConnection->close();
         }
 
-        public function prepare($sql, array $options = array()) {
+        public function select($table, array $bind, array $cond, $op) {
             $this->connect();
-            try {
-                $this->statement = $this->connection->prepare($sql, $options);
-                return $this;
-            }
-            catch (PDOException $e) {
-                throw new RunTimeException($e->getMessage());
-            }
-        }
 
-        public function execute(array $parameters = array()) {
-            try {
-                $this->getStatement()->execute($parameters);
-                return $this;
-            }
-            catch(\PDOException $e) {
-                throw new \RuntimeException($e->getMessage());
-            }
-        }
+            $columns=implode(",", $bind);
 
-        /*
-         * Return the number of rows
-         */
-        public function countAffectedRows() {
-            try {
-                return $this->getStatement()->rowCount();
-            }
-            catch (\PDOException $e) {
-                throw new \RunTimeException($e->getMessage());
-            }
-        }
+            $i = 0;
+            $StValue = [];
 
-        public function getLastInsertId($name = null) {
-            $this->connect();
-            return $this->connection->lastInsertId($name);
-        }
-
-        public function fetch($fetchStyle = null, $cursorOrientation = null, $cursorOffset = null) {
-            if ($fetchStyle === null) {
-                $fetchStyle = $this->fetchMode;
+            foreach($cond as $key =>$value)
+            {
+                $StValue[$i] = "'".$value."'";
+                $i++;
             }
 
-            try {
-                return $this->getStatement()->fetch($fetchStyle,
-                    $cursorOrientation, $cursorOffset);
-            }
-            catch (\PDOException $e) {
-                throw new \RunTimeException($e->getMessage());
-            }
-        }
 
-        public function fetchAll($fetchStyle = null, $column = 0) {
-            if ($fetchStyle === null) {
-                $fetchStyle = $this->fetchMode;
-            }
+            $sql = "SELECT" . $columns. "FROM " . $table .
+               " WHERE " . implode(" " . $op . " ", $cond);
 
-            try {
-                return $fetchStyle === PDO::FETCH_COLUMN
-                    ? $this->getStatement()->fetchAll($fetchStyle, $column)
-                    : $this->getStatement()->fetchAll($fetchStyle);
-            }
-            catch (\DOException $e) {
-                throw new \RunTimeException($e->getMessage());
-            }
-        }
+            $result = $this->dbConnection->query($sql);
 
-        public function select($table, array $bind = array(), $boolOperator = "AND") {
-            if ($bind) {
-                $where = array();
-                foreach ($bind as $col => $value) {
-                    unset($bind[$col]);
-                    $bind[":" . $col] = $value;
-                    $where[] = $col . " = :" . $col;
-                }
-            }
+            return $result->fetch_all(MYSQLI_ASSOC);
 
-            $sql = "SELECT * FROM " . $table
-                . (($bind) ? " WHERE "
-                    . implode(" " . $boolOperator . " ", $where) : " ");
-            $this->prepare($sql)->execute($bind);
-            return $this;
         }
 
         public function insert($table, array $bind) {
+
+            $this->connect();
+
             $cols = implode(", ", array_keys($bind));
-            $values = implode(", :", array_keys($bind));
-            foreach ($bind as $col => $value) {
-                unset($bind[$col]);
-                $bind[":" . $col] = $value;
+
+            $i = 0;
+            $StValue = [];
+
+            foreach($bind as $key =>$value)
+            {
+                $StValue[$i] = "'".$value."'";
+                $i++;
             }
 
-            $sql = "INSERT INTO " . $table
-                . " (" . $cols . ")  VALUES (:" . $values . ")";
-            return (int) $this->prepare($sql)->execute($bind)->getLastInsertId();
+            $StValues = implode(", ",$StValue);
+
+
+            if($this->dbConnection->query("INSERT INTO $table ($cols) VALUES ($StValues)") === TRUE){
+                echo "New record has been inserted successfully!";
+            }else{
+                echo "Error ".$this->connection->error;
+            }
         }
 
-        public function update($table, array $bind, $where = "") {
-            $set = array();
-            foreach ($bind as $col => $value) {
-                unset($bind[$col]);
-                $bind[":" . $col] = $value;
-                $set[] = $col . " = :" . $col;
+        public function update($table, array $bind, array $cond) {
+
+            $this->connect();
+
+            //append set_val_cols associative array elements
+            $i=0;
+            foreach($bind as $key=>$value) {
+                $set[$i] = $key." = '".$value."'";
+                $i++;
             }
 
-            /*
-             * implode — Unisce gli elementi di una matrice in una stringa
-             * <?php
-                $array = array('lastname', 'email', 'phone');
-                $comma_separated = implode(",", $array);
-                echo $comma_separated; // lastname,email,phone
-                ?>
-             */
-            $sql = "UPDATE " . $table . " SET " . implode(", ", $set)
-                . (($where) ? " WHERE " . $where : " ");
-            return $this->prepare($sql)->execute($bind)->countAffectedRows();
+            $Stset = implode(", ",$set);
+
+            $i=0;
+            foreach($cond as $key=>$value) {
+                $cod[$i] = $key." = '".$value."'";
+                $i++;
+            }
+
+            $Stcod = implode(" AND ",$cod);
+
+            //Update operation
+            if($this->dbConnection->query("UPDATE $table SET $Stset WHERE $Stcod") === TRUE){
+                if(mysqli_affected_rows($this->dbConnection)){
+                    echo "Record updated successfully";
+                }
+                else{
+                    echo "The Record you want to updated is no longer exists";
+                }
+            }else{
+                echo "Error to update".$this->dbConnection->error;
+            }
         }
 
-        public function delete($table, $where = "")
-        {
-            $sql = "DELETE FROM " . $table . (($where) ? " WHERE " . $where : " ");
-            return $this->prepare($sql)->execute()->countAffectedRows();
+        public function delete($table, array $cond) {
+            $this->connect();
+            $i=0;
+            foreach($cond as $key=>$value) {
+                $exp[$i] = $key." = '".$value."'";
+                $i++;
+            }
+            $Stexp = implode(" AND ",$exp);
+
+            //Perform Delete operation
+            if($this->dbConnection->query("DELETE FROM $table WHERE $Stexp") === TRUE){
+                if(mysqli_affected_rows($this->connection)){
+                    echo "Record has been deleted successfully";
+                }
+                else{
+                    echo "The Record you want to delete is no loger exists";
+                }
+            }
+            else{
+                echo "Error to delete".$this->dbConnection->error;
+            }
         }
     }
 ?>

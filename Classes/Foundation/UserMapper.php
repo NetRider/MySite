@@ -17,19 +17,11 @@ class UserMapper extends AbstractDataMapper
 
     public function insert(User $user)
     {
-        $user->id = $this->adapter->insert($this->entiyTable, array("nickname"=>$user->getNickname(), "email"=>$user->getEmail(),
-                                        "password"=>$user->getPassword()));
-        return $user->id;
-    }
-
-    public function delete($id) {
-        if($id instanceof User) {
-            $id = $id->id;
-        }
-        return $this->adapter->delete($this->entityTable, array("id=$id"));
+        $this->adapter->insert($this->entiyTable, array("nickname"=>$user->getNickname(), "email"=>$user->getEmail(), "password"=>$user->getPassword()));
     }
 
     public function existUserName($userName) {
+
 
     }
 
