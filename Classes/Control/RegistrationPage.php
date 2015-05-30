@@ -1,5 +1,6 @@
 <?php
 	namespace Control;
+
 	include_once('Page.php');
 	include_once(dirname(__FILE__).'/../View/MainView.php');
     include_once(dirname(__FILE__).'/../Entity/User.php');

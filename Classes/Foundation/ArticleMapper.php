@@ -12,12 +12,21 @@ require_once 'AbstractDataMapper.php';
 use Entity\Article;
 
 class ArticleMapper extends AbstractDataMapper  {
+    protected $entityTable = "article";
 
+    public function insert(Article $article)
+    {
+        $this->adapter->insert($this->entityTable, array("title"=>$article->getTitle(), "textArticle"=>$article->getText(), "vote"=>$article->getVote()));
+    }
 
+    public function getLastThreeArticlesTitles()
+    {
+        return $this->adapter->select($this->entityTable, array("title"), array(), null);
+    }
 
     protected function createEntity(array $row){
 
-        return new Article($row["nickname"], $row["email"], $row["password"]);
+        return new Article($row["title"], $row["textArticle"], $row["vote"], $row["comments"]);
 
     }
 }

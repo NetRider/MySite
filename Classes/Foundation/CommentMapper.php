@@ -12,11 +12,11 @@ require_once 'AbstractDataMapper.php';
 use Entity\Comment;
 
 class CommentMapper extends AbstractDataMapper {
-    protected $entiyTable = "comment";
+    protected $entityTable = "comment";
 
     public function insert(Comment $comment)
     {
-        $this->adapter->insert($this->entiyTable, array("text"=>$comment->getText(), "userId"=>$comment->getUserId(), "date"=>$comment->getDate(), "articleId"=>$comment->getArticleId()));
+        $this->adapter->insert($this->entityTable, array("text"=>$comment->getText(), "userId"=>$comment->getUserId(), "date"=>$comment->getDate(), "articleId"=>$comment->getArticleId()));
     }
     protected function createEntity(array $row){
 

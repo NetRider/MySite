@@ -14,6 +14,7 @@
 	{
         private $dataFromRequest;
 
+
         function __construct($data)
         {
             $this->dataFromRequest = $data;

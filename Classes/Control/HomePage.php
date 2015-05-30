@@ -1,21 +1,22 @@
 <?php
 	namespace Control;
 	include_once('Page.php');
-    include_once(dirname(__FILE__).'/../Foundation/');
+    include_once(dirname(__FILE__).'/../Foundation/ArticleMapper.php');
 	include_once(dirname(__FILE__).'/../View/MainView.php');
 
     use View\MainView;
     use Foundation\Database;
-    use Foundation\UserMapper;
+    use Foundation\ArticleMapper;
 
 	class HomePage extends Page
 	{
 		public function getPage(MainView $view)
 		{
             $databaseAdapter = new Database();
-            $userMapper = new UserMapper($databaseAdapter);
+            $articleMapper = new ArticleMapper($databaseAdapter);
+            $lastThreeArticles = $articleMapper->getLastThreeArticlesTitles();
 
-
+            $view->assignData("homeArticles", $lastThreeArticles);
 			$view->fetchTemplate('home.tpl');
 		}
 	}

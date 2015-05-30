@@ -1,5 +1,5 @@
 /**
- * Created by matteopolsinelli on 25/05/15.
+ * Created by matteopolsinelli on 30/05/15.
  */
 $(function() {
     var button = $("#submitButton");
@@ -8,20 +8,20 @@ $(function() {
 
 function submitButton(btn) {
 
-    $("#registrationForm").submit(function (event) {
+    $("#articleForm").submit(function (event) {
         event.preventDefault();
 
         var formData = new FormData(this);
 
         $.ajax({
-            url: 'index.php?controllerAction=RegistrationPage&registrationAction=addNewUser',
+            url: 'index.php?controllerAction=NewArticlePage&articleAction=addNewArticle',
             type: 'POST',
             data: formData,
             processData: false,
             contentType: false
         }).done(function (data) {
-            $("#containerRegistrationForm").remove();
-            $("#containerRegistrationStatus").append(data);
+            $("#containerArticleForm").remove();
+            $("#containerStatus").append(data);
         });
     });
 }

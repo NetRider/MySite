@@ -45,10 +45,13 @@
             $this->dbConnection->close();
         }
 
-        public function select($table, array $bind, array $cond, $op) {
+        public function select($table, array $bind, array $cond = array(), $op) {
             $this->connect();
 
-            $columns=implode(",", $bind);
+            if (empty ($bind))
+                $columns = '*';
+            else
+                $columns=implode(",", $bind);
 
             $i = 0;
             $StValue = [];
@@ -59,9 +62,10 @@
                 $i++;
             }
 
-
-            $sql = "SELECT" . $columns. "FROM " . $table .
-               " WHERE " . implode(" " . $op . " ", $cond);
+            if (empty($cond))
+                $sql = "SELECT " . $columns. " FROM " . $table;
+            else
+                $sql = "SELECT " . $columns. " FROM " . $table . " WHERE " . implode(" " . $op . " ", $cond);
 
             $result = $this->dbConnection->query($sql);
 

@@ -9,13 +9,12 @@
 
         <H1>Registrazione</H1>
         <div id="containerRegistrationStatus">
-
         </div>
         <div id="containerRegistrationForm">
             <form form enctype="multipart/form-data" id="registrationForm">
                 Nickname: 			<input type="text" name="nickname"/> <br>
                 Email: 				<input type="text" name="email"/> <br>
-                Password:			<input type="password" name="password"> </select>
+                Password:			<input type="password" name="password">
                 <input type="submit" value="Submit" id="submitButton">
 
             </form>

@@ -12,11 +12,11 @@ require_once 'AbstractDataMapper.php';
 use Entity\User;
 
 class UserMapper extends AbstractDataMapper {
-    protected $entiyTable = "user";
+    protected $entityTable = "user";
 
     public function insert(User $user)
     {
-        $this->adapter->insert($this->entiyTable, array("nickname"=>$user->getNickname(), "email"=>$user->getEmail(), "password"=>$user->getPassword()));
+        $this->adapter->insert($this->entityTable, array("nickname"=>$user->getNickname(), "email"=>$user->getEmail(), "password"=>$user->getPassword()));
     }
 
     public function existUserName($userName) {
