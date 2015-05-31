@@ -14,7 +14,7 @@ function submitButton(btn) {
         var formData = new FormData(this);
 
         $.ajax({
-            url: 'index.php?controllerAction=NewArticlePage&articleAction=addNewArticle',
+            url: 'index.php?controllerAction=ArticlePage&articleAction=addNewArticle',
             type: 'POST',
             data: formData,
             processData: false,

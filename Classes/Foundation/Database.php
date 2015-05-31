@@ -45,7 +45,7 @@
             $this->dbConnection->close();
         }
 
-        public function select($table, array $bind, array $cond = array(), $op) {
+        public function select($table, array $bind, array $cond, $op) {
             $this->connect();
 
             if (empty ($bind))
@@ -53,19 +53,21 @@
             else
                 $columns=implode(",", $bind);
 
-            $i = 0;
-            $StValue = [];
-
-            foreach($cond as $key =>$value)
-            {
-                $StValue[$i] = "'".$value."'";
-                $i++;
-            }
-
             if (empty($cond))
                 $sql = "SELECT " . $columns. " FROM " . $table;
             else
-                $sql = "SELECT " . $columns. " FROM " . $table . " WHERE " . implode(" " . $op . " ", $cond);
+            {
+                if($op == null)
+                    $op = "AND";
+                $i = 0;
+                $condition = [];
+
+                foreach($cond as $key=>$value)
+                    $condition[$i] = $key."='".$value."'";
+
+                $sql = "SELECT " . $columns. " FROM " . $table . " WHERE " . implode(" " . $op . " ", $condition);
+            }
+
 
             $result = $this->dbConnection->query($sql);
 

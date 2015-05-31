@@ -13,17 +13,30 @@
 	abstract Class Page
 	{
         private $dataFromRequest;
+        private $dataFromSession;
 
-
-        function __construct($data)
+        public function setDataFromRequest($data)
         {
             $this->dataFromRequest = $data;
         }
 
-        protected function get($key)
+        public function setDataFromSession($session)
+        {
+            $this->dataFromRequest = $session;
+        }
+
+        protected function getDataFromRequest($key)
         {
             if (isset($this->dataFromRequest[$key]))
                 return $this->dataFromRequest[$key];
+            else
+                return false;
+        }
+
+        protected function getDataFromSession($key)
+        {
+            if (isset($this->dataFromSession[$key]))
+                return $this->dataFromSession[$key];
             else
                 return false;
         }

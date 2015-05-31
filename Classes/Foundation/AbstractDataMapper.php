@@ -21,7 +21,7 @@ abstract class AbstractDataMapper
         return $this->adapter;
     }
 
-    public function find(array $bind = array(), array $cond = array(), $op)
+    public function find(array $bind, array $cond, $op)
     {
         $entities = array();
         $rows = $this->adapter->select($this->entityTable, $bind, $cond, $op);
@@ -33,9 +33,9 @@ abstract class AbstractDataMapper
                 $entities[] = $this->createEntity($row);
             }
         }
-
         return $entities;
     }
+
     /*
      * Questa funzione deve essere creata dai mappers concreti!
      * Questo perché conoscono il tipo di modello

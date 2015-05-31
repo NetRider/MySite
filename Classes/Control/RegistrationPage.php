@@ -16,7 +16,7 @@
     {
 		public function getPage(MainView $view)
         {
-            switch($this->get('registrationAction'))
+            switch($this->getDataFromRequest('registrationAction'))
             {
                 case 'getRegistrationPage':
                     $view->fetchTemplate('registrationForm.tpl');
@@ -34,7 +34,7 @@
 
             $databaseAdapter = new Database();
             $userMapper = new UserMapper($databaseAdapter);
-            $user = new User($this->get('nickname'), $this->get('email'),$this->get('password'));
+            $user = new User($this->getDataFromRequest('nickname'), $this->getDataFromRequest('email'),$this->getDataFromRequest('password'));
             $userMapper->insert($user);
 
         }

@@ -26,7 +26,9 @@ class ArticleMapper extends AbstractDataMapper  {
 
     protected function createEntity(array $row){
 
-        return new Article($row["title"], $row["textArticle"], $row["vote"], $row["comments"]);
+        $article =  new Article($row["title"], $row["textArticle"], $row["vote"]);
+        $article->setId($row["id"]);
+        return $article;
 
     }
 }

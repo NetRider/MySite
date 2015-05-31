@@ -16,12 +16,12 @@
 		private $text;
 		private $vote;
 		private $comments;
+        private $id;
 
-		public function __construct($title, $text, $vote, $comments) {
+		public function __construct($title, $text, $vote) {
 			$this->title = $title;
 			$this->text = $text;
             $this->vote = $vote;
-            $this->comments = $comments;
 		}
 
 		public function addComment($comment) {
@@ -58,6 +58,10 @@
 			return $this->vote;
 		}
 
+        public function getId() {
+            return $this->id;
+        }
+
 		//SET FUNCTIONS
 
 		public function setTitle($title) {
@@ -74,6 +78,10 @@
 
         public function setComments($comments) {
             $this->comments = $comments;
+        }
+
+        public function setId($id){
+            $this->id = $id;
         }
 	}
 ?>
