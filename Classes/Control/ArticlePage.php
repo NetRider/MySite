@@ -8,15 +8,14 @@
 
 namespace Control;
 
-include_once('Page.php');
-include_once(dirname(__FILE__).'/../View/MainView.php');
 include_once(dirname(__FILE__).'/../Entity/Article.php');
 include_once(dirname(__FILE__).'/../Foundation/ArticleMapper.php');
 include_once(dirname(__FILE__).'/../Foundation/CommentMapper.php');
 include_once(dirname(__FILE__).'/../Foundation/Database.php');
+include_once(dirname(__FILE__).'/../View/MainView.php');
 
-use Foundation\CommentMapper;
 use View\MainView;
+use Foundation\CommentMapper;
 use Foundation\Database;
 use Foundation\ArticleMapper;
 use Entity\Article;
@@ -28,7 +27,7 @@ class ArticlePage extends Page {
         switch($this->getDataFromRequest('articleAction'))
         {
             case 'getNewArticlePage':
-                $view->fetchTemplate('articleForm.tpl');
+                $view->assignData('templateToDisplay', 'articleForm.tpl');
                 break;
 
             case 'addNewArticle':
@@ -43,8 +42,7 @@ class ArticlePage extends Page {
                 $view->assignData("articleTitle", $article->getTitle());
                 $view->assignData("articleText", $article->getText());
                 $view->assignData("comments", $comments);
-
-                $view->fetchTemplate('articleView.tpl');
+                $view->assignData('templateToDisplay', 'articleView.tpl');
                 break;
         }
     }

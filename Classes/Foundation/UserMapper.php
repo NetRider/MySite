@@ -19,6 +19,17 @@ class UserMapper extends AbstractDataMapper {
         $this->adapter->insert($this->entityTable, array("nickname"=>$user->getNickname(), "email"=>$user->getEmail(), "password"=>$user->getPassword()));
     }
 
+    public function validateLogin($name, $password)
+    {
+        $cond = array("nickname"=>$name, "password"=>$password);
+        $found = $this->find(array(), $cond, null);
+
+        if(isset($found))
+            return true;
+        else
+            return false;
+    }
+
     public function existUserName($userName) {
 
 

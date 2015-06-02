@@ -18,10 +18,14 @@
 	require_once('HomePage.php');
 	require_once('RegistrationPage.php');
     require_once('ArticlePage.php');
+    require_once('SessionPage.php');
 
+    require_once(dirname(__FILE__).'/../Entity/User.php');
 	require_once(dirname(__FILE__) . '/../View/MainView.php');
+    require_once(dirname(__FILE__) . '/../Utility/Session.php');
 
 	use View\MainView;
+    use Control\Session;
 	
 	/**
  	*It is the main project controller,
@@ -36,11 +40,13 @@
 		private $pageFactory;
         private $pageToExecute;
         private $mainView;
+        private $session;
 
 		public function __construct()
         {
 			$this->pageFactory = new PageFactory();
             $this->mainView = new MainView();
+            $this->session = new Session();
 
 			/*
 			Here is assembled the string that contains the name of class of the page to be
@@ -54,14 +60,18 @@
 
             $this->pageToExecute = new $pageRequest();
 
-            //qui va aggiustato un pò per evitare magari che i dati arrivino a sfreggio
+            //da rivedere perché gli passo sempre $_REQUEST anche quando magari non serve
             $this->pageToExecute->setDataFromRequest($_REQUEST);
 
-            if(isset($_SESSION))
-                $this->$pageToExecute->setDataFromSesion($_SESSION);
+            if($this->session->isLoggedIn())
+            {
+                $this->mainView->assignData("loggedIn", true);
+            }
+            else
+                $this->mainView->assignData("loggedIn", false);
 
 			$this->pageFactory->createPage($this->pageToExecute,$this->mainView);
+            $this->mainView->fetchTemplate('main.tpl');
 		}
-
     }
 ?>

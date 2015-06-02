@@ -8,6 +8,14 @@
 
 namespace Control;
 
+include_once(dirname(__FILE__).'/../Entity/User.php');
+include_once(dirname(__FILE__).'/../Foundation/UserMapper.php');
+include_once(dirname(__FILE__).'/../Foundation/Database.php');
+
+use Entity\User;
+use Foundation\Database;
+use Foundation\UserMapper;
+
 class Session
 {
     private $lifetime;
@@ -122,17 +130,11 @@ class Session
 
     public function validate($username, $password)
     {
-        $userDb = new \Foundation\User();
-        $user = $userDb->getByUsername($username);
-        //NOT SUPPORTED IN PHP 5.3.x
-        //if($user!=false && password_verify($password, $user->getPassword()))
-        if($user!=false && md5($password) == $user->getPassword()) // If exists a user and the password matches
-        {
-            $validity = true;
-        }
+        $databaseAdapter = new Database();
+        $userMapper = new UserMapper($databaseAdapter);
+        if($userMapper->validateLogin($username, $password))
+            return true;
         else
-            $validity = false;
-
-        return $validity;
+            return false;
     }
 }

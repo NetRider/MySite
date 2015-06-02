@@ -2,7 +2,7 @@
 	namespace Control;
 	include_once('Page.php');
     include_once(dirname(__FILE__).'/../Foundation/ArticleMapper.php');
-	include_once(dirname(__FILE__).'/../View/MainView.php');
+    include_once(dirname(__FILE__).'/../View/MainView.php');
 
     use View\MainView;
     use Foundation\Database;
@@ -17,7 +17,7 @@
             $lastThreeArticles = $articleMapper->getLastThreeArticlesTitles();
 
             $view->assignData("homeArticles", $lastThreeArticles);
-			$view->fetchTemplate('home.tpl');
+            $view->assignData('templateToDisplay', 'home.tpl');
 		}
 	}
 ?>

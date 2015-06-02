@@ -1,25 +1,17 @@
-<HTML>
-	<HEAD>
-		<TITLE>Il blog di Matteo</TITLE>
-	</HEAD>
+<div>
+    <a href="index.php?controllerAction=RegistrationPage&registrationAction=getRegistrationPage">Registrati</a>
+    <a href="index.php?controllerAction=ArticlePage&articleAction=getNewArticlePage">Nuovo Articolo</a>
 
-	<BODY>
-		<H1>Il mio blog</H1> <br>
+    <H6>Ultimi 3 articoli caricati recentemente </H6>
 
-        <a href="index.php?controllerAction=RegistrationPage&registrationAction=getRegistrationPage">Registrati</a>
-        <a href="index.php?controllerAction=ArticlePage&articleAction=getNewArticlePage">Nuovo Articolo</a>
+    <ul style="list-style-type:square">
 
-        <H6>Ultimi 3 articoli caricati recentemente </H6>
+        {foreach $homeArticles as $article}
+            <li>
+                <a href="index.php?controllerAction=ArticlePage&articleAction=getArticleView&title={$article.title}">{$article.title}</a>
+            </li>
+        {/foreach}
 
-        <ul style="list-style-type:square">
+    </ul>
 
-            {foreach $homeArticles as $article}
-                <li>
-                    <a href="index.php?controllerAction=ArticlePage&articleAction=getArticleView&title={$article.title}">{$article.title}</a>
-                </li>
-            {/foreach}
-
-        </ul>
-	</BODY>
-
-</HTML>
+</div>

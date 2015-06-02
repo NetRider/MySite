@@ -13,7 +13,6 @@
 	abstract Class Page
 	{
         private $dataFromRequest;
-        private $dataFromSession;
 
         public function setDataFromRequest($data)
         {
