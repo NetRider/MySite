@@ -27,6 +27,7 @@ class ArticlePage extends Page {
         switch($this->getDataFromRequest('articleAction'))
         {
             case 'getNewArticlePage':
+                echo("sono qui");
                 $view->assignData('templateToDisplay', 'articleForm.tpl');
                 break;
 

@@ -11,27 +11,13 @@ $(function(){
 
 function logout(){
     $("#logoutButton").click(function(){
-        var username = $("#nickname").val();
-        var password = $("#password").val();
-
-        /*
-         var rememberMe = $("#rememberMe").prop("checked");
-         var loginData = {"username": username, "password": password, "rememberMe": rememberMe};
-         */
-
-        var loginData = {"username": username, "password": password};
-
-        //$("#loginButton").off(); //prevent a bug when clicking quickly on loginButton (or pressing enter quickly)
-
-        //$.post("index.php?controllerAction=LoginPage", loginData, function(data){console.log(data);}, "json");
-
         $.ajax({
             url: 'index.php?controllerAction=LoginPage&sessionAction=logout',
             type: 'POST',
-            data: loginData,
             processData: false,
             contentType: false
         }).done(function (data) {
+            console.log("ho fatto il post");
             console.log(data);
         });
     });

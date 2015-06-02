@@ -52,7 +52,6 @@ class Session
         }
         else
             setcookie(session_name(), session_id(), 0, "/"); // expires on browser close
-
     }
 
     public function set($key, $value)
@@ -116,8 +115,7 @@ class Session
     {
         unset($_SESSION["username"]);
         unset($_SESSION["password"]);
-        unset($_SESSION["rememberMe"]);
-        unset($_SESSION["degreeCourse"]);
+        //unset($_SESSION["rememberMe"]);
 
         $this->updateSessionCookie();
     }

@@ -6,13 +6,14 @@
     use View\MainView;
 
     /**
-     * Interface IPage is responsable of the signature of each pageController that 
+     * Interface IPage is responsabile of the signature of each pageController that
      * implements a getPage method used for pass to the view the data and the correnct 
      * template.
      */
 	abstract Class Page
 	{
         private $dataFromRequest;
+        private $dataFromSession;
 
         public function setDataFromRequest($data)
         {
@@ -21,7 +22,7 @@
 
         public function setDataFromSession($session)
         {
-            $this->dataFromRequest = $session;
+            $this->dataFromSession = $session;
         }
 
         protected function getDataFromRequest($key)
@@ -38,6 +39,11 @@
                 return $this->dataFromSession[$key];
             else
                 return false;
+        }
+
+        protected function closeSession()
+        {
+            $this->dataFromSession->logout();
         }
 
         abstract public function getPage(MainView $view);

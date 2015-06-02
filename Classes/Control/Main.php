@@ -60,13 +60,11 @@
 
             $this->pageToExecute = new $pageRequest();
 
-            //da rivedere perché gli passo sempre $_REQUEST anche quando magari non serve
             $this->pageToExecute->setDataFromRequest($_REQUEST);
+            $this->pageToExecute->setDataFromSession($_SESSION);
 
             if($this->session->isLoggedIn())
-            {
                 $this->mainView->assignData("loggedIn", true);
-            }
             else
                 $this->mainView->assignData("loggedIn", false);
 

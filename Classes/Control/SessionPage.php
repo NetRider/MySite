@@ -22,26 +22,28 @@ class LoginPage extends Page {
         switch ($this->getDataFromRequest('sessionAction'))
         {
             case 'login':
+                $username = $this->getDataFromSession("username");
+                $password = $this->getDataFromSession("password");
+
+                if($this->session->validate($username, $password))
+                {
+                    $this->session->login($username, $password);
+
+                    $view->assignData('loggedIn',true);
+                    $view->assignData('username',$username);
+                    $view->assignData("loggedIn", true);
+
+                }else
+                    $view->assignData("loggedIn", false);
+
                 break;
+
             case 'logout':
+                $this->closeSession();
+                $view->assignData("loggedIn", false);
                 break;
         }
 
-
-
-        $session = new Session();
-        $username = $this->getDataFromRequest("username");
-        $password = $this->getDataFromRequest("password");
-
-        if($session->validate($username, $password))
-        {
-            $session->login($username, $password);
-
-            $view->assignData('loggedIn',true);
-            $view->assignData('username',$username);
-            $view->assignData("loggedIn", true);
-
-        }else
-            $this->mainView->assignData("loggedIn", false);
+        //$view->assignData('templateToDisplay', 'home.tpl');
     }
 }

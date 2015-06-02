@@ -23,7 +23,6 @@
             {include $templateToDisplay}
         </div>
 
-
         <div id="containerPage">
         </div>
 

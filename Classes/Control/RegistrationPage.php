@@ -18,6 +18,7 @@
         {
             switch ($this->getDataFromRequest('registrationAction')) {
                 case 'getRegistrationPage':
+                    echo("sono qui");
                     $view->assignData('templateToDisplay', 'registrationForm.tpl');
                     break;
 
