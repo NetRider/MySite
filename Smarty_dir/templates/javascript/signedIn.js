@@ -11,7 +11,6 @@ $(function(){
 
 function logout(){
     $("#logoutButton").click(function(){
-    $("#logoutButton").click(function(){
         var username = $("#nickname").val();
         var password = $("#password").val();
 
