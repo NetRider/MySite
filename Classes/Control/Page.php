@@ -13,11 +13,12 @@
 	abstract Class Page
 	{
         private $dataFromRequest;
-        private $dataFromSession;
+        protected $dataFromSession;
 
         public function setDataFromRequest($data)
         {
             $this->dataFromRequest = $data;
+            var_dump($this->dataFromRequest);
         }
 
         public function setDataFromSession($session)

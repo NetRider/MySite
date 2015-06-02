@@ -12,6 +12,7 @@
             <span>pulsante1</span>
             <span>pulsante2</span>
             <span>pulsante3</span>
+
             {if !$loggedIn}
                 {include 'loginForm.tpl'}
             {else}

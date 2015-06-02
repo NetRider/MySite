@@ -22,12 +22,13 @@ class LoginPage extends Page {
         switch ($this->getDataFromRequest('sessionAction'))
         {
             case 'login':
-                $username = $this->getDataFromSession("username");
-                $password = $this->getDataFromSession("password");
-
-                if($this->session->validate($username, $password))
+                $username = $this->getDataFromRequest("username");
+                $password = $this->getDataFromRequest("password");
+                echo("user: " . $username);
+                if($this->dataFromSession->validate($username, $password))
                 {
-                    $this->session->login($username, $password);
+
+                    $this->dataFromSession->login($username, $password);
 
                     $view->assignData('loggedIn',true);
                     $view->assignData('username',$username);

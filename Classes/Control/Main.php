@@ -61,7 +61,7 @@
             $this->pageToExecute = new $pageRequest();
 
             $this->pageToExecute->setDataFromRequest($_REQUEST);
-            $this->pageToExecute->setDataFromSession($_SESSION);
+            $this->pageToExecute->setDataFromSession($this->session);
 
             if($this->session->isLoggedIn())
                 $this->mainView->assignData("loggedIn", true);

@@ -20,6 +20,7 @@ function submitButton(btn) {
             processData: false,
             contentType: false
         }).done(function (data) {
+            console.log(data);
             $("#containerRegistrationForm").remove();
             $("#containerRegistrationStatus").append(data);
         });
