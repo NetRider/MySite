@@ -156,5 +156,15 @@
                 echo "Error to delete".$this->dbConnection->error;
             }
         }
+
+        public function getNumberOfRows($result)
+        {
+            $row_count = $result->num_rows;
+
+            if($row_count > 0)
+                return $row_count;
+            else
+                return 0;
+        }
     }
 ?>

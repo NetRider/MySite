@@ -36,6 +36,7 @@ abstract class AbstractDataMapper
         return $entities;
     }
 
+
     /*
      * Questa funzione deve essere creata dai mappers concreti!
      * Questo perché conoscono il tipo di modello

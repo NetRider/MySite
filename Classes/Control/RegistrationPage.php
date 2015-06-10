@@ -18,7 +18,6 @@
         {
             switch ($this->getDataFromRequest('registrationAction')) {
                 case 'getRegistrationPage':
-                    echo("sono qui");
                     $view->assignData('templateToDisplay', 'registrationForm.tpl');
                     break;
 
@@ -32,7 +31,6 @@
         }
 
         private function storeUser() {
-
             $databaseAdapter = new Database();
             $userMapper = new UserMapper($databaseAdapter);
             $user = new User($this->getDataFromRequest('nickname'), $this->getDataFromRequest('email'),$this->getDataFromRequest('password'));

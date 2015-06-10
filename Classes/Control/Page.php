@@ -6,9 +6,10 @@
     use View\MainView;
 
     /**
-     * Interface IPage is responsabile of the signature of each pageController that
-     * implements a getPage method used for pass to the view the data and the correnct 
-     * template.
+     * La classe astratta Page definisce un oggetto pagina che verrà poi esteso da ogni controllore di ogni pagina
+     * All'interno della classe abbiamo metodi già implementati riguardanti i dati dalla REQUEST e i dati relativi
+     * alle sessioni. Il metodo getPage(il cui nome è forviante perché non restituisce nulla) assembla la pagina ed
+     * astratto perché sarà compito di ogni controllore di pagina implementarlo
      */
 	abstract Class Page
 	{
@@ -18,7 +19,6 @@
         public function setDataFromRequest($data)
         {
             $this->dataFromRequest = $data;
-            var_dump($this->dataFromRequest);
         }
 
         public function setDataFromSession($session)

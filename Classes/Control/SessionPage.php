@@ -22,14 +22,16 @@ class LoginPage extends Page {
         switch ($this->getDataFromRequest('sessionAction'))
         {
             case 'login':
+
+                echo("sono nella funzione login");
                 $username = $this->getDataFromRequest("username");
                 $password = $this->getDataFromRequest("password");
-                echo("user: " . $username);
+                echo("USER: " . $username);
+
                 if($this->dataFromSession->validate($username, $password))
                 {
-
+                    echo("ho validato i dati");
                     $this->dataFromSession->login($username, $password);
-
                     $view->assignData('loggedIn',true);
                     $view->assignData('username',$username);
                     $view->assignData("loggedIn", true);
@@ -40,6 +42,7 @@ class LoginPage extends Page {
                 break;
 
             case 'logout':
+                echo("ho fatto il logout");
                 $this->closeSession();
                 $view->assignData("loggedIn", false);
                 break;

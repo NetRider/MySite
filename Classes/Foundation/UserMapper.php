@@ -24,8 +24,13 @@ class UserMapper extends AbstractDataMapper {
         $cond = array("nickname"=>$name, "password"=>$password);
         $found = $this->find(array(), $cond, null);
 
-        if(isset($found))
+        echo($this->adapter->getNumberOfRows($found));
+
+        if($this->adapter->getNumberOfRows($found))
+        {
+            echo("ho trovato l'utente");
             return true;
+        }
         else
             return false;
     }

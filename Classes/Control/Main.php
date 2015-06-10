@@ -48,18 +48,20 @@
             $this->mainView = new MainView();
             $this->session = new Session();
 
-			/*
-			Here is assembled the string that contains the name of class of the page to be
-			instantiated. Default is HomePage.
-			*/
+
+			//Qui viene assemblata la stringa che contiene il nome del controllore della pagina da istanziare
+            //contenuto nell'url
 
             if(isset($_REQUEST['controllerAction']))
-                $pageRequest = "Control\\".$_REQUEST['controllerAction']; //Type Hinting in action
+                $pageRequest = "Control\\".$_REQUEST['controllerAction'];
             else
                 $pageRequest = 'Control\HomePage';//qui ci va la pagina di errore
 
+            //Qui viene istanziato il controllore della pagina richiesta dall'url
             $this->pageToExecute = new $pageRequest();
 
+            //Passo la sessione e i dati provenienti dai post
+            //Setter Injection
             $this->pageToExecute->setDataFromRequest($_REQUEST);
             $this->pageToExecute->setDataFromSession($this->session);
 
@@ -68,7 +70,13 @@
             else
                 $this->mainView->assignData("loggedIn", false);
 
+            //Constructor Injection
 			$this->pageFactory->createPage($this->pageToExecute,$this->mainView);
+
+            /**
+             * Una volta che il pageFactory attraverso la createPage assegna alla mainView i template da visualizzare
+             * e i dati da rimpiazziare nelle variabili contenute nei template posso fare il fetch.
+            */
             $this->mainView->fetchTemplate('main.tpl');
 		}
     }
