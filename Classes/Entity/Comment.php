@@ -1,5 +1,5 @@
 <?php
-	
+
 	namespace Entity;
 
 	require_once 'User.php';

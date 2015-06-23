@@ -63,11 +63,12 @@
                 $condition = [];
 
                 foreach($cond as $key=>$value)
-                    $condition[$i] = $key."='".$value."'";
-
+                {
+                  $condition[$i] = $key."='".$value."'";
+                  $i = $i + 1;
+                }
                 $sql = "SELECT " . $columns. " FROM " . $table . " WHERE " . implode(" " . $op . " ", $condition);
             }
-
 
             $result = $this->dbConnection->query($sql);
 
@@ -92,12 +93,10 @@
 
             $StValues = implode(", ",$StValue);
 
-
-            if($this->dbConnection->query("INSERT INTO $table ($cols) VALUES ($StValues)") === TRUE){
-                echo "New record has been inserted successfully!";
-            }else{
-                echo "Error ".$this->connection->error;
-            }
+            if($this->dbConnection->query("INSERT INTO $table ($cols) VALUES ($StValues)") === TRUE)
+                return true;
+            else
+                return false;
         }
 
         public function update($table, array $bind, array $cond) {
@@ -159,7 +158,7 @@
 
         public function getNumberOfRows($result)
         {
-            $row_count = $result->num_rows;
+            $row_count = mysqli_affected_rows($result);
 
             if($row_count > 0)
                 return $row_count;

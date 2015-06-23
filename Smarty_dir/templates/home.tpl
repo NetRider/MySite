@@ -1,17 +1,14 @@
-<div>
-    <a href="index.php?controllerAction=RegistrationPage&registrationAction=getRegistrationPage">Registrati</a>
-    <a href="index.php?controllerAction=ArticlePage&articleAction=getNewArticlePage">Nuovo Articolo</a>
+<div class="vertical layout">
 
-    <H6>Ultimi 3 articoli caricati recentemente </H6>
+    <div id="banner" class="horizontal layout">
+        <iron-image class="flex" sizing="contain" src="Smarty_dir/templates/img/header_image.jpg"></iron-image>
+    </div>
 
-    <ul style="list-style-type:square">
+    <H5>Ultimi 3 articoli caricati </H5>
 
+    <div class="horizontal layout">
         {foreach $homeArticles as $article}
-            <li>
-                <a href="index.php?controllerAction=ArticlePage&articleAction=getArticleView&title={$article.title}">{$article.title}</a>
-            </li>
+            <article-card title="prova"></article-card>
         {/foreach}
-
-    </ul>
-
+    </div>
 </div>

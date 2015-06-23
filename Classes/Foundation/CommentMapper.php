@@ -16,12 +16,7 @@ class CommentMapper extends AbstractDataMapper {
 
     public function insert(Comment $comment) {
 
-        $this->adapter->insert($this->entityTable, array("text"=>$comment->getText(), "userId"=>$comment->getUserId(), "date"=>$comment->getDate(), "articleId"=>$comment->getArticleId()));
-    }
-
-    public function getAllCommentsByArticleId($bind, $articleId)
-    {
-        return $this->adapter->select($this->entityTable, $bind, $articleId, null);
+        return $this->adapter->insert($this->entityTable, array("text"=>$comment->getText(), "userId"=>$comment->getUserId(), "date"=>$comment->getDate(), "articleId"=>$comment->getArticleId()));
     }
 
     protected function createEntity(array $row) {

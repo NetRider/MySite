@@ -1,34 +1,33 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: matteopolsinelli
- * Date: 29/05/15
- * Time: 17:04
- */
 
 namespace Foundation;
+
 require_once 'AbstractDataMapper.php';
 
 use Entity\Article;
 
-class ArticleMapper extends AbstractDataMapper  {
+class ArticleMapper extends AbstractDataMapper {
     protected $entityTable = "article";
 
-    public function insert(Article $article)
-    {
-        $this->adapter->insert($this->entityTable, array("title"=>$article->getTitle(), "textArticle"=>$article->getText(), "vote"=>$article->getVote()));
+    public function insert(Article $article) {
+        if(!$this->adapter->insert($this->entityTable, array("userId"=>$article->getUserId(), "title"=>$article->getTitle(), "description"=>$article->getDescription(), "text"=>$article->getText(), "vote"=>$article->getVote())))
+            print ("errore");
     }
 
-    public function getLastThreeArticlesTitles()
-    {
-        return $this->adapter->select($this->entityTable, array("title"), array(), null);
+    public function getAllArticles() {
+        return $this->find(array(), array(), null);
     }
 
-    protected function createEntity(array $row){
+    public function getAllArticlesByAuthorId($authorId) {
+        return $this->find(array(), array("userId"=>$authorId), null);
+    }
 
-        $article =  new Article($row["title"], $row["textArticle"], $row["vote"]);
+    public function getLastFourArticlesTitles() {
+    }
+
+    protected function createEntity(array $row) {
+        $article =  new Article($row["userId"], $row["title"], $row["description"], $row["text"], $row["vote"]);
         $article->setId($row["id"]);
         return $article;
-
     }
 }

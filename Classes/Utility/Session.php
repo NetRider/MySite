@@ -100,12 +100,16 @@ class Session
     {
         $loggedIn = false;
 
-        if(isset($_SESSION["username"]) && isset($_SESSION["password"]))
+        if(isset($_SESSION["username"]) && isset($_SESSION["userimage"]) && isset($_SESSION["userid"]))
         {
+            //perché salvo questi valori in queste variabili?
             $username = $_SESSION["username"];
-            $pass = $_SESSION["password"];
-            if ($this->validate($username, $pass))
-                $loggedIn = true;
+            $image = $_SESSION["userimage"];
+            $userid = $_SESSION["userid"];
+
+
+            $loggedIn = true;
+
         }
 
         return $loggedIn;
@@ -114,24 +118,26 @@ class Session
     public function logout()
     {
         unset($_SESSION["username"]);
-        unset($_SESSION["password"]);
-        //unset($_SESSION["rememberMe"]);
+        unset($_SESSION["userimage"]);
+        unset($_SESSION["userid"]);
 
         $this->updateSessionCookie();
     }
 
-    public function login($username,$password)
+    public function login($username, $userID, $image)
     {
         $this->set("username",$username);
-        $this->set("password",$password);
+        $this->set("userimage",$image);
+        $this->set("userid", $userID);
     }
 
     public function validate($username, $password)
     {
         $databaseAdapter = new Database();
         $userMapper = new UserMapper($databaseAdapter);
-        if($userMapper->validateLogin($username, $password))
-            return true;
+        $userData = $userMapper->validateLogin($username, $password);
+        if($userData)
+            return $userData;
         else
             return false;
     }

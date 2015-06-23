@@ -1,32 +1,15 @@
-<HTML>
-    <HEAD>
-        <TITLE>Il blog di Matteo</TITLE>
-    </HEAD>
+<div>
+    <h1>{$articleTitle}</h1>
+    <p>
+        {$articleText}
+    </p>
 
-    <BODY>
-        <H1>{$articleTitle}</H1>
-        <p>
-            {$articleText}
-        </p>
-
-        <ul style="list-style-type:square">
-
-            {foreach $comments as $comment}
-                <li>
-                    <p>{$comment.text}</p>
-                </li>
-            {/foreach}
-
-        </ul>
-
-        <div id="containerAddComment">
-            <form form enctype="multipart/form-data" id="addComment">
-                Testo: 			    <input type="text" name="nickname"/> <br>
-                <input type="submit" value="Submit" id="submitButton">
-
-            </form>
-        </div>
-        <a href="index.php?controllerAction=HomePage">Torna alla home</a>
-
-    </BODY>
-</HTML>
+    <div class="vertical layout flex">
+      {if $loggedIn}
+        <docomment-element authorimage="{{$userimage}}" author="{{$username}}" authorid="{$authorId}"></docomment-element>
+      {/if}
+        {foreach $comments as $comment}
+            <comment-element authorimage="{$comment.image}" author="{$comment.author}" text="{$comment.text}" authorid="{$comment.authorId}"></comment-element>
+        {/foreach}
+    </div>
+</div>

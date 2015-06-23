@@ -32,8 +32,11 @@ abstract class AbstractDataMapper
             {
                 $entities[] = $this->createEntity($row);
             }
+
+            return $entities;
+        }else {
+            return 0;
         }
-        return $entities;
     }
 
 
