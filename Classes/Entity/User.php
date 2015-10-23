@@ -1,27 +1,37 @@
 <?php
+namespace Entity;
 
-	namespace Entity;
+include_once(dirname(__FILE__).'/../Foundation/ACLMapper.php');
+include_once(dirname(__FILE__).'/../Foundation/Database.php');
+
+use Foundation\Database;
+use Foundation\ACLMapper;
 
 	class User
 	{
 		private $id;
-		private $nickname;
+		private $username;
 		private $email;
 		private $password;
 		private $image;
+		private $role;
+		private $permissions = array();
 
-		public function __construct($nickname, $email, $password, $image){
-			$this->nickname = $nickname;
+		public function __construct($username, $email, $password, $image, $role) {
+
+			$this->id = -1;
+			$this->username = $username;
 			$this->email = $email;
 			$this->password = $password;
 			$this->image = $image;
-			$this->id = -1;
+			$this->role = $role;
+			$this->initPermission();
 		}
 
 		//GET FUNCTIONS
 
-		public function getNickname(){
-			return $this->nickname;
+		public function getUserName(){
+			return $this->username;
 		}
 
 		public function getEmail(){
@@ -38,10 +48,17 @@
 
 		public function getId()
 		{
-			if($this->id != -1)
-				return $this->id;
-			else
-			 	return false;
+			return $this->id;
+		}
+
+		public function getRole()
+		{
+			return $this->role;
+		}
+
+		public function getPermissions()
+		{
+			return $this->permissions;
 		}
 
 		//SET FUNCTIONS
@@ -62,8 +79,28 @@
 			$this->image=$image;
 		}
 
-		public function setId($id){
+		public function setId($id) {
 			$this->id = $id;
+		}
+
+		public function setRole($role) {
+			$this->$role = $role;
+		}
+
+		protected function initPermission() {
+			$databaseAdapter = new Database();
+			$aclMapper = new ACLMapper($databaseAdapter);
+			$permissions = $aclMapper->getRolePermissions($this->role);
+
+			foreach($permissions as $permission)
+			{
+				array_push($this->permissions, $permission["perm_desc"]);
+			}
+    	}
+
+		// check if user has a specific privilege
+		public function hasPermission($permission) {
+			return in_array($permission, $this->permissions);
 		}
 	}
 ?>

@@ -21,28 +21,35 @@ abstract class AbstractDataMapper
         return $this->adapter;
     }
 
-    public function find(array $bind, array $cond, $op)
+    public function find($cond = array(), $bind = array(), $op='', $order='', $limit='', $joinTable='', $joinBind = array())
     {
-        $entities = array();
-        $rows = $this->adapter->select($this->entityTable, $bind, $cond, $op);
-
-        if($rows)
+        $rows = $this->adapter->select($this->entityTable, $cond, $bind, $op, $order, $limit, $joinTable, $joinBind);
+        if(count($rows) == 1)
         {
+            //var_dump($rows);
+            return $this->createEntity($rows[0]);
+        }else if(count($rows) > 1)
+        {
+            $entities = array();
+
             foreach($rows as $row)
             {
-                $entities[] = $this->createEntity($row);
+                array_push($entities, $this->createEntity($row));
             }
 
             return $entities;
-        }else {
-            return 0;
-        }
+        }else
+            return false;
     }
 
+    public function returnAssociativeArray($cond = array(), $bind = array(), $op='', $order='', $limit='', $joinTable='', $joinBind = array())
+    {
+        return $rows = $this->adapter->select($this->entityTable, $cond, $bind, $op, $order, $limit, $joinTable, $joinBind);
+    }
 
     /*
      * Questa funzione deve essere creata dai mappers concreti!
      * Questo perché conoscono il tipo di modello
      */
-    abstract protected function createEntity(array $row);
+    abstract protected function createEntity($row);
 }

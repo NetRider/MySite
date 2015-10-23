@@ -10,16 +10,19 @@ class Project {
 	private $userId;
 	private $title;
 	private $text;
-	private $vote;
+	private $date;
 	private $description;
 	private $comments;
+	private $dependencies;
+	private $image;
 
-	public function __construct($userId, $title, $description, $text, $vote) {
+	public function __construct($userId, $title, $description, $text, $date, $image) {
 		$this->userId = $userId;
 		$this->title = $title;
 		$this->description = $description;
 		$this->text = $text;
-		$this->vote = $vote;
+		$this->date = $date;
+		$this->image = $image;
 	}
 
 	public function addComment($comment) {
@@ -52,8 +55,8 @@ class Project {
 		return $this->text;
 	}
 
-	public function getVote() {
-		return $this->vote;
+	public function getDate() {
+		return $this->date;
 	}
 
 	public function getId() {
@@ -72,6 +75,11 @@ class Project {
     return $this->dependencies;
   }
 
+  public function getImage()
+  {
+	  return $this->image;
+  }
+
 	//SET FUNCTIONS
 
 	public function setTitle($title) {
@@ -82,8 +90,8 @@ class Project {
 		$this->text = $text;
 	}
 
-	public function setVote($vote) {
-		$this->vote = $vote;
+	public function setDate($date) {
+		$this->date = $date;
 	}
 
 	public function setComments($comments) {
@@ -98,7 +106,12 @@ class Project {
 		$this->description = $description;
 	}
 
-  public function selectedDependencies($dependencies) {
-    $this->dependencies = $dependencies;
+  	public function setDependencies($dependencies) {
+    	$this->dependencies = $dependencies;
+  }
+
+  public function setImage($image)
+  {
+	 	$this->image = $image;
   }
 }

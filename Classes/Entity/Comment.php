@@ -9,13 +9,11 @@
 		private $text;
         private $date;
         private $userId;
-        private $articleID;
 
-		public function __construct($text, $date, $userId , $articleId){
+		public function __construct($text, $date, $userId){
 			$this->text = $text;
             $this->date = $date;
             $this->userId = $userId;
-            $this->articleID = $articleId;
 		}
 
 		//GET FUNCTIONS

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: matteopolsinelli
- * Date: 24/05/15
- * Time: 13:01
- */
 
 namespace Foundation;
 require_once 'AbstractDataMapper.php';
@@ -16,29 +10,79 @@ class UserMapper extends AbstractDataMapper {
 
     public function insert(User $user)
     {
-        return $this->adapter->insert($this->entityTable, array("nickname"=>$user->getNickname(), "image"=>$user->getImage(), "email"=>$user->getEmail(), "password"=>$user->getPassword()));
+        return $this->adapter->insert($this->entityTable, array("username"=>$user->getUserName(), "profileImage"=>$user->getImage(), "email"=>$user->getEmail(), "password"=>$user->getPassword(), "role"=>$user->getRole()));
     }
 
     public function validateLogin($name, $password)
     {
-        $cond = array("nickname"=>$name, "password"=>$password);
-        $found = $this->find(array(), $cond, null);
-
+        $found = $this->find(array("username"=>$name, "password"=>$password));
         if($found)
           return $found;
         else
           return false;
     }
 
-    public function existUserName($userName) {
-
-
+    public function getAllUsers()
+    {
+        return $this->returnAssociativeArray(array(), array("user.id", "user.username", "user.email", "user.profileImage", "role.role_name"), "", "", "", "role", array("user"=>"role", "role"=>"id"));
     }
 
-    protected function createEntity(array $row){
-        $user = new User($row["nickname"], $row["email"], $row["password"], $row["image"]);
-        $user->setId($row['id']);
-        return $user;
+    public function updateUserRole($userId, $userRole)
+    {
+        return $this->adapter->update($this->entityTable, array("role"=>$userRole), array("id"=>$userId));
+    }
 
+    public function existUserName($username) {
+        $found = $this->find(array("username"=>$username));
+        if($found)
+          return true;
+        else
+          return false;
+    }
+
+    public function getUserImage($username) {
+        return $this->returnAssociativeArray(array("username"=>$username), array("profileImage"));
+    }
+
+    public function existUserEmail($email) {
+        $found = $this->find(array("email"=>$email));
+        if($found)
+          return true;
+        else
+          return false;
+    }
+
+    public function getUserById($id)
+    {
+        $found = $this->find(array("id"=>$id));
+        if($found)
+            return $found;
+        else
+            return false;
+    }
+
+    public function getUserByUsername($username)
+    {
+        $found = $this->find(array("username"=>$username));
+        if($found)
+            return $found;
+        else
+            return false;
+    }
+
+    public function removeUser($username)
+    {
+        return $this->adapter->delete($this->entityTable, array("username"=>$username));
+    }
+
+    public function getNumberOfUsers()
+    {
+        return $this->returnAssociativeArray(array(), "COUNT");
+    }
+
+    protected function createEntity($row) {
+        $user = new User($row["username"], $row["email"], $row["password"], $row["profileImage"], $row["role"]);
+        $user->setId($row["id"]);
+        return $user;
     }
 }

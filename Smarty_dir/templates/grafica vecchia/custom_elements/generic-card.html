@@ -1,0 +1,48 @@
+<dom-module id="generic-card" attributes="image title description Id url">
+
+    <style is="custom-style">
+        paper-card {
+            width: 350px;
+            height: 0px;
+            margin: 16px;
+            padding: 16px;
+        }
+
+        .title {
+            position: absolute;
+            top: 30px;
+            left: 100px;
+        }
+
+        .medium {
+            font-size: 16px;
+            padding-bottom: 8px;
+        }
+  </style>
+
+  <template>
+      <paper-card heading="{{title}}" image="{{image}}">
+        <div class="card-content">{{description}}</div>
+        <div class="card-actions">
+           <a id="link"><paper-button class="paperButtonConfirm">Leggi</paper-button></a>
+        </div>
+      </paper-card>
+  </template>
+</dom-module>
+
+<script>
+  Polymer({
+    is: "generic-card",
+    properties: {
+      title: String,
+      image: String,
+      Id: String,
+      description: String,
+      url: String
+    },
+
+    ready: function() {
+      this.$.link.href = "index.php?" + this.url + "&Id=" + this.Id;
+    }
+  });
+</script>

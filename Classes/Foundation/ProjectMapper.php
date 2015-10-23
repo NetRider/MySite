@@ -9,22 +9,52 @@ use Entity\Project;
 class ProjectMapper extends AbstractDataMapper {
   protected $entityTable = "project";
 
-  public function insertProject(Project $project) {
-    if(!$this->adapter->insert($this->entityTable, array("userId"=>$project->getUserId(), "title"=>$project->getTitle(), "description"=>$project->getDescription(), "text"=>$project->getText(), "vote"=>$project->getVote())))
-      print ("errore");
+  public function insertProject(Project $project, $dependencies)
+  {
+      if(!$this->adapter->insert($this->entityTable, array("idAuthor"=>$project->getUserId(), "title"=>$project->getTitle(), "description"=>$project->getDescription(), "text"=>$project->getText(), "date"=>$project->getDate(), "projectImage"=>$project->getImage()))) {
+          return false;
+      }
+      $lastId = $this->adapter->getLastId();
+
+      foreach ($dependencies as $value)
+      {
+          if(!$this->adapter->insert("dependency", array("idProject"=>$lastId, "idArticle"=>$value))) {
+              return false;
+          }
+      }
+      return true;
   }
 
-  public function getAllProjects() {
-    return $this->find(array(), array(), null);
+  public function getAllProjects()
+  {
+    return $this->find(array(), array());
   }
 
-  public function getAllProjectsByAuthorId($authorId) {
-      return $this->find(array(), array("userId"=>$authorId), null);
+  public function getAllProjectsByAuthorId($authorId)
+  {
+      return $this->find(array(), array("userId"=>$authorId));
   }
 
-  protected function createEntity(array $row) {
-    $project =  new Project($row["userId"], $row["title"], $row["description"], $row["text"], $row["vote"]);
+  public function getProjectById($id)
+  {
+      return $this->find(array("id"=>$id));
+  }
+
+  public function removeProjectById($id)
+  {
+      $this->adapter->delete($this->entityTable, array("id"=>$id));
+      $this->adapter->delete("projectsDependencies", array("idProject"=>$id));
+  }
+
+  public function getNumberOfProjects()
+  {
+      return $this->returnAssociativeArray(array(), "COUNT");
+  }
+
+  protected function createEntity($row) {
+    $project =  new Project($row["idAuthor"], $row["title"], $row["description"], $row["text"], $row["date"], $row["projectImage"]);
     $project->setId($row["id"]);
+
     return $project;
   }
 }

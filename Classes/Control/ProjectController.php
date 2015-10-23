@@ -4,74 +4,113 @@ namespace Control;
 include_once(dirname(__FILE__).'/../Entity/Project.php');
 include_once(dirname(__FILE__).'/../Foundation/ProjectMapper.php');
 include_once(dirname(__FILE__).'/../Foundation/UserMapper.php');
+include_once(dirname(__FILE__).'/../Foundation/ArticleMapper.php');
 include_once(dirname(__FILE__).'/../Foundation/CommentMapper.php');
 include_once(dirname(__FILE__).'/../Foundation/Database.php');
-include_once(dirname(__FILE__).'/../View/MainView.php');
+include_once(dirname(__FILE__).'/../View/View.php');
 
-use View\MainView;
+use Control\Controller;
+use View\View;
 use Foundation\CommentMapper;
 use Foundation\Database;
 use Entity\Project;
 use Foundation\ProjectMapper;
 use Foundation\UserMapper;
+use Foundation\ArticleMapper;
+use Utility\Singleton;
 
+class ProjectController extends Controller {
 
-class ProjectController extends Page {
-
-    public function getPage(MainView $view) {
-
-        switch($view->getDataFromRequest('ProjectAction'))
+    public function executeTask()
+    {
+        switch($this->view->getTask())
         {
             case 'addNewProject':
-            $databaseAdapter = new Database();
-            $projectMapper = new ProjectMapper($databaseAdapter);
-            $project = new Project($view->getDataFromRequest('userID'), $view->getDataFromRequest('title'), $view->getDataFromRequest('description'), $view->getDataFromRequest('textProject'), 0);
-            $projectMapper->insertProject($project);
-            $view->assignData('userid', $this->getDataFromSession('userid'));
-            $view->assignData('templateToDisplay', 'profileView.tpl');
+                return $this->addNewProject();
             break;
 
             case 'getProjectView':
-            $databaseAdapter = new Database();
-            $articleMapper = new ArticleMapper($databaseAdapter);
-            $commentMapper = new CommentMapper($databaseAdapter);
-            $userMapper = new UserMapper($databaseAdapter);
-            $condition = array("id"=>$view->getDataFromRequest('articleId'));
-            $article = $articleMapper->find(array(), $condition, null);
-            $condition = array("articleId"=>$article[0]->getId());
-            $comments = $commentMapper->find(array(), $condition, null);
-            $data = array();
-
-            foreach ($comments as $comment) {
-                $user = $userMapper->find(array(), array("id"=>$comment->getUserId()), null);
-                array_push($data, array("author"=>$user[0]->getNickname(), "image"=>$user[0]->getImage(), "text"=>$comment->getText(), "authorId"=>$user[0]->getId()));
-            }
-            $view->assignData("articleTitle", $article[0]->getTitle());
-            $view->assignData("articleText", $article[0]->getText());
-            $view->assignData("authorId", $this->getDataFromSession("userid"));
-
-            $view->assignData("comments", $data);
-
-            $view->assignData('templateToDisplay', 'articleView.tpl');
+                return $this->getProjectView();
             break;
 
             case 'getProjectsCards':
-            $databaseAdapter = new Database();
-            $projectMapper = new ProjectMapper($databaseAdapter);
-            $userMapper = new UserMapper($databaseAdapter);
-            $projects = $projectMapper->getAllProjects();
-            $data = array();
+                return $this->getProjectsCards();
+            break;
 
-            foreach ($projects as $project) {
-                $user = $userMapper->find(array(), array("id"=>$project->getUserId()), null);
-                array_push($data, array("title"=>$project->getTitle(), "author"=>$user[0]->getNickname(), "image"=>$user[0]->getImage(), "description"=>$project->getDescription(), "articleId"=>$project->getId()));
-            }
-
-            $data = array_chunk($data, 3);
-            $view->assignData('data', $data);
-            $view->assignData('templateToDisplay', 'projectCards.tpl');
+            case 'deleteProject':
+                return $this->deleteProject();
             break;
         }
-        $view->fetchTemplate('main.tpl');
+    }
+
+    private function getProjectsCards()
+    {
+        $databaseAdapter = new Database();
+        $projectMapper = new ProjectMapper($databaseAdapter);
+        $userMapper = new UserMapper($databaseAdapter);
+        $projects = $projectMapper->getAllProjects();
+        $data = array();
+
+        if($projects)
+        {
+            foreach ($projects as $project)
+            {
+                array_push($data, array("image"=>$project->getImage(), "title"=>$project->getTitle(), "description"=>$project->getDescription(), "id"=>$project->getId()));
+            }
+        }
+
+        $this->view->assignProjectsCards($data);
+        $this->view->setTemplate('projectsCards');
+        return $this->view->getContent();
+    }
+
+    private function getProjectView()
+    {
+        $databaseAdapter = new Database();
+        $projectMapper = new ProjectMapper($databaseAdapter);
+        $articleMapper = new ArticleMapper($databaseAdapter);
+        $commentMapper = new CommentMapper($databaseAdapter);
+        $userMapper = new UserMapper($databaseAdapter);
+
+        $project = $projectMapper->getProjectById($this->view->getProjectId());
+        $comments = $commentMapper->getCommentsByProjectId($project->getId());
+        $projectAuthor = $userMapper->getUserById($project->getUserId());
+
+        $comments = array();
+
+        if($comments)
+        {
+            foreach ($comments as $comment)
+            {
+                $user = $userMapper->getUserByID($comment->getUserId());
+                array_push($comments, array("author"=>$user->getNickname(), "image"=>$user->getImage(), "text"=>$comment->getText(), "authorId"=>$user->getId()));
+            }
+        }
+
+        $dependencies = $articleMapper->getArticlesDependenciesByProjectId($project->getId());
+        $this->view->assignProjectData($project->getTitle(), $project->getText(), $projectAuthor->getUserName(), $project->getImage(), $comments, $dependencies);
+        $this->view->setTemplate('projectViewer');
+        return $this->view->getContent();
+    }
+
+    private function addNewProject()
+    {
+        $databaseAdapter = new Database();
+        $projectMapper = new ProjectMapper($databaseAdapter);
+        $session = Singleton::getInstance("\Control\Session");
+        $project = new Project($session->getUserId(), $this->view->getProjectTitle(), $this->view->getProjectDescription(), $this->view->getProjectText(), "dia", "Data/projects_images/" . $this->view->getProjectImage());
+        $dependencies = $this->view->getProjectDependencies();
+        $projectMapper->insertProject($project, $dependencies);
+        $this->view->setTemplate('projectSaved');
+        return $this->view->getContent();
+    }
+
+    private function deleteProject($id)
+    {
+        $databaseAdapter = new Database();
+        $projectMapper = new ProjectMapper($databaseAdapter);
+        $commentMapper = new CommentMapper($databaseAdapter);
+        $projectMapper->removeProjectById($this->view->getProjectId());
+        $commnetMapper->removeCommentByArticleId($this->view->getArticleId());
     }
 }

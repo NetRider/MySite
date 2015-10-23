@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: matteopolsinelli
- * Date: 30/05/15
- * Time: 11:54
- */
-
 namespace Control;
 
 include_once(dirname(__FILE__).'/../Entity/User.php');
@@ -16,15 +9,22 @@ use Entity\User;
 use Foundation\Database;
 use Foundation\UserMapper;
 
-class Session
-{
+class Session {
     private $lifetime;
+    private $user;
 
     public function __construct()
     {
         $this->lifetime = 60*60*24*30; // 30 days
         //$this->lifetime = 10; //seconds
         session_start();
+
+        if($this->userIsLogged())
+        {
+            $databaseAdapter = new Database();
+			$userMapper = new UserMapper($databaseAdapter);
+            $this->user = $userMapper->getUserByUsername($_SESSION["username"]);
+        }
 
         $this->updateSessionCookie();
     }
@@ -59,6 +59,14 @@ class Session
         $_SESSION[$key]=$value;
     }
 
+    public function get($key)
+    {
+        if(isset($_SESSION[$key]))
+            return $_SESSION[$key];
+        else
+            return false;
+    }
+
     /**
      * Sets the desired behaviour of the session.
      *
@@ -72,72 +80,49 @@ class Session
         $this->updateSessionCookie();
     }
 
-    /**
-     * function get
-     *
-     * Gets a value saved in the session corresponding to the key passed.
-     *
-     * @param mixed $key
-     * @return mixed
-     */
-    public function get($key)
+    public function getUserId()
     {
-        if(isset($_SESSION[$key]))
-            return $_SESSION[$key];
-        else
-            return false;
+        return $this->user->getId();
     }
 
-    /**
-     * Checks if the user is logged in.
-     *
-     * It checks the $_SESSION variable, if it contains the correct user and password (according
-     * to the User table of the application database), then the user is logged in.
-     *
-     * @return bool
-     */
-    public function isLoggedIn()
+    public function getUserImage()
     {
-        $loggedIn = false;
+        return $this->user->getImage();
+    }
 
-        if(isset($_SESSION["username"]) && isset($_SESSION["userimage"]) && isset($_SESSION["userid"]))
-        {
-            //perché salvo questi valori in queste variabili?
-            $username = $_SESSION["username"];
-            $image = $_SESSION["userimage"];
-            $userid = $_SESSION["userid"];
+    public function getUserName()
+    {
+        return $this->user->getUsername();
+    }
 
+    public function checkPermission($privilage)
+    {
+        return $this->user->hasPermission($privilage);
+    }
 
-            $loggedIn = true;
-
-        }
-
-        return $loggedIn;
+    public function getAllPermissions()
+    {
+        return $this->user->getPermissions();
     }
 
     public function logout()
     {
-        unset($_SESSION["username"]);
-        unset($_SESSION["userimage"]);
-        unset($_SESSION["userid"]);
+        //clear all session variables
+        session_unset();
+        session_destroy();
 
         $this->updateSessionCookie();
     }
 
-    public function login($username, $userID, $image)
+    public function login($username)
     {
         $this->set("username",$username);
-        $this->set("userimage",$image);
-        $this->set("userid", $userID);
     }
 
-    public function validate($username, $password)
+    public function userIsLogged()
     {
-        $databaseAdapter = new Database();
-        $userMapper = new UserMapper($databaseAdapter);
-        $userData = $userMapper->validateLogin($username, $password);
-        if($userData)
-            return $userData;
+        if($this->get("username"))
+            return true;
         else
             return false;
     }

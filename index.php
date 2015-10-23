@@ -5,8 +5,9 @@
 	 * This is the starting point of the web application.
 	 */
 
-	require_once './Classes/Control/Main.php';
+	require_once './Classes/Control/MainController.php';
+	require_once './Classes/View/MainView.php';
 
-	$mainController = new \Control\Main();
-
-?>
+	$mainView = new \View\MainView();
+	$mainController = new \Control\MainController($mainView);
+	$mainController->getPage();

@@ -45,19 +45,36 @@
             $this->dbConnection->close();
         }
 
-        public function select($table, array $bind, array $cond, $op) {
+        public function select($table, $cond, $bind, $op, $order, $limit, $joinTable, $joinBind) {
             $this->connect();
+            $sql = "";
 
-            if (empty ($bind))
+            if (empty($bind))
                 $columns = '*';
+            elseif($bind == "COUNT")
+                $columns = "COUNT(*)";
             else
                 $columns=implode(",", $bind);
+                
+            $joinString = "";
+            if($joinTable!='')
+            {
+                $joinFinal= [];
+                $i = 0;
+                foreach($joinBind as $key=>$value)
+                {
+                  $joinFinal[$i] = $key . "." . $value;
+                  $i = $i + 1;
+                }
+
+                $joinString = " INNER JOIN " . $joinTable . " ON " . implode(" = ", $joinFinal);
+            }
 
             if (empty($cond))
-                $sql = "SELECT " . $columns. " FROM " . $table;
+                $sql = "SELECT " . $columns. " FROM " . $table . $joinString;
             else
             {
-                if($op == null)
+                if($op=='')
                     $op = "AND";
                 $i = 0;
                 $condition = [];
@@ -67,13 +84,16 @@
                   $condition[$i] = $key."='".$value."'";
                   $i = $i + 1;
                 }
-                $sql = "SELECT " . $columns. " FROM " . $table . " WHERE " . implode(" " . $op . " ", $condition);
+                $sql = "SELECT " . $columns. " FROM " . $table . $joinString . " WHERE " . implode(" " . $op . " ", $condition);
             }
 
-            $result = $this->dbConnection->query($sql);
+            if($order!='')
+                $sql = $sql . " ORDER BY " . $order;
+            if($limit!='')
+                $sql = $sql . " LIMIT " . $limit;
 
-            return $result->fetch_all(MYSQLI_ASSOC);
-
+            $this->statement = $sql;
+            return $this->executeQuery();
         }
 
         public function insert($table, array $bind) {
@@ -119,21 +139,16 @@
             }
 
             $Stcod = implode(" AND ",$cod);
+            $this->statement = "UPDATE $table SET $Stset WHERE $Stcod";
 
-            //Update operation
-            if($this->dbConnection->query("UPDATE $table SET $Stset WHERE $Stcod") === TRUE){
-                if(mysqli_affected_rows($this->dbConnection)){
-                    echo "Record updated successfully";
-                }
-                else{
-                    echo "The Record you want to updated is no longer exists";
-                }
-            }else{
-                echo "Error to update".$this->dbConnection->error;
-            }
+            if($this->dbConnection->query($this->statement) === TRUE)
+                return true;
+            else
+                return false;
         }
 
         public function delete($table, array $cond) {
+
             $this->connect();
             $i=0;
             foreach($cond as $key=>$value) {
@@ -142,28 +157,21 @@
             }
             $Stexp = implode(" AND ",$exp);
 
-            //Perform Delete operation
-            if($this->dbConnection->query("DELETE FROM $table WHERE $Stexp") === TRUE){
-                if(mysqli_affected_rows($this->connection)){
-                    echo "Record has been deleted successfully";
-                }
-                else{
-                    echo "The Record you want to delete is no loger exists";
-                }
-            }
-            else{
-                echo "Error to delete".$this->dbConnection->error;
-            }
+            $this->statement = "DELETE FROM $table WHERE $Stexp";
+            if($this->dbConnection->query($this->statement) === TRUE)
+                return true;
+            else
+                return false;
         }
 
-        public function getNumberOfRows($result)
+        public function executeQuery()
         {
-            $row_count = mysqli_affected_rows($result);
+            $result = $this->dbConnection->query($this->statement);
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
 
-            if($row_count > 0)
-                return $row_count;
-            else
-                return 0;
+        public function getLastId()
+        {
+            return $this->dbConnection->insert_id;
         }
     }
-?>

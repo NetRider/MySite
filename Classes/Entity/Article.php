@@ -10,23 +10,24 @@ qualche ragione l'articolo del blog vengono automaticamente rimossi anche tutti 
 quell'articolo richiamando la funzione distruttore.
 */
 
-class Article
-{
+class Article {
 
 	private $id;
 	private $userId;
 	private $title;
 	private $text;
-	private $vote;
+	private $date;
 	private $description;
 	private $comments;
+	private $image;
 
-	public function __construct($userId, $title, $description, $text, $vote) {
+	public function __construct($userId, $title, $description, $text, $date, $image) {
 		$this->userId = $userId;
 		$this->title = $title;
 		$this->description = $description;
 		$this->text = $text;
-		$this->vote = $vote;
+		$this->date = $date;
+		$this->image = $image;
 	}
 
 	public function addComment($comment) {
@@ -59,20 +60,24 @@ class Article
 		return $this->text;
 	}
 
-	public function getVote() {
-		return $this->vote;
+	public function getDate() {
+		return $this->date;
 	}
 
 	public function getId() {
 		return $this->id;
 	}
 
-	public function getUserId() {
+	public function getAuthorId() {
 		return $this->userId;
 	}
 
 	public function getDescription() {
 		return $this->description;
+	}
+
+	public function getImage() {
+		return $this->image;
 	}
 
 	//SET FUNCTIONS
@@ -85,8 +90,8 @@ class Article
 		$this->text = $text;
 	}
 
-	public function setVote($vote) {
-		$this->vote = $vote;
+	public function setDate($date) {
+		$this->date = $date;
 	}
 
 	public function setComments($comments) {
@@ -99,5 +104,9 @@ class Article
 
 	public function setDescription($description) {
 		$this->description = $description;
+	}
+
+	public function setImage($imge) {
+		$this->image = $image;
 	}
 }

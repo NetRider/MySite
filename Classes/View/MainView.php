@@ -1,37 +1,54 @@
 <?php
-	namespace View;
+namespace View;
 
-	require('./Library/Smarty-3.1.18/libs/Smarty.class.php');
+include_once(dirname(__FILE__).'/../View/View.php');
 
-	class MainView
+use Utility\Singleton;
+
+class MainView extends View {
+	private $rightMenu;
+	private $content;
+
+	public function __construct()
 	{
-		private $smarty;
+		 parent::__construct();
+	}
 
-		public function __construct()
-		{
-			$this->smarty = new \Smarty();
-			$this->smarty->template_dir = '/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates';
-			$this->smarty->compile_dir = '/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates_C';
-			$this->smarty->cache_dir = '/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/cache';
-			$this->smarty->config_dir ='/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/configs';
-		}
+	public function setRightMenuUser()
+	{
+		$session = Singleton::getInstance("\Control\Session");
+		$this->assign('userimage', $session->get('userimage'));
+		$this->assign('username', $session->get('username'));
+		$this->rightMenu = $this->fetch("logged.tpl");
+	}
 
-		public function fetchTemplate($template)
-		{
-				$test = $this->smarty->display($template);
-		}
+	public function setRightMenuGuest()
+	{
+		$this->rightMenu = $this->fetch("notLogged.tpl");
+	}
 
-		public function assignData($reference, $data)
-		{
-				$this->smarty->assign($reference, $data);
-		}
+	public function setContent($content)
+	{
+		$this->content = $content;
+	}
 
-        public function getDataFromRequest($key)
-        {
-            if (isset($_REQUEST[$key]))
-                return $_REQUEST[$key];
-            else
-                return false;
-        }
-    }
-?>
+	public function wakeUpController()
+	{
+		if (isset($_REQUEST['controller']))
+			return $_REQUEST['controller'];
+		else
+			return false;
+	}
+
+	public function displayPage()
+	{
+		$this->assign('rightMenu', $this->rightMenu);
+		$this->assign('content', $this->content);
+		$this->display("main.tpl");
+	}
+
+	public function sendData($data)
+	{
+		echo($data);
+	}
+}

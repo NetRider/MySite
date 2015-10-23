@@ -1,22 +1,33 @@
 <?php
 namespace Control;
-include_once('Page.php');
 include_once(dirname(__FILE__).'/../Foundation/ArticleMapper.php');
-include_once(dirname(__FILE__).'/../View/MainView.php');
+include_once(dirname(__FILE__).'/../Foundation/UserMapper.php');
+include_once(dirname(__FILE__).'/../View/View.php');
+include_once(dirname(__FILE__).'/Controller.php');
 
-use View\MainView;
+
+use Control\Controller;
+use View\View;
 use Foundation\Database;
 use Foundation\ArticleMapper;
+use Foundation\UserMapper;
 
-class HomeController extends Page {
+class HomeController extends Controller {
 
-	public function getPage(MainView $view)
+	public function executeTask()
 	{
 		$databaseAdapter = new Database();
 		$articleMapper = new ArticleMapper($databaseAdapter);
-		//$lastThreeArticles = $articleMapper->getLastThreeArticlesTitles();
-		$view->assignData("homeArticles", "");
-		$view->assignData('templateToDisplay', 'home.tpl');
-		$view->fetchTemplate('main.tpl');
+		$userMapper = new UserMapper($databaseAdapter);
+		$lastThreeArticles = $articleMapper->getLastThreeArticles();
+		$data = array();
+
+		foreach ($lastThreeArticles as $article)
+		{
+			array_push($data, array("title"=>$article->getTitle(), "description"=>$article->getDescription(), "articleId"=>$article->getId(), "image"=>$article->getImage()));
+		}
+
+		$this->view->assignHomeArticles($data);
+		return $this->view->getContent();
 	}
 }

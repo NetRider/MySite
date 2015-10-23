@@ -10,4 +10,4 @@ global $mysqlConfig;
 $mysqlConfig['username'] = 'root';
 $mysqlConfig['password'] = 'pippo';
 $mysqlConfig['host'] = 'localhost';
-$mysqlConfig['database'] = 'blog';
+$mysqlConfig['database'] = 'ElectronicsHub';
