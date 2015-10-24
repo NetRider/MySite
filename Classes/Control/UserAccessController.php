@@ -98,7 +98,11 @@ class UserAccessController extends Controller {
         $databaseAdapter = new Database();
         $userMapper = new UserMapper($databaseAdapter);
         $userImage = $userMapper->getUserImage($this->view->userToRemove());
-        unlink($userImage[0]["profileImage"]);
+        
+        if($userImage[0]["profileImage"] != "Data/profile_images/default_profile_image.gif") {
+            unlink($userImage[0]["profileImage"]);
+        }
+
         $userData = $userMapper->removeUser($this->view->userToRemove());
         if($userData)
         {

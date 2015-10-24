@@ -20,6 +20,7 @@ $(document).ready(function() {
     		data: { userToRemove: table.row('.selected').data()[0]} }).done(function(data) {
             if(data == "true")
             {
+                console.log("è andato tutto a buon fine");
                 table.row('.selected').remove().draw( false );
 
             }else {
