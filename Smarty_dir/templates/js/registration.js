@@ -1,4 +1,13 @@
 $(function(){
+
+	jQuery.validator.addMethod("alphanumeric", function(value, element) {
+		return this.optional(element) || /^\w+$/i.test(value);
+	}, "Letters, numbers, and underscores only please");
+
+	jQuery.validator.addMethod("customemail", function(value, element) {
+	return this.optional(element) || /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
+	}, "Please enter a valid email address.");
+
 	$("#registrationForm").change(function(){
 		checkForm();
 	});
@@ -11,6 +20,7 @@ function checkForm(){
 			username: {
 				required: true,
 				minlength: 5,
+				alphanumeric: true,
 				remote: {
         			url: "index.php?controller=Registration&task=checkUsername",
         			type: "POST",
@@ -32,7 +42,7 @@ function checkForm(){
 			},
 			email: {
 				required: true,
-				email: true,
+				customemail: true,
 				remote: {
         			url: "index.php?controller=Registration&task=checkEmail",
         			type: "POST",
