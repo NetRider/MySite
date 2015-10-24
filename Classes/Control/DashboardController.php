@@ -133,7 +133,7 @@ class DashboardController extends Controller {
     {
         $databaseAdapter = new Database();
         $commentMapper = new CommentMapper($databaseAdapter);
-
+        $session = Singleton::getInstance("\Control\Session");
         $articlesComments = $commentMapper->getCommentsArticlesByAuthorId($session->getUserId());
         $projectsComments = $commentMapper->getCommentsProjectsByAuthorId($session->getUserId());
 
