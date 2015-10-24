@@ -80,6 +80,11 @@ class UserMapper extends AbstractDataMapper {
         return $this->returnAssociativeArray(array(), "COUNT");
     }
 
+    public function updateUser($userId, $username, $email, $image, $password)
+    {
+        return $this->adapter->update($this->entityTable, array("username"=>$username, "password"=>$password, "email"=>$email, "profileImage"=>$image), array("id"=>$userId));
+    }
+
     protected function createEntity($row) {
         $user = new User($row["username"], $row["email"], $row["password"], $row["profileImage"], $row["role"]);
         $user->setId($row["id"]);

@@ -33,7 +33,6 @@ function checkForm(){
 			email: {
 				required: true,
 				email: true,
-				remote: "emails.action",
 				remote: {
         			url: "index.php?controller=Registration&task=checkEmail",
         			type: "POST",
@@ -69,8 +68,6 @@ function checkForm(){
 		// specifying a submitHandler prevents the default submit, good for the demo
 		submitHandler: function() {
 			var formData = new FormData($("#registrationForm")[0]);
-			console.log($("#registrationForm")[0]);
-			console.log(formData);
 			$.ajax({
 				url: 'index.php?controller=registration&task=addNewUser',
 				type: 'POST',

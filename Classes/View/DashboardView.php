@@ -58,8 +58,11 @@ class DashboardView extends View {
 		$this->template = "dashUsers.tpl";
 	}
 
-	public function setProfilePage()
+	public function setProfilePage($username, $userEmail, $userImage)
 	{
+		$this->assign("username", $username);
+		$this->assign("userEmail", $userEmail);
+		$this->assign("userImage", $userImage);
 		$this->template = "dashProfile.tpl";
 	}
 

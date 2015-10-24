@@ -38,14 +38,14 @@ class UserAccessView extends View {
 		return $this->getRequest('userid');
 	}
 
-	public function getUserImage()
-	{
-		return $this->getRequest('userimage');
-	}
-
 	public function getUserPassword()
 	{
 		return $this->getRequest('password');
+	}
+
+	public function getUserEmail()
+	{
+		return $this->getRequest('email');
 	}
 
 	public function getUserRoleToUpdate()
@@ -63,17 +63,31 @@ class UserAccessView extends View {
 		return $this->getRequest("userToRemove");
 	}
 
+	public function getUpdateImage()
+	{
+		$imagePath = "";
+
+        if(is_uploaded_file($_FILES['image']['tmp_name'])) {
+			$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+			if(!preg_match("/\.(gif|png|jpg|jpeg)$/", $ext))
+			{
+				$image = basename($_FILES["image"]["name"]);
+	            $imagePath = "Data/profile_images/" . $image;
+	            move_uploaded_file($_FILES["image"]["tmp_name"], $imagePath);
+			}
+
+        }
+
+		return $imagePath;
+	}
+
+
 	public function login()
 	{
 		$session = Singleton::getInstance("\Control\Session");
 		$this->assign('username', $session->get('username'));
 		error_log(print_r("sono nel login", true));
 		return $this->fetch('correctLogin.tpl');
-	}
-
-	public function loginFailure()
-	{
-		return $this->fetch('incorrectLogin.tpl');
 	}
 
 	public function logout()

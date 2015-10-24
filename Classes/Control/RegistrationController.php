@@ -4,6 +4,7 @@ namespace Control;
 include_once(dirname(__FILE__).'/../Entity/User.php');
 include_once(dirname(__FILE__).'/../Foundation/UserMapper.php');
 include_once(dirname(__FILE__).'/../Foundation/Database.php');
+include_once(dirname(__FILE__).'/../Utility/Singleton.php');
 include_once(dirname(__FILE__).'/../View/View.php');
 
 use Control\Controller;
@@ -11,6 +12,7 @@ use View\View;
 use Entity\User;
 use Foundation\Database;
 use Foundation\UserMapper;
+use Utility\Singleton;
 
 class RegistrationController extends Controller {
 
@@ -38,21 +40,37 @@ class RegistrationController extends Controller {
 				$databaseAdapter = new Database();
 				$userMapper = new UserMapper($databaseAdapter);
 				$found = $userMapper->existUserName($this->view->getUsernameToCheck());
-				if($found)
-					return "false";
-				else
+
+				$session = Singleton::getInstance("\Control\Session");
+
+				if($session->userIsLogged() && $this->view->getUsernameToCheck() == $session->getUsername()) {
 					return "true";
+				}else {
+					if($found)
+						return "false";
+					else
+						return "true";
+					break;
+				}
+
 			break;
 
 			case 'checkEmail':
 				$databaseAdapter = new Database();
 				$userMapper = new UserMapper($databaseAdapter);
 				$found = $userMapper->existUserEmail($this->view->getEmailToCheck());
-				if($found)
-					return "false";
-				else
+
+				$session = Singleton::getInstance("\Control\Session");
+
+				if($session->userIsLogged() && $this->view->getEmailToCheck() == $session->getUserEmail()) {
 					return "true";
-				break;
+				}else {
+					if($found)
+						return "false";
+					else
+						return "true";
+					break;
+				}
 
 			case 'getRegistrationPage':
 				$this->view->setTemplate('registrationForm');

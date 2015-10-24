@@ -52,7 +52,7 @@ class RegistrationView extends View {
 		$imagePath = "";
 
         if(is_uploaded_file($_FILES['image']['tmp_name'])) {
-			//$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+			$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
 			if(!preg_match("/\.(gif|png|jpg|jpeg)$/", $ext))
 			{
 				$image = basename($_FILES["image"]["name"]);

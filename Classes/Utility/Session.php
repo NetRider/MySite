@@ -90,9 +90,19 @@ class Session {
         return $this->user->getImage();
     }
 
-    public function getUserName()
+    public function getUserEmail()
+    {
+        return $this->user->getEmail();
+    }
+
+    public function getUsername()
     {
         return $this->user->getUsername();
+    }
+
+    public function getUserPassword()
+    {
+        return $this->user->getPassword();
     }
 
     public function checkPermission($privilage)

@@ -1,6 +1,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Gestione Profilo</h1>
+    </div>
 </div>
 <!-- /.row -->
 <div class="row">
@@ -12,16 +13,38 @@
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <form id="updateForm" autocomplete="off" method="" action="" novalidate="novalidate">
+
+                    <h3> Informazioni di base </h3>
+
                     <div class="row">
                         <div class="form-group col-lg-6">
                             <label>Username</label>
-                            <input type="text" name="username" class="form-control" id="username" value="">
+                            <input type="text" name="username" class="form-control" id="username" value="{$username}">
                         </div>
                         <div class="form-group col-lg-6">
                             <label></label>
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="form-group col-lg-6">
+                            <label>Email Address</label>
+                            <input type="text" name="email" class="form-control" id="email" value="{$userEmail}">
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label></label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label>Immagine profilo</label>
+                            <img src="{$userImage}" class="img-rounded" width="200px" height="150px">
+                            <input name="image" type="file">
+                        </div>
+                    </div>
+
+                    <h3> Cambia Password </h3>
                     <div class="row">
                         <div class="form-group col-lg-6">
                             <label>Password</label>
@@ -42,23 +65,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="form-group col-lg-6">
-                            <label>Email Address</label>
-                            <input type="text" name="email" class="form-control" id="email" value="">
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label></label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group">
-                            <label>Immagine profilo</label>
-                            <input type="file">
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-default" disabled id="updateButton">Aggiorna</button>
+                    <button type="submit" class="btn btn-default" id="updateButton">Aggiorna</button>
                 </form>
             </div>
         </div>

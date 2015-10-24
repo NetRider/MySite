@@ -94,7 +94,11 @@ class DashboardController extends Controller {
 
     private function getProfilePage()
     {
-        $this->view->setProfilePage();
+
+        $session = Singleton::getInstance("\Control\Session");
+
+
+        $this->view->setProfilePage($session->getUsername(), $session->getUserEmail(), $session->getUserImage());
         return $this->view->getContent();
     }
 
@@ -129,7 +133,6 @@ class DashboardController extends Controller {
     {
         $databaseAdapter = new Database();
         $commentMapper = new CommentMapper($databaseAdapter);
-        $session = Singleton::getInstance("\Control\Session");
 
         $articlesComments = $commentMapper->getCommentsArticlesByAuthorId($session->getUserId());
         $projectsComments = $commentMapper->getCommentsProjectsByAuthorId($session->getUserId());
