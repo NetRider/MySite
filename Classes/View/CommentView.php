@@ -35,6 +35,11 @@ class CommentView extends View {
 		return $this->getRequest('articleId');
 	}
 
+	public function getProjectId()
+	{
+		return $this->getRequest('projectId');
+	}
+
 	public function getCommentText()
 	{
 		return $this->getRequest('text');

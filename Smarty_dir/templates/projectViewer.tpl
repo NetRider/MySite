@@ -82,3 +82,5 @@
         {/foreach}
     </div>
 </div>
+
+<script src="Smarty_dir/templates/js/comment.js"></script>

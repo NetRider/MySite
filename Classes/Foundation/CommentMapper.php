@@ -9,10 +9,18 @@ use Entity\Comment;
 class CommentMapper extends AbstractDataMapper {
     protected $entityTable = "comment";
 
-    public function insert(Comment $comment, $idArticle) {
+    public function insertArticleComment(Comment $comment, $idArticle) {
         if($this->adapter->insert($this->entityTable, array("text"=>$comment->getText(), "idAuthor"=>$comment->getUserId(), "date"=>$comment->getDate())))
         {
             if($this->adapter->insert("comments_articles", array("idComment"=>$this->adapter->getLastId(), "idArticle"=>$idArticle)))
+                return true;
+        }
+    }
+
+    public function insertProjectComment(Comment $comment, $idProject) {
+        if($this->adapter->insert($this->entityTable, array("text"=>$comment->getText(), "idAuthor"=>$comment->getUserId(), "date"=>$comment->getDate())))
+        {
+            if($this->adapter->insert("comments_projects", array("idComment"=>$this->adapter->getLastId(), "idProject"=>$idProject)))
                 return true;
         }
     }

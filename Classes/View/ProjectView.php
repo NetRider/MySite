@@ -68,7 +68,7 @@ class ProjectView extends View {
 		$this->template = $template;
 	}
 
-	public function assignProjectData($title, $text, $author, $image, $comments, $dependencies)
+	public function assignProjectData($projectId, $title, $text, $author, $image, $comments, $dependencies)
 	{
 		$session = Singleton::getInstance("\Control\Session");
 		if($session->userIsLogged())
@@ -81,6 +81,7 @@ class ProjectView extends View {
 		{
 			$this->assign('loggedIn', false);
 		}
+		$this->assign('projectId', $projectId);
 		$this->assign('projectTitle', $title);
 		$this->assign('projectText', $text);
 		$this->assign('projectAuthor', $author);

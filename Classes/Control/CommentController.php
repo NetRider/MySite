@@ -45,7 +45,19 @@ class CommentController extends Controller {
 		$session = Singleton::getInstance("\Control\Session");
 		$comment = new Comment($this->view->getCommentText(), $this->view->getCommentDate(), $session->getUserId());
 
-		if($commentMapper->insert($comment, $this->view->getArticleId()));
+		if($this->view->getArticleId() != "")
+		{
+			if($commentMapper->insertArticleComment($comment, $this->view->getArticleId()))
+				return "true";
+			else
+				return "false";
+		}elseif($this->view->getProjectId() != "")
+		{
+			if($commentMapper->insertProjectComment($comment, $this->view->getProjectId()))
+				return "true";
+			else
+				return "false";
+		}
 	}
 
 	private function removeArticleComment()

@@ -76,19 +76,19 @@ class ProjectController extends Controller {
         $comments = $commentMapper->getCommentsByProjectId($project->getId());
         $projectAuthor = $userMapper->getUserById($project->getUserId());
 
-        $comments = array();
+        $dataComments = array();
 
         if($comments)
         {
             foreach ($comments as $comment)
             {
                 $user = $userMapper->getUserByID($comment->getUserId());
-                array_push($comments, array("author"=>$user->getNickname(), "image"=>$user->getImage(), "text"=>$comment->getText(), "authorId"=>$user->getId()));
+                array_push($dataComments, array("author"=>$user->getUsername(), "image"=>$user->getImage(), "text"=>$comment->getText(), "authorId"=>$user->getId()));
             }
         }
 
         $dependencies = $articleMapper->getArticlesDependenciesByProjectId($project->getId());
-        $this->view->assignProjectData($project->getTitle(), $project->getText(), $projectAuthor->getUserName(), $project->getImage(), $comments, $dependencies);
+        $this->view->assignProjectData($project->getId(), $project->getTitle(), $project->getText(), $projectAuthor->getUsername(), $project->getImage(), $dataComments, $dependencies);
         $this->view->setTemplate('projectViewer');
         return $this->view->getContent();
     }
