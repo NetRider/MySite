@@ -9,24 +9,23 @@
     <!-- /.row -->
 
     <!-- Cards Row -->
-    <div class="grid">
+    <div class="grid text-center">
         <div class="grid-sizer"></div>
         {foreach $articlesCards as $articleCard}
-            <div class="grid-item">
+            <div class="grid-item hero-feature">
                     <div class="thumbnail">
                     <img class="media-object cardImage" src="{$articleCard.image}" alt="">
                     <div class="caption">
                         <h3>{$articleCard.title}</h3>
                         <p>{$articleCard.description}</p>
                         <p>
-                            <a href="index.php?controller=Article&task=getArticleView&Id={$articleCard.id}" class="btn btn-primary">Leggi!</a>
+                            <a href="index.php?controller=Article&task=getArticleView&Id={$articleCard.id}" class="btn btn-success stretchButton">Leggi!</a>
                         </p>
                     </div>
                 </div>
             </div>
         {/foreach}
     </div>
-    <hr>
 </div>
 <script>
 $(document).ready( function() {

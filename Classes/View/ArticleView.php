@@ -47,6 +47,11 @@ class ArticleView extends View {
 		return $this->getRequest('Id');
 	}
 
+	public function getArticleToRemove()
+	{
+		return $this->getRequest('articleToRemove');
+	}
+
 	public function getArticleImage()
 	{
         if(is_uploaded_file($_FILES['image']['tmp_name']))
@@ -58,7 +63,7 @@ class ArticleView extends View {
 			return $target_file;
         }else
 		{
-			return "default_article_image.jpg";
+			return "Data/articles_images/default_article_image.jpg";
 		}
 	}
 

@@ -17,7 +17,7 @@ class MainView extends View {
 	public function setRightMenuUser()
 	{
 		$session = Singleton::getInstance("\Control\Session");
-		$this->assign('userimage', $session->get('userimage'));
+		$this->assign('userImage', $session->getUserImage());
 		$this->assign('username', $session->get('username'));
 		$this->rightMenu = $this->fetch("logged.tpl");
 	}

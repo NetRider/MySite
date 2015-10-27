@@ -38,20 +38,25 @@ class ArticleMapper extends AbstractDataMapper {
     public function getArticlesDependenciesByProjectId($projectId)
     {
         return $this->returnAssociativeArray(array("dependency.idProject"=>$projectId), array("article.id", "article.title"), "", "", "", "dependency", array("dependency"=>"idArticle", "article"=>"id"));
+    }
 
+    public function getArticlesForDash()
+    {
+        return $this->returnAssociativeArray(array(), array("user.username", "article.id", "article.title", "article.description"), "", "", "", "user", array("user"=>"id", "article"=>"idAuthor"));
     }
 
     public function removeArticleById($id)
     {
-        $file = $this->getArticleImageById($id);
-        unlink(dirname(__FILE__)."/../../Data/articles_images/".$file);
-        $this->adapter->delete($this->entityTable, array("id"=>$id));
+        return $this->adapter->delete($this->entityTable, array("id"=>$id));
     }
 
     public function getArticleImageById($id)
     {
         $article = $this->find(array("id"=>$id));
-        return $article->getImage();
+        if($article)
+            return $article->getImage();
+        else
+            return false;
     }
 
     public function getNumberOfArticles()

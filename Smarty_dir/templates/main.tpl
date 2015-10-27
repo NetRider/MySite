@@ -114,12 +114,13 @@
             {$content}
         </div>
 
+        <hr>
         <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Realizzato da Matteo Polsinelli</p>
-                </div>
+        <footer class="footer">
+            <div class="container">
+                <p>Realizzato da Matteo Polsinelli</p>
+                <a href="https://www.facebook.com/matteo.polsinelli1" class="fa fa-facebook"></a>
+                <a href="https://github.com/NetRider" class="fa fa-github"></a>
             </div>
         </footer>
 

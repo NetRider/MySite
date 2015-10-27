@@ -51,6 +51,12 @@ class ProjectMapper extends AbstractDataMapper {
       return $this->returnAssociativeArray(array(), "COUNT");
   }
 
+  public function getProjectsForDash()
+  {
+      return $this->returnAssociativeArray(array(), array("user.username", "project.id", "project.title", "project.description"), "", "", "", "user", array("user"=>"id", "project"=>"idAuthor"));
+  }
+
+
   protected function createEntity($row) {
     $project =  new Project($row["idAuthor"], $row["title"], $row["description"], $row["text"], $row["date"], $row["projectImage"]);
     $project->setId($row["id"]);

@@ -58,6 +58,10 @@ class DashboardController extends Controller {
                 case 'getUserComments':
                     return $this->getUserCommentsPage();
                 break;
+
+                case 'getJobsPage':
+                    return $this->getJobsPage();
+                break;
             }
         }else
         {
@@ -138,6 +142,18 @@ class DashboardController extends Controller {
         $projectsComments = $commentMapper->getCommentsProjectsByAuthorId($session->getUserId());
 
         $this->view->setUserCommentsgPage($articlesComments, $projectsComments);
+        return $this->view->getContent();
+    }
+
+    private function getJobsPage()
+    {
+        $databaseAdapter = new Database();
+        $projectMapper = new ProjectMapper($databaseAdapter);
+        $articleMapper = new ArticleMapper($databaseAdapter);
+        $articles = $articleMapper->getArticlesForDash();
+        $projects = $projectMapper->getProjectsForDash();
+
+        $this->view->setJobsPage($articles, $projects);
         return $this->view->getContent();
     }
 

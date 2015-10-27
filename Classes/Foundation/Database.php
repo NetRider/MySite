@@ -55,7 +55,7 @@
                 $columns = "COUNT(*)";
             else
                 $columns=implode(",", $bind);
-                
+
             $joinString = "";
             if($joinTable!='')
             {
@@ -158,6 +158,7 @@
             $Stexp = implode(" AND ",$exp);
 
             $this->statement = "DELETE FROM $table WHERE $Stexp";
+            error_log($this->statement);
             if($this->dbConnection->query($this->statement) === TRUE)
                 return true;
             else

@@ -58,3 +58,12 @@ footer {
   width: 31%;
   min-width: 200px;
 }
+
+.stretchButton {
+    width: 80%;
+}
+
+#imgProfile {
+    height: 6%;
+    width: 6%;
+}

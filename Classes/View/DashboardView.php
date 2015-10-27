@@ -90,6 +90,13 @@ class DashboardView extends View {
 
 	}
 
+	public function setJobsPage($articles, $projects)
+	{
+		$this->assign("articles", $articles);
+		$this->assign("projects", $projects);
+		$this->template = "dashJobs.tpl";
+	}
+
 	public function getContent()
 	{
 		$session = Singleton::getInstance("\Control\Session");

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2015-10-20 19:11:52
+<?php /* Smarty version Smarty-3.1.18, created on 2015-10-25 10:58:06
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/mainDashboard.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1631163681561036c9affe02-27031307%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd30eebf74966829139ca81d77352eebb4ac944e7' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/mainDashboard.tpl',
-      1 => 1445361107,
+      1 => 1445767083,
       2 => 'file',
     ),
   ),
@@ -21,6 +21,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'getStatisticsPage' => 0,
     'getUsersPage' => 0,
+    'getJobsPage' => 0,
     'var' => 0,
     'getProjectWritingPage' => 0,
     'getArticleWritingPage' => 0,
@@ -53,6 +54,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         <a href="index.php?controller=Dashboard&task=getUsersPage"><i class="fa fa-users fa-fw"></i> Utenti</a>
                     </li>
                     <?php }?>
+                    <?php if (isset($_smarty_tpl->tpl_vars['getJobsPage']->value)) {?>
+                    <li>
+                        <a href="index.php?controller=Dashboard&task=getJobsPage"><i class="fa fa-file-text-o fa-fw"></i> Gestisci Lavori</a>
+                    </li>
+                    <?php }?>
                     <?php if (isset($_smarty_tpl->tpl_vars['var']->value)) {?>
                     <li>
                         <a href="#"><i class="fa fa-file-text-o fa-fw"></i> Articoli</a>
@@ -61,11 +67,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     <?php if (isset($_smarty_tpl->tpl_vars['var']->value)) {?>
                     <li>
                         <a href="#"><i class="fa fa-paperclip fa-fw"></i> Progetti</a>
-                    </li>
-                    <?php }?>
-                    <?php if (isset($_smarty_tpl->tpl_vars['var']->value)) {?>
-                    <li>
-                        <a href="#"><i class="fa fa-paperclip fa-fw"></i> Commenti</a>
                     </li>
                     <?php }?>
                     <?php if (isset($_smarty_tpl->tpl_vars['var']->value)) {?>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2015-10-10 23:59:52
+<?php /* Smarty version Smarty-3.1.18, created on 2015-10-27 18:16:47
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/articlesCards.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1516083543560bd461a78950-33543303%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '089f42d1e63e10c167c689607a892b026bdf43cf' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/articlesCards.tpl',
-      1 => 1444514378,
+      1 => 1445966197,
       2 => 'file',
     ),
   ),
@@ -35,14 +35,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <!-- /.row -->
 
     <!-- Cards Row -->
-    <div class="grid">
+    <div class="grid text-center">
         <div class="grid-sizer"></div>
         <?php  $_smarty_tpl->tpl_vars['articleCard'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['articleCard']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['articlesCards']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['articleCard']->key => $_smarty_tpl->tpl_vars['articleCard']->value) {
 $_smarty_tpl->tpl_vars['articleCard']->_loop = true;
 ?>
-            <div class="grid-item">
+            <div class="grid-item hero-feature">
                     <div class="thumbnail">
                     <img class="media-object cardImage" src="<?php echo $_smarty_tpl->tpl_vars['articleCard']->value['image'];?>
 " alt="">
@@ -53,14 +53,13 @@ $_smarty_tpl->tpl_vars['articleCard']->_loop = true;
 </p>
                         <p>
                             <a href="index.php?controller=Article&task=getArticleView&Id=<?php echo $_smarty_tpl->tpl_vars['articleCard']->value['id'];?>
-" class="btn btn-primary">Leggi!</a>
+" class="btn btn-success stretchButton">Leggi!</a>
                         </p>
                     </div>
                 </div>
             </div>
         <?php } ?>
     </div>
-    <hr>
 </div>
 <script>
 $(document).ready( function() {

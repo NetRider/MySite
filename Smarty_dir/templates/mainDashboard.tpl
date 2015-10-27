@@ -23,6 +23,11 @@
                         <a href="index.php?controller=Dashboard&task=getUsersPage"><i class="fa fa-users fa-fw"></i> Utenti</a>
                     </li>
                     {/if}
+                    {if isset($getJobsPage)}
+                    <li>
+                        <a href="index.php?controller=Dashboard&task=getJobsPage"><i class="fa fa-file-text-o fa-fw"></i> Gestisci Lavori</a>
+                    </li>
+                    {/if}
                     {if isset($var)}
                     <li>
                         <a href="#"><i class="fa fa-file-text-o fa-fw"></i> Articoli</a>
@@ -31,11 +36,6 @@
                     {if isset($var)}
                     <li>
                         <a href="#"><i class="fa fa-paperclip fa-fw"></i> Progetti</a>
-                    </li>
-                    {/if}
-                    {if isset($var)}
-                    <li>
-                        <a href="#"><i class="fa fa-paperclip fa-fw"></i> Commenti</a>
                     </li>
                     {/if}
                     {if isset($var)}

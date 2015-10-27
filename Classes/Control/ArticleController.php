@@ -93,20 +93,32 @@ class ArticleController extends Controller {
         $databaseAdapter = new Database();
         $articleMapper = new ArticleMapper($databaseAdapter);
         $session = Singleton::getInstance("\Control\Session");
-        error_log($this->view->getArticleText());
         $article = new Article($session->getUserId(), $this->view->getArticleTitle(), $this->view->getArticleDescription(), $this->view->getArticleText(), 0, $this->view->getArticleImage());
         if($articleMapper->insert($article))
+        {
+            error_log("è andato tutto bene");
+
             return "true";
+
+        }
         else
+        {
+            error_log("sono andato in errore");
             return "false";
+
+        }
     }
 
     private function deleteArticle()
     {
         $databaseAdapter = new Database();
         $articleMapper = new ArticleMapper($databaseAdapter);
-        $commentMapper = new CommentMapper($databaseAdapter);
-        $articleMapper->removeArticleById($this->view->getArticleId());
-        $commentMapper->removeCommentByArticleId($this->view->getArticleId());
+        $file = $articleMapper->getArticleImageById($this->view->getArticleToRemove());
+        if($file && $file != "Data/articles_images/default_article_image.jpg")
+            unlink("/Applications/XAMPP/xamppfiles/htdocs/MySite/".$file);
+        if($articleMapper->removeArticleById($this->view->getArticleToRemove()))
+            return "true";
+        else
+            return "false";
     }
 }
