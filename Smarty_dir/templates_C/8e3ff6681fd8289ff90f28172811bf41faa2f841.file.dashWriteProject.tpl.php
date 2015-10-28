@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2015-10-20 18:27:25
+<?php /* Smarty version Smarty-3.1.18, created on 2015-10-28 17:52:03
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/dashWriteProject.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:11988246035612adefa81ed8-79851893%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8e3ff6681fd8289ff90f28172811bf41faa2f841' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/dashWriteProject.tpl',
-      1 => 1445358424,
+      1 => 1446051111,
       2 => 'file',
     ),
   ),
@@ -46,23 +46,24 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         <form role="form" id="projectForm">
                             <div class="form-group">
                                 <label>Titolo</label>
-                                <label></label>
+                                <label class="errorLabel"></label>
                                 <input type="text" name="title" id="title" class="form-control" placeholder="Scrivi un titolo">
                             </div>
                             <div class="form-group">
                                 <label>Descrizione</label>
-                                <label></label>
+                                <label class="errorLabel"></label>
                                 <input type="text" name="description" id="description" class="form-control" placeholder="Scrivi una descrizione">
                             </div>
                             <div class="form-group">
                                 <label>Testo</label>
-                                <label></label>
+                                <label class="errorLabel"></label>
                                 <input type="text" name="text" id="editor1">
                             </div>
                             <input type="text" name="userID" value="<?php echo $_smarty_tpl->tpl_vars['userid']->value;?>
 " hidden>
                             <div class="form-group">
                                 <label>Immagine Progetto</label>
+                                <label class="errorLabel"></label>
                                 <input type="file" name="image">
                             </div>
                             <div class="form-group">

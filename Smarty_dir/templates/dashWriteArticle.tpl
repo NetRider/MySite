@@ -19,22 +19,23 @@
                         <form role="form" id="articleForm">
                             <div class="form-group">
                                 <label>Titolo</label>
-                                <label></label>
+                                <label class="errorLabel"></label>
                                 <input type="text" name="title" class="form-control" placeholder="Scrivi un titolo">
                             </div>
                             <div class="form-group">
                                 <label>Descrizione</label>
-                                <label></label>
+                                <label class="errorLabel"></label>
                                 <input type="text" name="description" class="form-control" placeholder="Scrivi una descrizione">
                             </div>
                             <div class="form-group">
                                 <label>Testo</label>
-                                <label></label>
+                                <label class="errorLabel"></label>
                                 <input type="text" name="articleText" id="editorArticle">
                             </div>
                             <input type="text" name="userId" value="{$userid}" hidden>
                             <div class="form-group">
                                 <label>Immagine Articolo</label>
+                                <label class="errorLabel"></label>
                                 <input type="file" name="image">
                             </div>
                             <button type="submit" class="btn btn-default" id="saveProjectButton" data-toggle="modal" data-target="#statusArticle">Submit Button</button>

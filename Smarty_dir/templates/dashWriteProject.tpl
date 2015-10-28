@@ -19,22 +19,23 @@
                         <form role="form" id="projectForm">
                             <div class="form-group">
                                 <label>Titolo</label>
-                                <label></label>
+                                <label class="errorLabel"></label>
                                 <input type="text" name="title" id="title" class="form-control" placeholder="Scrivi un titolo">
                             </div>
                             <div class="form-group">
                                 <label>Descrizione</label>
-                                <label></label>
+                                <label class="errorLabel"></label>
                                 <input type="text" name="description" id="description" class="form-control" placeholder="Scrivi una descrizione">
                             </div>
                             <div class="form-group">
                                 <label>Testo</label>
-                                <label></label>
+                                <label class="errorLabel"></label>
                                 <input type="text" name="text" id="editor1">
                             </div>
                             <input type="text" name="userID" value="{$userid}" hidden>
                             <div class="form-group">
                                 <label>Immagine Progetto</label>
+                                <label class="errorLabel"></label>
                                 <input type="file" name="image">
                             </div>
                             <div class="form-group">
