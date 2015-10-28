@@ -27,13 +27,19 @@ $(document).ready(function(){
 
                 }else if(data == "true")
                 {
-                    button.removeClass()
+                    button.removeClass("btn-danger")
             				.addClass("btn btn-success")
             				.text("Chiudi")
             				.removeAttr("data-dismiss");
-                    button.attr("data-dismiss", "modal");
         			title.text("Login effettuato!");
-                    button.click(function(){location.reload();});
+                    button.click(function() {
+                        if(location.search == "?controller=UserAccess&task=logout")
+                        {
+                            location.replace("/MySite/index.php");
+                        }else {
+                            location.reload();
+                        }
+                    });
                 }
             });
 		}

@@ -99,12 +99,6 @@
 
                     <div class="modal-footer">
                         <button class="form-control btn btn-primary">Ok</button>
-
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="100" style="width: 0%;">
-                                <span class="sr-only">progress</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
