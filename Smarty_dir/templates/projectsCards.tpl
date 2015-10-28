@@ -18,7 +18,7 @@
                         <h3>{$projectCard.title}</h3>
                         <p>{$projectCard.description}</p>
                         <p>
-                            <a href="index.php?controller=Project&task=getProjectView&projectId={$projectCard.id}" class="btn btn-primary">Leggi!</a>
+                            <a href="index.php?controller=Project&task=getProjectView&projectId={$projectCard.id}" class="btn btn-success stretchButton">Leggi!</a>
                         </p>
                     </div>
                 </div>

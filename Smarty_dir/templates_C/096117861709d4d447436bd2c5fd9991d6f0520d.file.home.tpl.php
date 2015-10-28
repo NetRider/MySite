@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2015-10-03 11:46:57
+<?php /* Smarty version Smarty-3.1.18, created on 2015-10-28 15:19:56
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/home.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1289176805560bd46800e608-88880077%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '096117861709d4d447436bd2c5fd9991d6f0520d' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/home.tpl',
-      1 => 1443865614,
+      1 => 1446041994,
       2 => 'file',
     ),
   ),
@@ -65,7 +65,7 @@ $_smarty_tpl->tpl_vars['homeArticle']->_loop = true;
 </p>
                         <p>
                             <a href="index.php?controller=Article&task=getArticleView&Id=<?php echo $_smarty_tpl->tpl_vars['articleCard']->value['id'];?>
-" class="btn btn-primary">Leggi!</a>
+" class="btn btn-success stretchButton">Leggi!</a>
                         </p>
                     </div>
                 </div>

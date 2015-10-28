@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2015-10-02 14:41:54
+<?php /* Smarty version Smarty-3.1.18, created on 2015-10-28 15:20:36
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/projectsCards.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1747486721560e75ce8c3f71-73224286%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '17a7179a7b6e4baa02d7906af3b830d78c1eca48' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/projectsCards.tpl',
-      1 => 1443789707,
+      1 => 1446042034,
       2 => 'file',
     ),
   ),
@@ -52,7 +52,7 @@ $_smarty_tpl->tpl_vars['projectCard']->_loop = true;
 </p>
                         <p>
                             <a href="index.php?controller=Project&task=getProjectView&projectId=<?php echo $_smarty_tpl->tpl_vars['projectCard']->value['id'];?>
-" class="btn btn-primary">Leggi!</a>
+" class="btn btn-success stretchButton">Leggi!</a>
                         </p>
                     </div>
                 </div>

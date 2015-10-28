@@ -29,7 +29,7 @@
                         <h3>{$homeArticle.title}</h3>
                         <p>{$homeArticle.description}</p>
                         <p>
-                            <a href="index.php?controller=Article&task=getArticleView&Id={$articleCard.id}" class="btn btn-primary">Leggi!</a>
+                            <a href="index.php?controller=Article&task=getArticleView&Id={$articleCard.id}" class="btn btn-success stretchButton">Leggi!</a>
                         </p>
                     </div>
                 </div>

@@ -8,6 +8,8 @@ $(function(){
 	return this.optional(element) || /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
 	}, "Please enter a valid email address.");
 
+	$(".myTooltip").hide();
+
 	$("#registrationForm").change(function(){
 		checkForm();
 	});
@@ -88,14 +90,18 @@ function checkForm(){
 		},
 		// set this class to error-labels to indicate valid fields
 		success: function(label, element) {
-			$(element).parent().removeClass("has-error");
-			$(element).parent().addClass("has-success");
+			var child = $(element).parent();
+			child.removeClass("has-error");
+			child.addClass("has-success");
 			label.html("&nbsp;").addClass("checked");
+			child.next().hide();
 		},
 		highlight: function(element, errorClass) {
-			$(element).parent().removeClass("has-success");
-			$(element).parent().addClass("has-error");
-			$(element).parent().next().find("." + errorClass).removeClass("checked");
+			var child = $(element).parent();
+			child.removeClass("has-success");
+			child.addClass("has-error");
+			child.next().find("." + errorClass).removeClass("checked");
+			child.next().show();
 		}
 	});
 }
