@@ -4,8 +4,8 @@ $(function(){
 });
 
 function submitButton(btn) {
-	$("#textComment").change(function() {
-		if($("#textComment").val() !== "")
+	$("#textComment").on('input', function() {
+		if($(this).val() !== "")
 			btn.removeAttr("disabled");
 		else
 			btn.attr("disabled", "disabled");
