@@ -21,8 +21,7 @@
                             <label>Username</label>
                             <input type="text" name="username" class="form-control" id="username" value="{$username}">
                         </div>
-                        <div class="form-group col-lg-6">
-                            <label></label>
+                        <div class="form-group col-lg-4 myTooltip" hidden>
                         </div>
                     </div>
 
@@ -31,16 +30,17 @@
                             <label>Email Address</label>
                             <input type="text" name="email" class="form-control" id="email" value="{$userEmail}">
                         </div>
-                        <div class="form-group col-lg-6">
-                            <label></label>
+                        <div class="form-group col-lg-4 myTooltip" hidden>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="form-group">
-                            <label>Immagine profilo</label>
+                        <div class="form-group col-lg-6">
+                            <label>Immagine profilo</label> <br>
                             <img src="{$userImage}" class="img-rounded" width="200px" height="150px">
-                            <input name="image" type="file">
+                            <input name="image" id="image" type="file">
+                        </div>
+                        <div class="form-group col-lg-4 myTooltip" hidden>
                         </div>
                     </div>
 
@@ -50,8 +50,7 @@
                             <label>Password</label>
                             <input type="password" name="password" class="form-control" id="password" value="">
                         </div>
-                        <div class="form-group col-lg-6">
-                            <label></label>
+                        <div class="form-group col-lg-4 myTooltip" hidden>
                         </div>
                     </div>
 
@@ -60,8 +59,7 @@
                             <label>Repeat Password</label>
                             <input type="password" name="password_confirm" class="form-control" id="password_confirm" value="">
                         </div>
-                        <div class="form-group col-lg-6">
-                            <label></label>
+                        <div class="form-group col-lg-4 myTooltip" hidden>
                         </div>
                     </div>
 

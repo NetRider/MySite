@@ -18,7 +18,7 @@
                        <input type="password" name="password" class="form-control" id="password">
                   </div>
                   <div class="form-group col-lg-4 myTooltip" hidden>
-                 </div>
+                  </div>
               </div>
               <div class="row">
                   <div class="form-group col-lg-5">

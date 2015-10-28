@@ -51,11 +51,19 @@ function checkForm(){
         			}
 				}
 			},
+
+			image: {
+				extension: "png|gif|jpeg|jpg"
+			}
 		},
 		messages: {
 
 			password_confirm: {
 				required: "Ripeti password",
+			},
+
+			image: {
+				extension: "Questa estensione non è valida"
 			}
 		},
 		// the errorPlacement has to take the table layout into account
@@ -80,15 +88,20 @@ function checkForm(){
 		},
 		// set this class to error-labels to indicate valid fields
 		success: function(label, element) {
-			$(element).parent().removeClass("has-error");
-			$(element).parent().addClass("has-success");
+			var child = $(element).parent();
+			child.removeClass("has-error");
+			child.addClass("has-success");
 			label.html("&nbsp;").addClass("checked");
+			child.next().hide();
+
 		},
 		highlight: function(element, errorClass) {
-			var man = $(element);
-			man.parent().removeClass("has-success");
-			man.parent().addClass("has-error");
-			man.parent().next().find("." + errorClass).removeClass("checked");
+			var child = $(element).parent();
+			child.removeClass("has-success");
+			child.addClass("has-error");
+			child.next().find("." + errorClass).removeClass("checked");
+			child.next().show();
+
 		}
 	});
 }

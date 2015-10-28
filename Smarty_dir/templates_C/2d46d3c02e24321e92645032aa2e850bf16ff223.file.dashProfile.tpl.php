@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2015-10-24 22:29:47
+<?php /* Smarty version Smarty-3.1.18, created on 2015-10-28 17:38:13
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/dashProfile.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:171615021456122e0ee47b62-08915641%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2d46d3c02e24321e92645032aa2e850bf16ff223' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/dashProfile.tpl',
-      1 => 1445718583,
+      1 => 1446050291,
       2 => 'file',
     ),
   ),
@@ -49,8 +49,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                             <input type="text" name="username" class="form-control" id="username" value="<?php echo $_smarty_tpl->tpl_vars['username']->value;?>
 ">
                         </div>
-                        <div class="form-group col-lg-6">
-                            <label></label>
+                        <div class="form-group col-lg-4 myTooltip" hidden>
                         </div>
                     </div>
 
@@ -60,17 +59,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                             <input type="text" name="email" class="form-control" id="email" value="<?php echo $_smarty_tpl->tpl_vars['userEmail']->value;?>
 ">
                         </div>
-                        <div class="form-group col-lg-6">
-                            <label></label>
+                        <div class="form-group col-lg-4 myTooltip" hidden>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="form-group">
-                            <label>Immagine profilo</label>
+                        <div class="form-group col-lg-6">
+                            <label>Immagine profilo</label> <br>
                             <img src="<?php echo $_smarty_tpl->tpl_vars['userImage']->value;?>
 " class="img-rounded" width="200px" height="150px">
-                            <input name="image" type="file">
+                            <input name="image" id="image" type="file">
+                        </div>
+                        <div class="form-group col-lg-4 myTooltip" hidden>
                         </div>
                     </div>
 
@@ -80,8 +80,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                             <label>Password</label>
                             <input type="password" name="password" class="form-control" id="password" value="">
                         </div>
-                        <div class="form-group col-lg-6">
-                            <label></label>
+                        <div class="form-group col-lg-4 myTooltip" hidden>
                         </div>
                     </div>
 
@@ -90,8 +89,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                             <label>Repeat Password</label>
                             <input type="password" name="password_confirm" class="form-control" id="password_confirm" value="">
                         </div>
-                        <div class="form-group col-lg-6">
-                            <label></label>
+                        <div class="form-group col-lg-4 myTooltip" hidden>
                         </div>
                     </div>
 
