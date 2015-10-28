@@ -11,6 +11,10 @@ $(function(){
 	$("#registrationForm").change(function(){
 		checkForm();
 	});
+
+	$('#registrationModal').on('hidden.bs.modal', function () {
+		location.replace("/MySite/index.php");
+	});
 });
 
 // validate signup form on keyup and submit
@@ -89,6 +93,20 @@ function checkForm(){
 				data: formData,
 				processData: false,
 				contentType: false
+			}).done(function(data){
+				if(data == "true")
+				{
+					$("#myModalRegistrationTitle").text("Utente Registrato");
+					$("#myModalRegistrationBody").append("L'utente è stato inserito nel database di Electronics Hub");
+					$("#panelRegistrationForm").addClass("panel-success");
+					$("#buttonRegistraionForm").addClass("btn-success");
+					$("#registrationModal").modal('show');
+				}else {
+					$("#myModalRegistrationTitle").text("Utente Non Registrato");
+					$("#myModalRegistrationBody").append("Qualcosa è andato storto!");
+					$("#panelRegistrationForm").addClass("panel-danger");
+					$("#registrationModal").modal('show');
+				}
 			});
 		},
 		// set this class to error-labels to indicate valid fields

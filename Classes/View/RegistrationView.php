@@ -67,12 +67,6 @@ class RegistrationView extends View {
 		return $imagePath;
 	}
 
-	public function setRegistrationStatus($status)
-	{
-		$this->assign("status", $status);
-		$this->setTemplate('registrationStatus');
-	}
-
 	private function getRequest($key)
 	{
 		if(isset($_REQUEST[$key]))

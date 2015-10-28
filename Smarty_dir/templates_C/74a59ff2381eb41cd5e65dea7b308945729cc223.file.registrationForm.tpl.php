@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2015-10-28 16:28:37
+<?php /* Smarty version Smarty-3.1.18, created on 2015-10-28 18:45:35
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/registrationForm.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:569938096560fa38fc6aaf0-44872843%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '74a59ff2381eb41cd5e65dea7b308945729cc223' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/registrationForm.tpl',
-      1 => 1446046114,
+      1 => 1446054331,
       2 => 'file',
     ),
   ),
@@ -39,7 +39,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                        <input type="password" name="password" class="form-control" id="password">
                   </div>
                   <div class="form-group col-lg-4 myTooltip" hidden>
-                 </div>
+                  </div>
               </div>
               <div class="row">
                   <div class="form-group col-lg-5">
@@ -69,6 +69,22 @@ $_valid = $_smarty_tpl->decodeProperties(array (
        </form>
 	</div>
     <hr>
+    <div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="panel" id="panelRegistrationForm">
+                    <div class="panel-heading">
+                        <h3 class="panel-title" id="myModalRegistrationTitle"></h3>
+                    </div>
+                    <div class="panel-body" id="myModalRegistrationBody">
+                    </div>
+                    <div class="panel-footer">
+                        <button type="button" class="btn" id="buttonRegistraionForm" data-dismiss="modal">Chiudi</button>
+                    </div>
+            </div>
+        </div>
+      </div>
+    </div>
 </div>
 <script src="Library/jquery.validate.min.js"></script>
 <script src="Library/additional-methods.min.js"></script>

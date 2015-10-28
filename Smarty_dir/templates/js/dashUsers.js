@@ -13,17 +13,23 @@ $(document).ready(function() {
         }
     });
 
-    $('#removeButton').click( function () {
+    $('#removeButton').click(function() {
         $.ajax({
     		url: 'index.php?controller=UserAccess&task=removeUser',
     		type: 'POST',
     		data: { userToRemove: table.row('.selected').data()[0]} }).done(function(data) {
             if(data == "true")
             {
-                console.log("è andato tutto a buon fine");
-                table.row('.selected').remove().draw( false );
+                $("#myModalDashUsersTitle").text("Utente eliminato correttamente");
+                $("#myModalDashUsersBody").text("Utente " + table.row('.selected').data()[0] + " è stato cancellato dal database di Electronics Hub");
+                $("#paneldashUsersForm").addClass("panel-success");
+                $("#buttonDashUsersForm").addClass("btn-success");
+                $("#dashUsersModal").modal('show');
+                table.row('.selected').remove().draw(false);
 
             }else {
+                console.log("è andato tutto male");
+
             }
     	});
     });
@@ -31,16 +37,18 @@ $(document).ready(function() {
 });
 
 function updateValue(sel) {
-	/*
-		Attraverso una chiamata ajax faccio l'update
-	 */
 	$.ajax({
 		url: 'index.php?controller=UserAccess&task=updateUserRole',
 		type: 'POST',
 		data: {idRole: sel.value, idUser: sel.parentNode.getAttribute("value")}}).done(function(data) {
         if(data == "true")
         {
-            console.log("ok");
+            console.log(sel.parentNode.parentNode);
+            $("#myModalDashUsersTitle").text("Cambio di ruolo");
+            $("#myModalDashUsersBody").text("Il cambio di ruolo per l'utente " + sel.parentNode.parentNode.data()[0] + " è avvenuto con successo");
+            $("#paneldashUsersForm").addClass("panel-success");
+            $("#buttonDashUsersForm").addClass("btn-success");
+            $("#dashUsersModal").modal('show');
 
         }else {
             console.log("non ok");

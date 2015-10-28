@@ -30,9 +30,10 @@ class RegistrationController extends Controller {
 
 				}else {
 					$user = new User($this->view->getUsername(), $this->view->getEmail(),$this->view->getPassword(), $this->view->getProfileImage(), 2);
-					$status = $userMapper->insert($user);
-					$this->view->setRegistrationStatus($status);
-					return $this->view->getContent();
+					if($userMapper->insert($user))
+						return "true";
+					else
+						return "false";
 				}
 			break;
 
