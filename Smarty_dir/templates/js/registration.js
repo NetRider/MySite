@@ -8,8 +8,6 @@ $(function(){
 	return this.optional(element) || /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
 	}, "Please enter a valid email address.");
 
-	$(".myTooltip").hide();
-
 	$("#registrationForm").change(function(){
 		checkForm();
 	});
@@ -54,8 +52,10 @@ function checkForm(){
           				}
         			}
 				}
-
 			},
+			image: {
+				extension: "png|gif|jpeg|jpg"
+			}
 		},
 		messages: {
 			username: {
@@ -72,6 +72,9 @@ function checkForm(){
 				required: "Please enter a valid email address",
 				remote: jQuery.validator.format('This eamil is already in use, please choose a different email')
 			},
+			image: {
+				extension: "Questa estensione non è valida"
+			}
 		},
 		// the errorPlacement has to take the table layout into account
 		errorPlacement: function(error, element) {
