@@ -112,9 +112,19 @@
         <!-- Footer -->
         <footer class="footer">
             <div class="container">
-                <p>Realizzato da Matteo Polsinelli</p>
-                <a href="https://www.facebook.com/matteo.polsinelli1" class="fa fa-facebook"></a>
-                <a href="https://github.com/NetRider" class="fa fa-github"></a>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <i class="fa fa-laptop fa-4x"> </i>
+                        <span class="footer-slogan">ElectronicsHub</span>
+
+                    </div>
+                    <div class="col-lg-6 align-right">
+                        <p>&copy; 2015. All right are reserved. Created By Matteo Polsinelli.</p>
+                        <a href="https://www.facebook.com/matteo.polsinelli1" class="fa fa-facebook fa-2x"></a>
+                        <a href="https://github.com/NetRider" class="fa fa-github fa-2x"></a>
+                        <a href="mailto:netrider91@gmail.com" class="fa fa-envelope fa-2x"></a>
+                    </div>
+                </div>
             </div>
         </footer>
 

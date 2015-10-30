@@ -50,7 +50,20 @@ body {
 }
 
 footer {
-    margin: 50px 0;
+    height: 5em;
+    color: #696969;
+    background-color: #CCCCCC;
+    padding-top: 0.5em;
+}
+
+footer a {
+    font-size: 3em;
+    margin-left: 10px;
+    color: #696969;
+}
+
+.align-right {
+    text-align: right;
 }
 
 .grid-sizer,
@@ -79,4 +92,8 @@ footer {
 .errorLabel {
     color: #FF0000;
     margin-left: 2%;
+}
+
+.footer-slogan {
+    font-size: 3em;
 }

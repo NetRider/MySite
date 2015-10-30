@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2015-10-28 16:48:07
+<?php /* Smarty version Smarty-3.1.18, created on 2015-10-30 13:14:59
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/main.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1401294034560bd461ad1202-06875179%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9deaa0b50af1d1059bb0f70894b4df4121a30c68' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/main.tpl',
-      1 => 1446047285,
+      1 => 1446207296,
       2 => 'file',
     ),
   ),
@@ -140,9 +140,19 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <!-- Footer -->
         <footer class="footer">
             <div class="container">
-                <p>Realizzato da Matteo Polsinelli</p>
-                <a href="https://www.facebook.com/matteo.polsinelli1" class="fa fa-facebook"></a>
-                <a href="https://github.com/NetRider" class="fa fa-github"></a>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <i class="fa fa-laptop fa-4x"> </i>
+                        <span class="footer-slogan">ElectronicsHub</span>
+
+                    </div>
+                    <div class="col-lg-6 align-right">
+                        <p>&copy; 2015. All right are reserved. Created By Matteo Polsinelli.</p>
+                        <a href="https://www.facebook.com/matteo.polsinelli1" class="fa fa-facebook fa-2x"></a>
+                        <a href="https://github.com/NetRider" class="fa fa-github fa-2x"></a>
+                        <a href="mailto:netrider91@gmail.com" class="fa fa-envelope fa-2x"></a>
+                    </div>
+                </div>
             </div>
         </footer>
 
