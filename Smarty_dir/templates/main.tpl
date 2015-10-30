@@ -114,7 +114,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
-                        <i class="fa fa-laptop fa-4x"> </i>
+                        <i class="fa fa-laptop fa-3x"> </i>
                         <span class="footer-slogan">ElectronicsHub</span>
 
                     </div>
