@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2015-10-28 19:03:31
+<?php /* Smarty version Smarty-3.1.18, created on 2015-10-30 16:33:49
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/dashUsers.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:9312099055610fc68973a36-64714241%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '60939a09ecbdad5e69aa6768fa53cc4f613620fd' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/dashUsers.tpl',
-      1 => 1446055341,
+      1 => 1446219217,
       2 => 'file',
     ),
   ),
@@ -108,19 +108,18 @@ $_smarty_tpl->tpl_vars['option']->_loop = true;
     <div class="modal fade" id="dashUsersModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="panel" id="paneldashUsersForm">
-                    <div class="panel-heading">
+                    <div class="modal-header">
                         <h3 class="panel-title" id="myModalDashUsersTitle">Utente eliminato correttamente</h3>
                     </div>
-                    <div class="panel-body" id="myModalDashUsersBody">
+                    <div class="modal-body" id="myModalDashUsersBody">
                     </div>
-                    <div class="panel-footer">
+                    <div class="modal-footer">
                         <button type="button" class="btn" id="buttonDashUsersForm" data-dismiss="modal">Chiudi</button>
                     </div>
                 </div>
             </div>
         </div>
-      </div>
+    </div>
 </div>
 
 <link href="Library/adminPanel/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">

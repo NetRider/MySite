@@ -98,13 +98,11 @@ function checkForm(){
 				{
 					$("#myModalRegistrationTitle").text("Utente Registrato");
 					$("#myModalRegistrationBody").append("L'utente è stato inserito nel database di Electronics Hub");
-					$("#panelRegistrationForm").addClass("panel-success");
 					$("#buttonRegistraionForm").addClass("btn-success");
 					$("#registrationModal").modal('show');
 				}else {
 					$("#myModalRegistrationTitle").text("Utente Non Registrato");
 					$("#myModalRegistrationBody").append("Qualcosa è andato storto!");
-					$("#panelRegistrationForm").addClass("panel-danger");
 					$("#registrationModal").modal('show');
 				}
 			});

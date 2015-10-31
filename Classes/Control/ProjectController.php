@@ -105,12 +105,16 @@ class ProjectController extends Controller {
         return $this->view->getContent();
     }
 
-    private function deleteProject($id)
+    private function deleteProject()
     {
         $databaseAdapter = new Database();
         $projectMapper = new ProjectMapper($databaseAdapter);
-        $commentMapper = new CommentMapper($databaseAdapter);
-        $projectMapper->removeProjectById($this->view->getProjectId());
-        $commnetMapper->removeCommentByArticleId($this->view->getArticleId());
+        $file = $projectMapper->getProjectImageById($this->view->getProjectToRemove());
+        if($file && $file != "Data/projects_images/default_project_image.jpg")
+            unlink("/Applications/XAMPP/xamppfiles/htdocs/MySite/".$file);
+        if($projectMapper->removeProjectById($this->view->getProjectToRemove()))
+            return "true";
+        else
+            return "false";
     }
 }

@@ -25,48 +25,43 @@ class ProjectView extends View {
 
 	public function getProjectId()
 	{
-		if(isset($_REQUEST['projectId']))
-			return $_REQUEST['projectId'];
-		else
-			return false;
+		return $this->getRequest('projectId');
 	}
 
 	public function getProjectDependencies()
 	{
-		if(isset($_REQUEST['idDependencies']))
-			return $_REQUEST['idDependencies'];
-		else
-			return false;
+		return $this->getRequest('idDependencies');
+
 	}
 
 	public function getProjectDescription()
 	{
-		if(isset($_REQUEST['description']))
-			return $_REQUEST['description'];
-		else
-			return false;
+		return $this->getRequest('description');
+
 	}
 
 	public function getProjectText()
 	{
-		if(isset($_REQUEST['text']))
-			return $_REQUEST['text'];
-		else
-			return false;
+		return $this->getRequest('text');
+
 	}
 
 	public function getProjectTitle()
 	{
-		if(isset($_REQUEST['title']))
-			return $_REQUEST['title'];
-		else
-			return false;
+		return $this->getRequest('title');
+
 	}
 
 	public function setTemplate($template)
 	{
 		$this->template = $template;
 	}
+
+	public function getProjectToRemove()
+	{
+		return $this->getRequest('projectToRemove');
+	}
+
 
 	public function assignProjectData($projectId, $title, $text, $author, $image, $comments, $dependencies)
 	{
@@ -107,6 +102,14 @@ class ProjectView extends View {
 	public function assignProjectsCards($projectsCards)
 	{
 		$this->assign('projectsCards', $projectsCards);
+	}
+
+	private function getRequest($key)
+	{
+		if(isset($_REQUEST[$key]))
+			return $_REQUEST[$key];
+		else
+			return false;
 	}
 
 	public function getContent()

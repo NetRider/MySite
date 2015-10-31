@@ -64,19 +64,18 @@
     <div class="modal fade" id="dashUsersModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="panel" id="paneldashUsersForm">
-                    <div class="panel-heading">
+                    <div class="modal-header">
                         <h3 class="panel-title" id="myModalDashUsersTitle">Utente eliminato correttamente</h3>
                     </div>
-                    <div class="panel-body" id="myModalDashUsersBody">
+                    <div class="modal-body" id="myModalDashUsersBody">
                     </div>
-                    <div class="panel-footer">
+                    <div class="modal-footer">
                         <button type="button" class="btn" id="buttonDashUsersForm" data-dismiss="modal">Chiudi</button>
                     </div>
                 </div>
             </div>
         </div>
-      </div>
+    </div>
 </div>
 
 <link href="Library/adminPanel/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">

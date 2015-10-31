@@ -11,6 +11,10 @@ $(function() {
 	$("#updateForm").change(function(){
 		checkForm();
 	});
+
+	$("#buttonDashProfileForm").click(function() {
+		location.reload();
+	});
 });
 
 // validate signup form on keyup and submit
@@ -81,9 +85,21 @@ function checkForm(){
 				contentType: false
 			}).done(function(data){
 				if(data == "true")
-					console.log("utente aggioranto");
+				{
+					$("#myModalDashProfileTitle").text("Aggiornamento completato");
+		            $("#myModalDashProfileBody").text("I dati del profilo sono stati aggioranti sul server!");
+		            $("#buttonDashProfileForm").addClass("btn-success");
+		            $("#dashProfileModal").modal('show');
+
+				}
 				else
-					console.log("utente non aggioranto");
+				{
+					$("#myModalDashProfileTitle").text("L'aggiornamento non completato");
+					$("#myModalDashProfileBody").append("E' stato riscontrato un problema con il server.");
+					$("#buttonDashProfileForm").addClass("btn-failure");
+					$("#dashProfileModal").modal('show');
+
+				}
 			});
 		},
 		// set this class to error-labels to indicate valid fields

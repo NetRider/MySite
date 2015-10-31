@@ -51,16 +51,13 @@
     <div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="panel" id="panelRegistrationForm">
-                    <div class="panel-heading">
-                        <h3 class="panel-title" id="myModalRegistrationTitle"></h3>
-                    </div>
-                    <div class="panel-body" id="myModalRegistrationBody">
-                    </div>
-                    <div class="panel-footer">
-                        <button type="button" class="btn" id="buttonRegistraionForm" data-dismiss="modal">Chiudi</button>
-                    </div>
-                </div>
+             <div class="modal-header">
+                <h3 class="modal-title" id="myModalRegistrationTitle"></h3>
+            </div>
+            <div class="modal-body" id="myModalRegistrationBody">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" id="buttonRegistraionForm" data-dismiss="modal">Chiudi</button>
             </div>
         </div>
       </div>

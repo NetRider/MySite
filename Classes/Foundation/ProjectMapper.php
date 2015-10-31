@@ -42,8 +42,7 @@ class ProjectMapper extends AbstractDataMapper {
 
   public function removeProjectById($id)
   {
-      $this->adapter->delete($this->entityTable, array("id"=>$id));
-      $this->adapter->delete("projectsDependencies", array("idProject"=>$id));
+      return $this->adapter->delete($this->entityTable, array("id"=>$id));
   }
 
   public function getNumberOfProjects()
@@ -54,6 +53,15 @@ class ProjectMapper extends AbstractDataMapper {
   public function getProjectsForDash()
   {
       return $this->returnAssociativeArray(array(), array("user.username", "project.id", "project.title", "project.description"), "", "", "", "user", array("user"=>"id", "project"=>"idAuthor"));
+  }
+
+  public function getProjectImageById($id)
+  {
+      $project = $this->find(array("id"=>$id));
+      if($project)
+          return $project->getImage();
+      else
+          return false;
   }
 
 

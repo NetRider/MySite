@@ -12,7 +12,7 @@
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                <form id="updateForm" autocomplete="off" method="" action="" novalidate="novalidate">
+                <form id="updateForm" autocomplete="off" novalidate="novalidate">
 
                     <h3> Informazioni di base </h3>
 
@@ -62,12 +62,27 @@
                         <div class="form-group col-lg-4 myTooltip" hidden>
                         </div>
                     </div>
-
                     <button type="submit" class="btn btn-default" id="updateButton">Aggiorna</button>
                 </form>
             </div>
         </div>
     </div>
+    <div class="modal fade" id="dashProfileModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="panel-title" id="myModalDashProfileTitle">Utente eliminato correttamente</h3>
+                    </div>
+                    <div class="modal-body" id="myModalDashProfileBody">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" id="buttonDashProfileForm" data-dismiss="modal">Chiudi</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script src="Library/jquery.validate.min.js"></script>
+<script src="Library/additional-methods.min.js"></script>
 <script src="Smarty_dir/templates/js/dashProfile.js"></script>
