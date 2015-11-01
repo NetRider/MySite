@@ -30,10 +30,7 @@ class RegistrationController extends Controller {
 
 				}else {
 					$user = new User($this->view->getUsername(), $this->view->getEmail(),$this->view->getPassword(), $this->view->getProfileImage(), 2);
-					if($userMapper->insert($user))
-						return "true";
-					else
-						return "false";
+					$this->view->responseAjaxCall($userMapper->insert($user));
 				}
 			break;
 
@@ -45,12 +42,12 @@ class RegistrationController extends Controller {
 				$session = Singleton::getInstance("\Control\Session");
 
 				if($session->userIsLogged() && $this->view->getUsernameToCheck() == $session->getUsername()) {
-					return "true";
+					$this->view->responseAjaxCall(true);
 				}else {
 					if($found)
-						return "false";
+						$this->view->responseAjaxCall(false);
 					else
-						return "true";
+						$this->view->responseAjaxCall(true);
 					break;
 				}
 
@@ -64,12 +61,12 @@ class RegistrationController extends Controller {
 				$session = Singleton::getInstance("\Control\Session");
 
 				if($session->userIsLogged() && $this->view->getEmailToCheck() == $session->getUserEmail()) {
-					return "true";
+					$this->view->responseAjaxCall(true);
 				}else {
 					if($found)
-						return "false";
+						$this->view->responseAjaxCall(false);
 					else
-						return "true";
+						$this->view->responseAjaxCall(true);
 					break;
 				}
 

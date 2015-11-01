@@ -79,11 +79,11 @@ class ArticleController extends Controller {
             foreach ($comments as $comment)
             {
                 $user = $userMapper->getUserByID($comment->getUserId());
-                array_push($data, array("author"=>$user->getUsername(), "image"=>$user->getImage(), "text"=>$comment->getText(), "authorId"=>$user->getId()));
+                array_push($data, array("author"=>$user->getUsername(), "image"=>$user->getImage(), "text"=>$comment->getText(), "authorId"=>$user->getId(), "date"=>$comment->getDate()));
             }
         }
 
-        $this->view->assignArticleData($article->getId(), $article->getTitle(), $article->getText(), $articleAuthor->getUsername(), $article->getImage(), $data);
+        $this->view->assignArticleData($article->getId(), $article->getTitle(), $article->getText(), $articleAuthor->getUsername(), $article->getImage(), $article->getDate(), $data);
         $this->view->setTemplate('articleViewer');
         return $this->view->getContent();
     }
@@ -93,11 +93,8 @@ class ArticleController extends Controller {
         $databaseAdapter = new Database();
         $articleMapper = new ArticleMapper($databaseAdapter);
         $session = Singleton::getInstance("\Control\Session");
-        $article = new Article($session->getUserId(), $this->view->getArticleTitle(), $this->view->getArticleDescription(), $this->view->getArticleText(), 0, $this->view->getArticleImage());
-        if($articleMapper->insert($article))
-            return "true";
-        else
-            return "false";
+        $article = new Article($session->getUserId(), $this->view->getArticleTitle(), $this->view->getArticleDescription(), $this->view->getArticleText(), date('o-m-d H:i:s'), $this->view->getArticleImage());
+        $this->view->responseAjaxCall($articleMapper->insert($article));
     }
 
     private function deleteArticle()
@@ -107,9 +104,6 @@ class ArticleController extends Controller {
         $file = $articleMapper->getArticleImageById($this->view->getArticleToRemove());
         if($file && $file != "Data/articles_images/default_article_image.jpg")
             unlink("/Applications/XAMPP/xamppfiles/htdocs/MySite/".$file);
-        if($articleMapper->removeArticleById($this->view->getArticleToRemove()))
-            return "true";
-        else
-            return "false";
+        $this->view->responseAjaxCall($articleMapper->removeArticleById($this->view->getArticleToRemove()));
     }
 }

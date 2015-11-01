@@ -56,10 +56,14 @@ class MainController extends Controller {
 		$session = Singleton::getInstance("\Control\Session");
 
 		$data = $this->executeTask();
-		if($data == "true" || $data == "false")
+
+		/*
+		Se sto rispondendo ad una chiamata Ajax non devo visualizzare una nuova pagina.
+		In altre parole il controllore non mi ritorna la pagina da aggiungere al main.tpl
+		Quindi non devo fare nulla ci pensa la View del rispettivo controllore ad inviare i dati
+		 */
+		if($data != null)
 		{
-			$this->view->sendData($data);
-		}else {
 			$this->view->setContent($data);
 
 			//Controllo se c'è un utente registrato

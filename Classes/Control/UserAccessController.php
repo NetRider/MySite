@@ -51,9 +51,9 @@ class UserAccessController extends Controller {
         if($userData) {
             $session = Singleton::getInstance("\Control\Session");
             $session->login($username);
-            return "true";
+            $this->view->responseAjaxCall(true);
         }else {
-            return "false";
+            $this->view->responseAjaxCall(false);
         }
     }
 
@@ -83,14 +83,7 @@ class UserAccessController extends Controller {
     {
         $databaseAdapter = new Database();
         $userMapper = new UserMapper($databaseAdapter);
-        $userData = $userMapper->updateUserRole($this->view->getUserIdForUpdate(), $this->view->getUserRoleToUpdate());
-        if($userData)
-        {
-            return "true";
-        }else
-        {
-            return "false";
-        }
+        $this->view->responseAjaxCall($userMapper->updateUserRole($this->view->getUserIdForUpdate(), $this->view->getUserRoleToUpdate()));
     }
 
     private function removeUser()
@@ -103,14 +96,7 @@ class UserAccessController extends Controller {
             unlink($userImage[0]["profileImage"]);
         }
 
-        $userData = $userMapper->removeUser($this->view->userToRemove());
-        if($userData)
-        {
-            return "true";
-        }else
-        {
-            return "false";
-        }
+        $this->view->responseAjaxCall($userMapper->removeUser($this->view->userToRemove()));
     }
 
     private function updateUser()
@@ -151,11 +137,6 @@ class UserAccessController extends Controller {
             }
         }
 
-        $userData = $userMapper->updateUser($session->getUserId(), $username, $email, $image, $password);
-
-        if($userData)
-            return "true";
-        else
-            return "false";
+        $this->view->responseAjaxCall($userMapper->updateUser($session->getUserId(), $username, $email, $image, $password));
     }
 }

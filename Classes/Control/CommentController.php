@@ -39,30 +39,18 @@ class CommentController extends Controller {
 		$databaseAdapter = new Database();
 		$commentMapper = new CommentMapper($databaseAdapter);
 		$session = Singleton::getInstance("\Control\Session");
-		$comment = new Comment($this->view->getCommentText(), $this->view->getCommentDate(), $session->getUserId());
+		$comment = new Comment($this->view->getCommentText(), date('o-m-d H:i:s'), $session->getUserId());
 
 		if($this->view->getArticleId() != "")
-		{
-			if($commentMapper->insertArticleComment($comment, $this->view->getArticleId()))
-				return "true";
-			else
-				return "false";
-		}elseif($this->view->getProjectId() != "")
-		{
-			if($commentMapper->insertProjectComment($comment, $this->view->getProjectId()))
-				return "true";
-			else
-				return "false";
-		}
+			$this->view->responseAjaxCall($commentMapper->insertArticleComment($comment, $this->view->getArticleId()));
+		elseif($this->view->getProjectId() != "")
+			$this->view->responseAjaxCall($commentMapper->insertProjectComment($comment, $this->view->getProjectId()));
 	}
 
 	private function removeCommentById()
 	{
 		$databaseAdapter = new Database();
 		$commentMapper = new CommentMapper($databaseAdapter);
-		if($commentMapper->removeCommentById($this->view->getCommentId()))
-			return "true";
-		else
-			return "false";
+		$this->view->responseAjaxCall($commentMapper->removeCommentById($this->view->getCommentId()));
 	}
 }

@@ -159,51 +159,6 @@ class DashboardController extends Controller {
 
     private function getDashboardPage()
     {
-        /*
-        $databaseAdapter = new Database();
-        $articleMapper = new ArticleMapper($databaseAdapter);
-        $projectMapper = new ProjectMapper($databaseAdapter);
-        $session = Singleton::getInstance("\Control\Session");
-
-        $articlesByAuthorID = $articleMapper->getAllArticlesByAuthorId($session->getUserId());
-        $projectsByAuthorID = $projectMapper->getAllProjectsByAuthorId($session->getUserId());
-
-        $articlesToDisplay = array();
-        $projectsToDisplay = array();
-
-            foreach($articlesByAuthorID as $article)
-            {
-                array_push($articlesToDisplay, array("title"=>$article->getTitle(), "idArticle"=>$article->getId()));
-            }
-
-            foreach($projectsByAuthorID as $project)
-            {
-                array_push($projectsToDisplay, array("title"=>$project->getTitle(), "idProject"=>$project->getId()));
-            }
-
-
-        //prendi tutti gli articoli
-        $articles = $articleMapper->getAllArticles();
-
-        $articlesDependencies = array();
-
-        //scorri l'array di articoli e prendi il titolo e l'id
-
-            foreach($articles as $article)
-            {
-                array_push($articlesDependencies, array("title"=>$article->getTitle(), "id"=>$article->getId()));
-            }
-
-
-
-        //invia alla view del profilo gli articoli e i progetti realizzati dall'utente specifico
-        $this->view->assignUserWorksDone($articlesToDisplay, $projectsToDisplay);
-
-        //invia alla view del profilo tutti i titoli degli articoli e i rispettivi Id.
-        //questi dati mi servono per popolare il menu dalla quale l'utente può scegliere quali
-        //articoli legare al progetto.
-        $this->view->assignArticleDependencies($articlesDependencies);
-        */
         return $this->view->getContent();
     }
 }

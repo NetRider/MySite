@@ -83,12 +83,12 @@ class ProjectController extends Controller {
             foreach ($comments as $comment)
             {
                 $user = $userMapper->getUserByID($comment->getUserId());
-                array_push($dataComments, array("author"=>$user->getUsername(), "image"=>$user->getImage(), "text"=>$comment->getText(), "authorId"=>$user->getId()));
+                array_push($dataComments, array("author"=>$user->getUsername(), "image"=>$user->getImage(), "text"=>$comment->getText(), "authorId"=>$user->getId(), "date"=>$comment->getDate()));
             }
         }
 
         $dependencies = $articleMapper->getArticlesDependenciesByProjectId($project->getId());
-        $this->view->assignProjectData($project->getId(), $project->getTitle(), $project->getText(), $projectAuthor->getUsername(), $project->getImage(), $dataComments, $dependencies);
+        $this->view->assignProjectData($project->getId(), $project->getTitle(), $project->getText(), $projectAuthor->getUsername(), $project->getImage(), $project->getDate(), $dataComments, $dependencies);
         $this->view->setTemplate('projectViewer');
         return $this->view->getContent();
     }
@@ -98,13 +98,9 @@ class ProjectController extends Controller {
         $databaseAdapter = new Database();
         $projectMapper = new ProjectMapper($databaseAdapter);
         $session = Singleton::getInstance("\Control\Session");
-        $project = new Project($session->getUserId(), $this->view->getProjectTitle(), $this->view->getProjectDescription(), $this->view->getProjectText(), "dia", "Data/projects_images/" . $this->view->getProjectImage());
+        $project = new Project($session->getUserId(), $this->view->getProjectTitle(), $this->view->getProjectDescription(), $this->view->getProjectText(), date('o-m-d H:i:s'), "Data/projects_images/" . $this->view->getProjectImage());
         $dependencies = $this->view->getProjectDependencies();
-        if($projectMapper->insertProject($project, $dependencies))
-            return "true";
-        else 
-            return "false";
-        return $this->view->getContent();
+        $this->view->responseAjaxCall($projectMapper->insertProject($project, $dependencies));
     }
 
     private function deleteProject()
@@ -114,9 +110,6 @@ class ProjectController extends Controller {
         $file = $projectMapper->getProjectImageById($this->view->getProjectToRemove());
         if($file && $file != "Data/projects_images/default_project_image.jpg")
             unlink("/Applications/XAMPP/xamppfiles/htdocs/MySite/".$file);
-        if($projectMapper->removeProjectById($this->view->getProjectToRemove()))
-            return "true";
-        else
-            return "false";
+        $this->view->responseAjaxCall($projectMapper->removeProjectById($this->view->getProjectToRemove()));
     }
 }
