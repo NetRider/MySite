@@ -99,7 +99,7 @@
             }
 
             $this->statement = $sql;
-            error_log($this->satetement);
+            error_log($this->statement);
             return $this->executeQuery();
         }
 
