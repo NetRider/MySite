@@ -84,7 +84,7 @@ function checkForm(){
 				processData: false,
 				contentType: false
 			}).done(function(data){
-				if(data == "true")
+				if(data)
 				{
 					$("#myModalDashProfileTitle").text("Aggiornamento completato");
 		            $("#myModalDashProfileBody").text("I dati del profilo sono stati aggioranti sul server!");

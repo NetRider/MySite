@@ -55,7 +55,7 @@ function checkForm(){
 			}).done(function(data) {
 				$('#panelEffect').waitMe('hide');
 
-				if(data == "true")
+				if(data)
 				{
 					$("#myModalDashProjectTitle").text("Progetto caricato correttamente");
 					$("#myModalDashProjectBody").text("L'articolo è stato inserito nei database di ElectronicsHub.");

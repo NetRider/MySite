@@ -18,7 +18,7 @@ $(document).ready(function() {
     		url: 'index.php?controller=UserAccess&task=removeUser',
     		type: 'POST',
     		data: { userToRemove: table.row('.selected').data()[0]} }).done(function(data) {
-            if(data == "true")
+            if(data)
             {
                 $("#myModalDashUsersTitle").text("Utente eliminato correttamente");
                 $("#myModalDashUsersBody").text("Utente " + table.row('.selected').data()[0] + " è stato cancellato dal database di Electronics Hub");
@@ -41,7 +41,7 @@ function updateValue(sel) {
 		url: 'index.php?controller=UserAccess&task=updateUserRole',
 		type: 'POST',
 		data: {idRole: sel.value, idUser: sel.parentNode.getAttribute("value")}}).done(function(data) {
-        if(data == "true")
+        if(data)
         {
             console.log(sel.parentNode.parentNode);
             $("#myModalDashUsersTitle").text("Cambio di ruolo");

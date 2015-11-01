@@ -33,7 +33,7 @@ $(document).ready(function() {
     		url: 'index.php?controller=Comment&task=removeCommentById',
     		type: 'POST',
     		data: { id: document.getElementsByClassName('selected')[0].getAttribute("value")}}).done(function(data) {
-            if(data == "true")
+            if(data)
             {
 				if(id == "articleComment")
 				{

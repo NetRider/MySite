@@ -17,7 +17,7 @@ $(document).ready(function(){
                 type: 'POST',
                 data: loginData
             }).done(function(data) {
-                if(data == "false")
+                if(data)
                 {
                     button.removeClass("btn-success")
             				.addClass("form-control btn btn-danger")
@@ -25,7 +25,7 @@ $(document).ready(function(){
             				.removeAttr("data-dismiss");
         			title.text("Login fallito!");
 
-                }else if(data == "true")
+                }else if(data)
                 {
                     button.removeClass("btn-danger")
             				.addClass("btn btn-success")
