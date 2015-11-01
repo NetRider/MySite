@@ -10,9 +10,11 @@ class HomeView extends View {
 		 parent::__construct();
 	}
 
-	public function assignHomeArticles($homeArticles)
+	public function assignHomeArticles($homeArticles, $homeProjects)
 	{
 		$this->assign('homeArticles', $homeArticles);
+		$this->assign('homeProjects', $homeProjects);
+
 	}
 
 	public function getContent()

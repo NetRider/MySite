@@ -1,3 +1,7 @@
+<link href="Library/adminPanel/bower_components/morrisjs/morris.css" rel="stylesheet">
+<script src="Library/adminPanel/bower_components/raphael/raphael-min.js"></script>
+<script src="Library/adminPanel/bower_components/morrisjs/morris.min.js"></script>
+
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Statistiche</h1>
@@ -100,9 +104,11 @@
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                <div id="morris-area-chart"></div>
+                <div id="articlesChart" style="height: 250px;"></div>
             </div>
             <!-- /.panel-body -->
         </div>
     </div>
 </div>
+
+<script src="Smarty_dir/templates/js/dashStatistics.js"></script>

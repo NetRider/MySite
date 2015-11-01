@@ -50,6 +50,11 @@ class ArticleMapper extends AbstractDataMapper {
         return $this->adapter->delete($this->entityTable, array("id"=>$id));
     }
 
+    public function getArticlesCountedByDate()
+    {
+        return $this->returnAssociativeArray(array(), array("date", "count(date)"), "", "", "", "", array(), array("YEAR(date)", "MONTH(date)", "DAY(Date)"));
+    }
+
     public function getArticleImageById($id)
     {
         $article = $this->find(array("id"=>$id));

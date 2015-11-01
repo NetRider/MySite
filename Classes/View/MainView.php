@@ -46,9 +46,4 @@ class MainView extends View {
 		$this->assign('content', $this->content);
 		$this->display("main.tpl");
 	}
-
-	public function sendData($data)
-	{
-		echo($data);
-	}
 }

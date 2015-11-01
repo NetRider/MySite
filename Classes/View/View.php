@@ -14,4 +14,9 @@ abstract class View extends \Smarty {
 	    $this->cache_dir = '/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/configs';
 	    $this->caching = false;
 	}
+
+	public function responseAjaxCall($data)
+	{
+		echo($data);
+	}
 }

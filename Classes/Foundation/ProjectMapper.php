@@ -65,6 +65,11 @@ class ProjectMapper extends AbstractDataMapper {
       return $this->returnAssociativeArray(array(), array("user.username", "project.id", "project.title", "project.description"), "", "", "", "user", array("user"=>"id", "project"=>"idAuthor"));
   }
 
+  public function getLastThreeProjects()
+  {
+      return $this->find(array(), array(), "", "id DESC", "3");
+  }
+
   public function getProjectImageById($id)
   {
       $project = $this->find(array("id"=>$id));

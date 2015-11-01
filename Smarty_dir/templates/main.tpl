@@ -19,7 +19,6 @@
 
         <link href="Library/adminPanel/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
         <link href="Library/adminPanel/dist/css/timeline.css" rel="stylesheet">
-        <link href="Library/adminPanel/bower_components/morrisjs/morris.css" rel="stylesheet">
         <link href="Library/adminPanel/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="Library/adminPanel/dist/css/sb-admin-2.css" rel="stylesheet">
 
@@ -134,10 +133,6 @@
         <script src="Smarty_dir/templates/js/login.js"></script>
         <script src="Library/masonry.pkgd.min.js"></script>
         <script src="Library/adminPanel/bower_components/metisMenu/dist/metisMenu.min.js"></script>
-        <script src="Library/adminPanel/bower_components/raphael/raphael-min.js"></script>
-        <script src="Library/adminPanel/bower_components/morrisjs/morris.min.js"></script>
-        <script src="Library/adminPanel/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
-        <script src="Library/adminPanel/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
         <script src="Library/adminPanel/dist/js/sb-admin-2.js"></script>
 
     </body>

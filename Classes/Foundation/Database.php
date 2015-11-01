@@ -45,7 +45,7 @@
             $this->dbConnection->close();
         }
 
-        public function select($table, $cond, $bind, $op, $order, $limit, $joinTable, $joinBind) {
+        public function select($table, $cond, $bind, $op, $order, $limit, $joinTable, $joinBind, $groupBY) {
             $this->connect();
             $sql = "";
 
@@ -92,7 +92,14 @@
             if($limit!='')
                 $sql = $sql . " LIMIT " . $limit;
 
+            if(!empty($groupBy))
+            {
+                $group=implode(",", $groupBy);
+                $sql = $sql . " GROUP BY " . $group;
+            }
+
             $this->statement = $sql;
+            error_log($this->satetement);
             return $this->executeQuery();
         }
 

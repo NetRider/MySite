@@ -21,7 +21,7 @@
             <hr>
 
             <!-- Date/Time -->
-            <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
+            <p><span class="glyphicon glyphicon-time"></span> Postato il <i>"{$date}"</i></p>
 
             <hr>
 
@@ -61,7 +61,7 @@
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading">{$comment.author}
-                            <small>August 25, 2014 at 9:30 PM</small>
+                            <small>Postato il {$comment.date}</small>
                         </h4>
                         {$comment.text}
                     </div>

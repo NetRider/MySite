@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2015-10-19 10:35:46
+<?php /* Smarty version Smarty-3.1.18, created on 2015-11-01 16:12:26
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/articleViewer.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1190162346560bdedd016998-88708405%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '490f75fe867cf963c8ea5f9fef175ceda693ae49' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/articleViewer.tpl',
-      1 => 1445241844,
+      1 => 1446390744,
       2 => 'file',
     ),
   ),
@@ -21,6 +21,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'articleTitle' => 0,
     'author' => 0,
+    'date' => 0,
     'articleImage' => 0,
     'articleText' => 0,
     'loggedIn' => 0,
@@ -55,7 +56,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <hr>
 
             <!-- Date/Time -->
-            <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
+            <p><span class="glyphicon glyphicon-time"></span> Postato il <i>"<?php echo $_smarty_tpl->tpl_vars['date']->value;?>
+"</i></p>
 
             <hr>
 
@@ -104,7 +106,8 @@ $_smarty_tpl->tpl_vars['comment']->_loop = true;
                     <div class="media-body">
                         <h4 class="media-heading"><?php echo $_smarty_tpl->tpl_vars['comment']->value['author'];?>
 
-                            <small>August 25, 2014 at 9:30 PM</small>
+                            <small>Postato il <?php echo $_smarty_tpl->tpl_vars['comment']->value['date'];?>
+</small>
                         </h4>
                         <?php echo $_smarty_tpl->tpl_vars['comment']->value['text'];?>
 

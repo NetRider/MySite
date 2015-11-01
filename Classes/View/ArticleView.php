@@ -72,7 +72,7 @@ class ArticleView extends View {
 		$this->assign('articlesCards', $articlesCards);
 	}
 
-	public function assignArticleData($articleId, $title, $text, $author, $image, $comments)
+	public function assignArticleData($articleId, $title, $text, $author, $image, $date, $comments)
 	{
 		$session = Singleton::getInstance("\Control\Session");
 		if($session->userIsLogged())
@@ -88,6 +88,7 @@ class ArticleView extends View {
 
 		$this->assign('articleId', $articleId);
 		$this->assign('articleTitle', $title);
+		$this->assign('date', $date);
 		$this->assign('articleText', $text);
 		$this->assign('author', $author);
 		$this->assign('articleImage', $image);
