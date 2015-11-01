@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2015-10-28 17:52:02
+<?php /* Smarty version Smarty-3.1.18, created on 2015-11-01 12:47:06
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/dashWriteArticle.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:14703802185612aa22058266-40195557%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9e960ad2520dd0fce7084259c2260e6b075388ed' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/dashWriteArticle.tpl',
-      1 => 1446051119,
+      1 => 1446378271,
       2 => 'file',
     ),
   ),
@@ -29,44 +29,59 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Scrivi Articolo</h1>
-</div>
-<!-- /.row -->
-<div class="row">
-    <div class="col-lg-12" id="panelEffect">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Tutti i campi sono obbiglatori
-            </div>
-            <!-- /.panel-heading -->
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <form role="form" id="articleForm">
-                            <div class="form-group">
-                                <label>Titolo</label>
-                                <label class="errorLabel"></label>
-                                <input type="text" name="title" class="form-control" placeholder="Scrivi un titolo">
-                            </div>
-                            <div class="form-group">
-                                <label>Descrizione</label>
-                                <label class="errorLabel"></label>
-                                <input type="text" name="description" class="form-control" placeholder="Scrivi una descrizione">
-                            </div>
-                            <div class="form-group">
-                                <label>Testo</label>
-                                <label class="errorLabel"></label>
-                                <input type="text" name="articleText" id="editorArticle">
-                            </div>
-                            <input type="text" name="userId" value="<?php echo $_smarty_tpl->tpl_vars['userid']->value;?>
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12" id="panelEffect">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Tutti i campi sono obbiglatori
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form role="form" id="articleForm">
+                                <div class="form-group">
+                                    <label>Titolo</label>
+                                    <label class="errorLabel"></label>
+                                    <input type="text" name="title" class="form-control" placeholder="Scrivi un titolo">
+                                </div>
+                                <div class="form-group">
+                                    <label>Descrizione</label>
+                                    <label class="errorLabel"></label>
+                                    <input type="text" name="description" class="form-control" placeholder="Scrivi una descrizione">
+                                </div>
+                                <div class="form-group">
+                                    <label>Testo</label>
+                                    <label class="errorLabel"></label>
+                                    <input type="text" name="articleText" id="editorArticle">
+                                </div>
+                                <input type="text" name="userId" value="<?php echo $_smarty_tpl->tpl_vars['userid']->value;?>
 " hidden>
-                            <div class="form-group">
-                                <label>Immagine Articolo</label>
-                                <label class="errorLabel"></label>
-                                <input type="file" name="image">
-                            </div>
-                            <button type="submit" class="btn btn-default" id="saveProjectButton" data-toggle="modal" data-target="#statusArticle">Submit Button</button>
-                        </form>
+                                <div class="form-group">
+                                    <label>Immagine Articolo</label>
+                                    <label class="errorLabel"></label>
+                                    <input type="file" name="image">
+                                </div>
+                                <button type="submit" class="btn btn-default" id="saveProjectButton" data-toggle="modal" data-target="#statusArticle">Submit Button</button>
+                            </form>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="dashArticleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="panel-title" id="myModalDashArticleTitle">Articolo caricato correttamente</h3>
+                </div>
+                <div class="modal-body" id="myModalDashArticleBody">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" id="buttonDashArticleForm" data-dismiss="modal">Chiudi</button>
                 </div>
             </div>
         </div>

@@ -25,7 +25,7 @@
                                     <th>Titolo</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="rowsCommentsArticles">
                                 {foreach $articlesComments as $comment}
                                     <tr value="{$comment.id}">
                                         <td>{$comment.text}</td>
@@ -35,7 +35,7 @@
                         </table>
                     </div>
 
-                    <button class="btn btn-danger" id="removeArticlesCommentButton">Rimuovi selezionati</button>
+                    <button class="btn btn-danger removeCommentButton" id="articleComment">Rimuovi selezionati</button>
 
                 </div>
             </div>
@@ -64,7 +64,7 @@
                                     <th>Titolo</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="rowsCommentsProjects">
                                 {foreach $projectsComments as $comment}
                                     <tr value="{$comment.id}">
                                         <td>{$comment.text}</td>
@@ -73,7 +73,21 @@
                             </tbody>
                         </table>
                     </div>
-                    <button class="btn btn-danger" id="removeProjectsCommentButton">Rimuovi selezionati</button>
+                    <button class="btn btn-danger removeCommentButton" id="projectComment">Rimuovi selezionati</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="dashCommentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="panel-title" id="myModalDashCommentTitle">Commento eliminato correttamente</h3>
+                </div>
+                <div class="modal-body" id="myModalDashCommentBody">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" id="buttonDashCommentForm" data-dismiss="modal">Chiudi</button>
                 </div>
             </div>
         </div>
@@ -88,4 +102,4 @@
 <script src="Library/adminPanel/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
 <script src="Library/adminPanel/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 
-<script src="Smarty_dir/templates/js/dashUsers.js"></script>
+<script src="Smarty_dir/templates/js/dashComments.js"></script>

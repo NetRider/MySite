@@ -100,8 +100,10 @@ class ProjectController extends Controller {
         $session = Singleton::getInstance("\Control\Session");
         $project = new Project($session->getUserId(), $this->view->getProjectTitle(), $this->view->getProjectDescription(), $this->view->getProjectText(), "dia", "Data/projects_images/" . $this->view->getProjectImage());
         $dependencies = $this->view->getProjectDependencies();
-        $projectMapper->insertProject($project, $dependencies);
-        $this->view->setTemplate('projectSaved');
+        if($projectMapper->insertProject($project, $dependencies))
+            return "true";
+        else 
+            return "false";
         return $this->view->getContent();
     }
 

@@ -18,6 +18,8 @@ class HomeController extends Controller {
 	{
 		$databaseAdapter = new Database();
 		$articleMapper = new ArticleMapper($databaseAdapter);
+		$projectMapper = new ProjectMapper($databaseAdapter);
+
 		$userMapper = new UserMapper($databaseAdapter);
 		$lastThreeArticles = $articleMapper->getLastThreeArticles();
 		$data = array();

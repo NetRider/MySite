@@ -7,23 +7,33 @@ require_once 'AbstractDataMapper.php';
 use Entity\Project;
 
 class ProjectMapper extends AbstractDataMapper {
-  protected $entityTable = "project";
 
-  public function insertProject(Project $project, $dependencies)
-  {
-      if(!$this->adapter->insert($this->entityTable, array("idAuthor"=>$project->getUserId(), "title"=>$project->getTitle(), "description"=>$project->getDescription(), "text"=>$project->getText(), "date"=>$project->getDate(), "projectImage"=>$project->getImage()))) {
-          return false;
-      }
-      $lastId = $this->adapter->getLastId();
+    protected $entityTable = "project";
 
-      foreach ($dependencies as $value)
-      {
-          if(!$this->adapter->insert("dependency", array("idProject"=>$lastId, "idArticle"=>$value))) {
-              return false;
-          }
-      }
-      return true;
-  }
+    public function insertProject(Project $project, $dependencies)
+    {
+        $status = false;
+
+        if($this->adapter->insert($this->entityTable, array("idAuthor"=>$project->getUserId(), "title"=>$project->getTitle(), "description"=>$project->getDescription(), "text"=>$project->getText(), "date"=>$project->getDate(), "projectImage"=>$project->getImage())))
+        {
+            if($dependencies != null)
+            {
+                $lastId = $this->adapter->getLastId();
+
+                foreach ($dependencies as $value)
+                {
+                    if($this->adapter->insert("dependency", array("idProject"=>$lastId, "idArticle"=>$value)))
+                    {
+                        $status = true;
+                    }
+                }
+            }else {
+                $status = true;
+            }
+        }
+
+        return $status;
+    }
 
   public function getAllProjects()
   {

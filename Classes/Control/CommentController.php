@@ -28,12 +28,8 @@ class CommentController extends Controller {
 				return $this->addComment();
 			break;
 
-			case 'removeArticleComment':
-				return $this->removeArticleComment();
-			break;
-
-			case 'removeProjectComment':
-				return $this->removeProjectcomment();
+			case 'removeCommentById':
+				return $this->removeCommentById();
 			break;
 		}
 	}
@@ -60,21 +56,11 @@ class CommentController extends Controller {
 		}
 	}
 
-	private function removeArticleComment()
+	private function removeCommentById()
 	{
 		$databaseAdapter = new Database();
 		$commentMapper = new CommentMapper($databaseAdapter);
-		if($commentMapper->removeArticleComment($this->view->getCommentId()))
-			return "true";
-		else
-			return "false";
-	}
-
-	private function removeProjectComment()
-	{
-		$databaseAdapter = new Database();
-		$commentMapper = new CommentMapper($databaseAdapter);
-		if($commentMapper->removeProjectComment($this->view->getCommentId()))
+		if($commentMapper->removeCommentById($this->view->getCommentId()))
 			return "true";
 		else
 			return "false";

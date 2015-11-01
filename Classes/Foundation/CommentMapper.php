@@ -40,6 +40,11 @@ class CommentMapper extends AbstractDataMapper {
         $this->adapter->delete($this->entityTable, array("articleId"=>$id));
     }
 
+    public function removeCommentById($id)
+    {
+        return $this->adapter->delete($this->entityTable, array("id"=>$id));
+    }
+
     public function getCommentsArticlesByAuthorId($authorId)
     {
         return $this->returnAssociativeArray(array("idAuthor"=>$authorId), array("comment.id", "comment.text"), "", "", "", "comments_articles", array("comment"=>"id", "comments_articles"=>"idComment"));

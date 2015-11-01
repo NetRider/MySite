@@ -50,6 +50,11 @@ class CommentView extends View {
 		return $this->getRequest('date');
 	}
 
+	public function getCommentId()
+	{
+		return $this->getRequest('id');
+	}
+
 	public function setTemplate($template)
 	{
 		$this->template = $template;

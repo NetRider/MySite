@@ -3,6 +3,10 @@ $(function(){
 	$("#projectForm").change(function(){
 		checkForm();
 	});
+
+	$("#buttonDashProjectForm").click(function() {
+		location.reload();
+	});
 });
 
 // validate signup form on keyup and submit
@@ -38,7 +42,7 @@ function checkForm(){
 		},
 		// specifying a submitHandler prevents the default submit, good for the demo
 		submitHandler: function() {
-			console.log("ciao");
+			run_waitMe("bounce");
 			var formData = new FormData($("#projectForm")[0]);
 			formData.append("text", CKEDITOR.instances.editor1.getData());
 
@@ -48,14 +52,21 @@ function checkForm(){
 				data: formData,
 				processData: false,
 				contentType: false
-			}).done(function(data){
+			}).done(function(data) {
+				$('#panelEffect').waitMe('hide');
+
 				if(data == "true")
 				{
-					$('#panelEffect').waitMe('hide');
-
+					$("#myModalDashProjectTitle").text("Progetto caricato correttamente");
+					$("#myModalDashProjectBody").text("L'articolo è stato inserito nei database di ElectronicsHub.");
+					$("#buttonDashProjectForm").addClass("btn-success");
 				}else {
-					$('#panelEffect').waitMe('hide');
+					$("#myModalDashProjectTitle").text("Progetto non caricato correttamente");
+					$("#myModalDashProjectBody").append("E' stato riscontrato un problema con il server.");
+					$("#buttonDashProjectForm").addClass("btn-failure");
 				}
+				$("#dashProjectModal").modal('show');
+
 			});
 		},
 		// set this class to error-labels to indicate valid fields

@@ -95,18 +95,9 @@ class ArticleController extends Controller {
         $session = Singleton::getInstance("\Control\Session");
         $article = new Article($session->getUserId(), $this->view->getArticleTitle(), $this->view->getArticleDescription(), $this->view->getArticleText(), 0, $this->view->getArticleImage());
         if($articleMapper->insert($article))
-        {
-            error_log("è andato tutto bene");
-
             return "true";
-
-        }
         else
-        {
-            error_log("sono andato in errore");
             return "false";
-
-        }
     }
 
     private function deleteArticle()

@@ -3,6 +3,10 @@ $(function(){
 	$("#articleForm").change(function(){
 		checkForm();
 	});
+
+	$("#buttonDashArticleForm").click(function() {
+		location.reload();
+	});
 });
 
 // validate signup form on keyup and submit
@@ -50,13 +54,21 @@ function checkForm(){
 				processData: false,
 				contentType: false
 			}).done(function(data) {
+				$('#panelEffect').waitMe('hide');
+
 				if(data == "true")
 				{
-					$('#panelEffect').waitMe('hide');
+					$("#myModalDashArticleTitle").text("Articolo caricato correttamente");
+	                $("#myModalDashArticleBody").text("L'articolo è stato inserito nei database di ElectronicsHub.");
+	                $("#buttonDashArticleForm").addClass("btn-success");
 
 				}else {
-					$('#panelEffect').waitMe('hide');
+					$("#myModalDashArticleTitle").text("Articolo non caricato correttamente");
+	                $("#myModalDashArticleBody").append("E' stato riscontrato un problema con il server.");
+	                $("#buttonDashArticleForm").addClass("btn-failure");
 				}
+				$("#dashArticleModal").modal('show');
+
 			});
 		},
 		// set this class to error-labels to indicate valid fields

@@ -60,7 +60,6 @@ $(document).ready(function() {
     		data: { projectToRemove: document.getElementsByClassName('selected')[0].getAttribute("value")}}).done(function(data) {
             if(data == "true")
             {
-                console.log("ok");
                 $("#myModalDashJobsTitle").text("Progetto eliminato correttamente");
                 $("#myModalDashJobsBody").text("Il progetto " + tableProjects.row('.selected').data()[1] + " è stato eliminato!");
                 $("#buttonDashJobsForm").addClass("btn-success");
@@ -68,7 +67,6 @@ $(document).ready(function() {
                 tableProjects.row('.selected').remove().draw( false );
 
             }else {
-                console.log("non ok");
                 $("#myModalDashJobsTitle").text("Progetto non eliminato");
                 $("#myModalDashJobsBody").append("E' stato riscontrato un problema con il server.");
                 $("#buttonDashJobsForm").addClass("btn-failure");

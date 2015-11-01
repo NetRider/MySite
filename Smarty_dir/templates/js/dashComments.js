@@ -1,80 +1,65 @@
 $(document).ready(function() {
-    var tableArticles = $('#dataTablesArticles').DataTable({
+    var tableArticles = $('#dataTablesCommentsArticles').DataTable({
         responsive: true
     });
 
-	var tableProjects = $('#dataTablesProjects').DataTable({
+	var tableProjects = $('#dataTablesCommentsProjects').DataTable({
         responsive: true
     });
 
-    $('#rowsArticles').on('click', 'tr', function () {
+    $('#rowsCommentsArticles').on('click', 'tr', function () {
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected');
         }
         else {
-
             tableArticles.$('tr.selected').removeClass('selected');
             $(this).addClass('selected');
         }
     });
 
-	$('#rowsProjects').on('click', 'tr', function () {
+	$('#rowsCommentsProjects').on('click', 'tr', function () {
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected');
         }
         else {
-
             tableProjects.$('tr.selected').removeClass('selected');
             $(this).addClass('selected');
         }
     });
 
-    $('#removeArticleButton').click( function () {
-
+    $('.removeCommentButton').click( function () {
+		var id = this.id;
         $.ajax({
-    		url: 'index.php?controller=Article&task=deleteArticle',
+    		url: 'index.php?controller=Comment&task=removeCommentById',
     		type: 'POST',
-    		data: { articleToRemove: document.getElementsByClassName('selected')[0].getAttribute("value")}}).done(function(data) {
+    		data: { id: document.getElementsByClassName('selected')[0].getAttribute("value")}}).done(function(data) {
             if(data == "true")
             {
-                $("#myModalDashJobsTitle").text("Articolo eliminato correttamente");
-                $("#myModalDashJobsBody").text("L'articolo " + tableArticles.row('.selected').data()[1] + " è stato eliminato!");
-                $("#buttonDashJobsForm").addClass("btn-success");
-                $("#dashJobsModal").modal('show');
-                tableArticles.row('.selected').remove().draw( false );
+				if(id == "articleComment")
+				{
+	                $("#myModalDashCommentBody").text("Il commento " + tableArticles.row('.selected').data()[0] + " è stato eliminato!");
+	                tableArticles.row('.selected').remove().draw( false );
 
+				}else
+				{
+	                $("#myModalDashCommentBody").text("Il commento <br>" + tableProjects.row('.selected').data()[0] + " </br>è stato eliminato!");
+	                tableProjects.row('.selected').remove().draw( false );
+				}
+
+				$("#myModalDashCommentTitle").text("Commento eliminato correttamente");
+				$("#buttonDashCommentForm").addClass("btn-success");
+				$("#dashCommentModal").modal('show');
 
             }else {
-                $("#myModalDashJobsTitle").text("Progetto non eliminato");
-                $("#myModalDashJobsBody").append("E' stato riscontrato un problema con il server.");
-                $("#buttonDashJobsForm").addClass("btn-failure");
-                $("#dashJobsModal").modal('show');
+				if(id == "articleComment")
+					$("#myModalDashCommentTitle").text("Articolo non eliminato");
+				else
+					$("#myModalDashCommentTitle").text("Progetto non eliminato");
+
+                $("#myModalDashCommentBody").append("E' stato riscontrato un problema con il server.");
+                $("#buttonDashCommentForm").addClass("btn-failure");
+                $("#dashCommentModal").modal('show');
             }
     	});
     });
-
-	$('#removeProjectButton').click( function () {
-        $.ajax({
-    		url: 'index.php?controller=Project&task=deleteProject',
-    		type: 'POST',
-    		data: { projectToRemove: document.getElementsByClassName('selected')[0].getAttribute("value")}}).done(function(data) {
-            if(data == "true")
-            {
-                console.log("ok");
-                $("#myModalDashJobsTitle").text("Progetto eliminato correttamente");
-                $("#myModalDashJobsBody").text("Il progetto " + tableProjects.row('.selected').data()[1] + " è stato eliminato!");
-                $("#buttonDashJobsForm").addClass("btn-success");
-                $("#dashJobsModal").modal('show');
-                tableProjects.row('.selected').remove().draw( false );
-
-            }else {
-                console.log("non ok");
-                $("#myModalDashJobsTitle").text("Progetto non eliminato");
-                $("#myModalDashJobsBody").append("E' stato riscontrato un problema con il server.");
-                $("#buttonDashJobsForm").addClass("btn-failure");
-                $("#dashJobsModal").modal('show');
-            }
-    	});
-    });
-
 });
