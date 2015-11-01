@@ -65,8 +65,11 @@ class DashboardController extends Controller {
                 break;
 
                 case 'getArticlesStatistics':
-                    error_log("sono nel case");
                     return $this->getArticlesStatistics();
+                break;
+
+                case 'getCommentsStatistics':
+                    return $this->getCommentsStatistics();
                 break;
             }
         }else
@@ -161,6 +164,13 @@ class DashboardController extends Controller {
 
         $this->view->setJobsPage($articles, $projects);
         return $this->view->getContent();
+    }
+
+    private function getCommentsStatistics()
+    {
+        $databaseAdapter = new Database();
+        $commentMapper = new CommentMapper($databaseAdapter);
+        $this->view->responseAjaxCall(json_encode($commentMapper->getCommentsCountedByDate()));
     }
 
     private function getArticlesStatistics()

@@ -95,7 +95,22 @@
         </div>
     </div>
 </div>
-<!-- /.row -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-bar-chart-o fa-fw"></i> Grafico Commenti
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div id="commentsChart" style="height: 250px;"></div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -105,6 +120,21 @@
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div id="articlesChart" style="height: 250px;"></div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-bar-chart-o fa-fw"></i> Grafico Articoli
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div id="projectsChart" style="height: 250px;"></div>
             </div>
             <!-- /.panel-body -->
         </div>

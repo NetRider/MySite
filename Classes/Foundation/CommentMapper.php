@@ -60,6 +60,11 @@ class CommentMapper extends AbstractDataMapper {
         return $this->returnAssociativeArray(array(), "COUNT");
     }
 
+    public function getCommentsCountedByDate()
+    {
+        return $this->returnAssociativeArray(array(), array("DATE_FORMAT(date, '%Y-%m-%d')date", "count(date)"), "", "", "", "", array(), array("YEAR(date)", "MONTH(date)", "DAY(Date)"));
+    }
+
     protected function createEntity($row)
     {
         return new Comment($row["text"], $row["date"], $row["idAuthor"]);
