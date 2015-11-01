@@ -45,7 +45,7 @@
             $this->dbConnection->close();
         }
 
-        public function select($table, $cond, $bind, $op, $order, $limit, $joinTable, $joinBind, $groupBY) {
+        public function select($table, $cond, $bind, $op, $order, $limit, $joinTable, $joinBind, $groupBy) {
             $this->connect();
             $sql = "";
 
@@ -94,6 +94,7 @@
 
             if(!empty($groupBy))
             {
+                error_log("faccio il groupBy");
                 $group=implode(",", $groupBy);
                 $sql = $sql . " GROUP BY " . $group;
             }

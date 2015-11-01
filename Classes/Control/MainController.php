@@ -62,6 +62,7 @@ class MainController extends Controller {
 		In altre parole il controllore non mi ritorna la pagina da aggiungere al main.tpl
 		Quindi non devo fare nulla ci pensa la View del rispettivo controllore ad inviare i dati
 		 */
+		
 		if($data != null)
 		{
 			$this->view->setContent($data);

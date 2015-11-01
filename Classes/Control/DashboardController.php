@@ -26,6 +26,7 @@ class DashboardController extends Controller {
     public function executeTask()
     {
         $task = $this->view->getTask();
+        error_log($task);
         $session = Singleton::getInstance("\Control\Session");
         if($session->checkPermission($task))
         {
@@ -61,6 +62,11 @@ class DashboardController extends Controller {
 
                 case 'getJobsPage':
                     return $this->getJobsPage();
+                break;
+
+                case 'getArticlesStatistics':
+                    error_log("sono nel case");
+                    return $this->getArticlesStatistics();
                 break;
             }
         }else
@@ -155,6 +161,14 @@ class DashboardController extends Controller {
 
         $this->view->setJobsPage($articles, $projects);
         return $this->view->getContent();
+    }
+
+    private function getArticlesStatistics()
+    {
+        $databaseAdapter = new Database();
+        $articleMapper = new ArticleMapper($databaseAdapter);
+        error_log(print_r($articleMapper->getArticlesCountedByDate(), true));
+        $this->view->responseAjaxCall(json_encode($articleMapper->getArticlesCountedByDate()));
     }
 
     private function getDashboardPage()

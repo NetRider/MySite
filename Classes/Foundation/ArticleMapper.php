@@ -52,7 +52,7 @@ class ArticleMapper extends AbstractDataMapper {
 
     public function getArticlesCountedByDate()
     {
-        return $this->returnAssociativeArray(array(), array("date", "count(date)"), "", "", "", "", array(), array("YEAR(date)", "MONTH(date)", "DAY(Date)"));
+        return $this->returnAssociativeArray(array(), array("DATE_FORMAT(date, '%Y-%m-%d')date", "count(date)"), "", "", "", "", array(), array("YEAR(date)", "MONTH(date)", "DAY(Date)"));
     }
 
     public function getArticleImageById($id)

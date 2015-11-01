@@ -100,7 +100,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-bar-chart-o fa-fw"></i> Area Chart Example
+                <i class="fa fa-bar-chart-o fa-fw"></i> Grafico Articoli
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
