@@ -58,6 +58,8 @@ class RegistrationView extends View {
 				$image = basename($_FILES["image"]["name"]);
 	            $imagePath = "Data/profile_images/" . $image;
 	            move_uploaded_file($_FILES["image"]["tmp_name"], $imagePath);
+			}else {
+				return "beccato";
 			}
 
         }else {

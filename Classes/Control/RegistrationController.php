@@ -24,12 +24,12 @@ class RegistrationController extends Controller {
 			case 'addNewUser':
 				$databaseAdapter = new Database();
 				$userMapper = new UserMapper($databaseAdapter);
-
-				if($this->view->getProfileImage() == "beccato")
+				$image = $this->view->getProfileImage();
+				if($image == "beccato")
 				{
 
 				}else {
-					$user = new User($this->view->getUsername(), $this->view->getEmail(),$this->view->getPassword(), $this->view->getProfileImage(), 2);
+					$user = new User($this->view->getUsername(), $this->view->getEmail(),$this->view->getPassword(), $image, 2);
 					$this->view->responseAjaxCall($userMapper->insert($user));
 				}
 			break;
