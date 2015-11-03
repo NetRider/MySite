@@ -73,14 +73,22 @@ class ArticleController extends Controller {
         $comments = $commentMapper->getCommentsByArticleId($article->getId());
         $articleAuthor = $userMapper->getuserById($article->getAuthorId());
         $data = array();
+        error_log(print_r($comments, true));
 
         if($comments)
         {
-            foreach ($comments as $comment)
+            if(is_array($comments))
             {
-                $user = $userMapper->getUserByID($comment->getUserId());
-                array_push($data, array("author"=>$user->getUsername(), "image"=>$user->getImage(), "text"=>$comment->getText(), "authorId"=>$user->getId(), "date"=>$comment->getDate()));
+                foreach ($comments as $comment)
+                {
+                    $user = $userMapper->getUserByID($comment->getUserId());
+                    array_push($data, array("author"=>$user->getUsername(), "image"=>$user->getImage(), "text"=>$comment->getText(), "authorId"=>$user->getId(), "date"=>$comment->getDate()));
+                }
+            }else {
+                $user = $userMapper->getUserByID($comments->getUserId());
+                array_push($data, array("author"=>$user->getUsername(), "image"=>$user->getImage(), "text"=>$comments->getText(), "authorId"=>$user->getId(), "date"=>$comments->getDate()));
             }
+
         }
 
         $this->view->assignArticleData($article->getId(), $article->getTitle(), $article->getText(), $articleAuthor->getUsername(), $article->getImage(), $article->getDate(), $data);

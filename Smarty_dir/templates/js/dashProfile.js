@@ -84,7 +84,7 @@ function checkForm(){
 				processData: false,
 				contentType: false
 			}).done(function(data){
-				if(data)
+				if(data == "1")
 				{
 					$("#myModalDashProfileTitle").text("Aggiornamento completato");
 		            $("#myModalDashProfileBody").text("I dati del profilo sono stati aggioranti sul server!");
@@ -117,7 +117,6 @@ function checkForm(){
 			child.addClass("has-error");
 			child.next().find("." + errorClass).removeClass("checked");
 			child.next().show();
-
 		}
 	});
 }

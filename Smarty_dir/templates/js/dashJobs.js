@@ -35,7 +35,7 @@ $(document).ready(function() {
     		url: 'index.php?controller=Article&task=deleteArticle',
     		type: 'POST',
     		data: { articleToRemove: document.getElementsByClassName('selected')[0].getAttribute("value")}}).done(function(data) {
-            if(data)
+            if(data == "1")
             {
                 $("#myModalDashJobsTitle").text("Articolo eliminato correttamente");
                 $("#myModalDashJobsBody").text("L'articolo " + tableArticles.row('.selected').data()[1] + " è stato eliminato!");
@@ -58,7 +58,7 @@ $(document).ready(function() {
     		url: 'index.php?controller=Project&task=deleteProject',
     		type: 'POST',
     		data: { projectToRemove: document.getElementsByClassName('selected')[0].getAttribute("value")}}).done(function(data) {
-            if(data)
+            if(data == "1")
             {
                 $("#myModalDashJobsTitle").text("Progetto eliminato correttamente");
                 $("#myModalDashJobsBody").text("Il progetto " + tableProjects.row('.selected').data()[1] + " è stato eliminato!");

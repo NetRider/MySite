@@ -17,6 +17,7 @@ abstract class View extends \Smarty {
 
 	public function responseAjaxCall($data)
 	{
+		error_log("faccio echo di " . $data);
 		echo($data);
 	}
 }

@@ -79,6 +79,10 @@ class ProjectMapper extends AbstractDataMapper {
           return false;
   }
 
+  public function getProjectsCountedByDate()
+  {
+      return $this->returnAssociativeArray(array(), array("DATE_FORMAT(date, '%Y-%m-%d')date", "count(date)"), "", "", "", "", array(), array("YEAR(date)", "MONTH(date)", "DAY(Date)"));
+  }
 
   protected function createEntity($row) {
     $project =  new Project($row["idAuthor"], $row["title"], $row["description"], $row["text"], $row["date"], $row["projectImage"]);

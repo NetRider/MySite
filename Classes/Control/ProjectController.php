@@ -80,11 +80,18 @@ class ProjectController extends Controller {
 
         if($comments)
         {
-            foreach ($comments as $comment)
+            if(is_array($comments))
             {
-                $user = $userMapper->getUserByID($comment->getUserId());
-                array_push($dataComments, array("author"=>$user->getUsername(), "image"=>$user->getImage(), "text"=>$comment->getText(), "authorId"=>$user->getId(), "date"=>$comment->getDate()));
+                foreach ($comments as $comment)
+                {
+                    $user = $userMapper->getUserByID($comment->getUserId());
+                    array_push($dataComments, array("author"=>$user->getUsername(), "image"=>$user->getImage(), "text"=>$comment->getText(), "authorId"=>$user->getId(), "date"=>$comment->getDate()));
+                }
+            }else {
+                $user = $userMapper->getUserByID($comments->getUserId());
+                array_push($dataComments, array("author"=>$user->getUsername(), "image"=>$user->getImage(), "text"=>$comments->getText(), "authorId"=>$user->getId(), "date"=>$comments->getDate()));
             }
+
         }
 
         $dependencies = $articleMapper->getArticlesDependenciesByProjectId($project->getId());

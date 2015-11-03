@@ -18,7 +18,7 @@ $(document).ready(function() {
     		url: 'index.php?controller=UserAccess&task=removeUser',
     		type: 'POST',
     		data: { userToRemove: table.row('.selected').data()[0]} }).done(function(data) {
-            if(data)
+            if(data == "1")
             {
                 $("#myModalDashUsersTitle").text("Utente eliminato correttamente");
                 $("#myModalDashUsersBody").text("Utente " + table.row('.selected').data()[0] + " è stato cancellato dal database di Electronics Hub");
@@ -41,17 +41,18 @@ function updateValue(sel) {
 		url: 'index.php?controller=UserAccess&task=updateUserRole',
 		type: 'POST',
 		data: {idRole: sel.value, idUser: sel.parentNode.getAttribute("value")}}).done(function(data) {
-        if(data)
+        if(data == "1")
         {
-            console.log(sel.parentNode.parentNode);
             $("#myModalDashUsersTitle").text("Cambio di ruolo");
-            $("#myModalDashUsersBody").text("Il cambio di ruolo per l'utente " + sel.parentNode.parentNode.data()[0] + " è avvenuto con successo");
+            $("#myModalDashUsersBody").text("Il cambio di ruolo effetuato con successo");
             $("#paneldashUsersForm").addClass("panel-success");
             $("#buttonDashUsersForm").addClass("btn-success");
             $("#dashUsersModal").modal('show');
 
         }else {
-            console.log("non ok");
-        }
+            $("#myModalDashUsersTitle").text("Cambio di ruolo fallito");
+            $("#myModalDashUsersBody").append("E' stato riscontrato un problema con il server.");
+            $("#buttonDashUsersForm").addClass("btn-failure");
+            $("#dashUsersModal").modal('show');        }
 	});
 }

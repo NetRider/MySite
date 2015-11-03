@@ -17,16 +17,7 @@ $(document).ready(function(){
                 type: 'POST',
                 data: loginData
             }).done(function(data) {
-                if(data)
-                {
-                    button.removeClass("btn-success")
-            				.addClass("form-control btn btn-danger")
-            				.text("Ritenta")
-            				.removeAttr("data-dismiss");
-        			title.text("Login fallito!");
-
-                }else if(data)
-                {
+                if(data == "1") {
                     button.removeClass("btn-danger")
             				.addClass("btn btn-success")
             				.text("Chiudi")
@@ -34,12 +25,17 @@ $(document).ready(function(){
         			title.text("Login effettuato!");
                     button.click(function() {
                         if(location.search == "?controller=UserAccess&task=logout")
-                        {
                             location.replace("/MySite/index.php");
-                        }else {
+                        else
                             location.reload();
-                        }
                     });
+
+                }else {
+                    button.removeClass("btn-success")
+            				.addClass("form-control btn btn-danger")
+            				.text("Ritenta")
+            				.removeAttr("data-dismiss");
+        			title.text("Login fallito!");
                 }
             });
 		}

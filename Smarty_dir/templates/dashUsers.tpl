@@ -62,16 +62,15 @@
         </div>
     </div>
     <div class="modal fade" id="dashUsersModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="panel-title" id="myModalDashUsersTitle">Utente eliminato correttamente</h3>
-                    </div>
-                    <div class="modal-body" id="myModalDashUsersBody">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn" id="buttonDashUsersForm" data-dismiss="modal">Chiudi</button>
-                    </div>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="panel-title" id="myModalDashUsersTitle">Utente eliminato correttamente</h3>
+                </div>
+                <div class="modal-body" id="myModalDashUsersBody">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" id="buttonDashUsersForm" data-dismiss="modal">Chiudi</button>
                 </div>
             </div>
         </div>

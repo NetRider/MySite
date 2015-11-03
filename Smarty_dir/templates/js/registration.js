@@ -94,7 +94,7 @@ function checkForm(){
 				processData: false,
 				contentType: false
 			}).done(function(data){
-				if(data)
+				if(data == "1")
 				{
 					$("#myModalRegistrationTitle").text("Utente Registrato");
 					$("#myModalRegistrationBody").append("L'utente è stato inserito nel database di Electronics Hub");

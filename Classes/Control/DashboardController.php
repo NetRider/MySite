@@ -71,6 +71,9 @@ class DashboardController extends Controller {
                 case 'getCommentsStatistics':
                     return $this->getCommentsStatistics();
                 break;
+
+                case 'getProjectsStatistics':
+                    return $this->getProjectsStatistics();
             }
         }else
         {
@@ -177,8 +180,14 @@ class DashboardController extends Controller {
     {
         $databaseAdapter = new Database();
         $articleMapper = new ArticleMapper($databaseAdapter);
-        error_log(print_r($articleMapper->getArticlesCountedByDate(), true));
         $this->view->responseAjaxCall(json_encode($articleMapper->getArticlesCountedByDate()));
+    }
+
+    private function getProjectsStatistics()
+    {
+        $databaseAdapter = new Database();
+        $projectMapper = new ProjectMapper($databaseAdapter);
+        $this->view->responseAjaxCall(json_encode($projectMapper->getProjectsCountedByDate()));
     }
 
     private function getDashboardPage()

@@ -15,11 +15,12 @@ class UserMapper extends AbstractDataMapper {
 
     public function validateLogin($name, $password)
     {
-        $found = $this->find(array("username"=>$name, "password"=>$password));
-        if($found)
-          return $found;
+        error_log("sono dentro a validateLogin");
+
+        if($this->find(array("username"=>$name, "password"=>$password)))
+            return true;
         else
-          return false;
+            return false;
     }
 
     public function getAllUsers()

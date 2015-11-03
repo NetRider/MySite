@@ -44,14 +44,16 @@ class UserAccessController extends Controller {
 
     public function login()
     {
+        error_log("sono dentro a login");
         $username = $this->view->getUsername();
         $password = $this->view->getUserPassword();
-        $userData = $this->userAuthentication($username, $password);
 
-        if($userData) {
+        if($this->userAuthentication($username, $password)) {
+            error_log("ho trovato lo user");
             $session = Singleton::getInstance("\Control\Session");
             $session->login($username);
             $this->view->responseAjaxCall(true);
+
         }else {
             $this->view->responseAjaxCall(false);
         }
@@ -67,16 +69,13 @@ class UserAccessController extends Controller {
 
     private function userAuthentication($username, $password)
     {
+        error_log("sono dentro a userAuthentication");
         $databaseAdapter = new Database();
         $userMapper = new UserMapper($databaseAdapter);
-        $userData = $userMapper->validateLogin($username, $password);
-        if($userData)
-        {
-            return $userData;
-        }else
-        {
+        if($userMapper->validateLogin($username, $password))
+            return true;
+        else
             return false;
-        }
     }
 
     private function updateUserRole()

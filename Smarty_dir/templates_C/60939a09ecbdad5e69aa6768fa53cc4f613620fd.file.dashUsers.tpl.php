@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2015-10-30 16:33:49
+<?php /* Smarty version Smarty-3.1.18, created on 2015-11-03 17:19:37
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/dashUsers.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:9312099055610fc68973a36-64714241%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '60939a09ecbdad5e69aa6768fa53cc4f613620fd' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/dashUsers.tpl',
-      1 => 1446219217,
+      1 => 1446567460,
       2 => 'file',
     ),
   ),
@@ -106,16 +106,15 @@ $_smarty_tpl->tpl_vars['option']->_loop = true;
         </div>
     </div>
     <div class="modal fade" id="dashUsersModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="panel-title" id="myModalDashUsersTitle">Utente eliminato correttamente</h3>
-                    </div>
-                    <div class="modal-body" id="myModalDashUsersBody">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn" id="buttonDashUsersForm" data-dismiss="modal">Chiudi</button>
-                    </div>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="panel-title" id="myModalDashUsersTitle">Utente eliminato correttamente</h3>
+                </div>
+                <div class="modal-body" id="myModalDashUsersBody">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" id="buttonDashUsersForm" data-dismiss="modal">Chiudi</button>
                 </div>
             </div>
         </div>

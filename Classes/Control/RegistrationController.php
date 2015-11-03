@@ -42,12 +42,12 @@ class RegistrationController extends Controller {
 				$session = Singleton::getInstance("\Control\Session");
 
 				if($session->userIsLogged() && $this->view->getUsernameToCheck() == $session->getUsername()) {
-					$this->view->responseAjaxCall(true);
+					$this->view->responseAjaxCall("true");
 				}else {
 					if($found)
-						$this->view->responseAjaxCall(false);
+						$this->view->responseAjaxCall("false");
 					else
-						$this->view->responseAjaxCall(true);
+						$this->view->responseAjaxCall("true");
 					break;
 				}
 
@@ -61,12 +61,12 @@ class RegistrationController extends Controller {
 				$session = Singleton::getInstance("\Control\Session");
 
 				if($session->userIsLogged() && $this->view->getEmailToCheck() == $session->getUserEmail()) {
-					$this->view->responseAjaxCall(true);
+					$this->view->responseAjaxCall("true");
 				}else {
 					if($found)
-						$this->view->responseAjaxCall(false);
+						$this->view->responseAjaxCall("false");
 					else
-						$this->view->responseAjaxCall(true);
+						$this->view->responseAjaxCall("true");
 					break;
 				}
 
