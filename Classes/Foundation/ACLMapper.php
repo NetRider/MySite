@@ -1,9 +1,6 @@
 <?php
 
-namespace Foundation;
-require_once 'AbstractDataMapper.php';
 
-use Entity\Role;
 
 class ACLMapper extends AbstractDataMapper {
 

@@ -1,18 +1,5 @@
 <?php
 
-namespace Control;
-
-include_once(dirname(__FILE__).'/../Utility/Session.php');
-include_once(dirname(__FILE__).'/../Utility/Singleton.php');
-include_once(dirname(__FILE__).'/../Foundation/UserMapper.php');
-include_once(dirname(__FILE__).'/../Foundation/Database.php');
-
-use Control\Controller;
-use View\View;
-use Utility\Singleton;
-use Foundation\Database;
-use Foundation\UserMapper;
-use Control\Session;
 
 class UserAccessController extends Controller {
 
@@ -50,7 +37,7 @@ class UserAccessController extends Controller {
 
         if($this->userAuthentication($username, $password)) {
             error_log("ho trovato lo user");
-            $session = Singleton::getInstance("\Control\Session");
+            $session = Singleton::getInstance("Session");
             $session->login($username);
             $this->view->responseAjaxCall(true);
 
@@ -61,7 +48,7 @@ class UserAccessController extends Controller {
 
     public function logout()
     {
-        $session = Singleton::getInstance("\Control\Session");
+        $session = Singleton::getInstance("Session");
         $logout = $this->view->logout();
         $session->logout();
         return $logout;
@@ -69,10 +56,9 @@ class UserAccessController extends Controller {
 
     private function userAuthentication($username, $password)
     {
-        error_log("sono dentro a userAuthentication");
         $databaseAdapter = new Database();
         $userMapper = new UserMapper($databaseAdapter);
-        if($userMapper->validateLogin($username, $password))
+        if($userMapper->validateLogin($username, md5($password)))
             return true;
         else
             return false;
@@ -102,7 +88,7 @@ class UserAccessController extends Controller {
     {
         $databaseAdapter = new Database();
         $userMapper = new UserMapper($databaseAdapter);
-        $session = Singleton::getInstance("\Control\Session");
+        $session = Singleton::getInstance("Session");
 
         if($this->view->getUsername() == "")
             $username = $session->getUsername();

@@ -1,18 +1,4 @@
 <?php
-namespace Control;
-
-include_once(dirname(__FILE__).'/../Entity/User.php');
-include_once(dirname(__FILE__).'/../Foundation/UserMapper.php');
-include_once(dirname(__FILE__).'/../Foundation/Database.php');
-include_once(dirname(__FILE__).'/../Utility/Singleton.php');
-include_once(dirname(__FILE__).'/../View/View.php');
-
-use Control\Controller;
-use View\View;
-use Entity\User;
-use Foundation\Database;
-use Foundation\UserMapper;
-use Utility\Singleton;
 
 class RegistrationController extends Controller {
 
@@ -29,7 +15,7 @@ class RegistrationController extends Controller {
 				{
 
 				}else {
-					$user = new User($this->view->getUsername(), $this->view->getEmail(),$this->view->getPassword(), $image, 2);
+					$user = new User($this->view->getUsername(), $this->view->getEmail(), md5($this->view->getPassword()), $image, 2);
 					$this->view->responseAjaxCall($userMapper->insert($user));
 				}
 			break;
@@ -39,7 +25,7 @@ class RegistrationController extends Controller {
 				$userMapper = new UserMapper($databaseAdapter);
 				$found = $userMapper->existUserName($this->view->getUsernameToCheck());
 
-				$session = Singleton::getInstance("\Control\Session");
+				$session = Singleton::getInstance("Session");
 
 				if($session->userIsLogged() && $this->view->getUsernameToCheck() == $session->getUsername()) {
 					$this->view->responseAjaxCall("true");
@@ -58,7 +44,7 @@ class RegistrationController extends Controller {
 				$userMapper = new UserMapper($databaseAdapter);
 				$found = $userMapper->existUserEmail($this->view->getEmailToCheck());
 
-				$session = Singleton::getInstance("\Control\Session");
+				$session = Singleton::getInstance("Session");
 
 				if($session->userIsLogged() && $this->view->getEmailToCheck() == $session->getUserEmail()) {
 					$this->view->responseAjaxCall("true");

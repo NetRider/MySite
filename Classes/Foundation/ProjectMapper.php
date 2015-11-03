@@ -1,10 +1,7 @@
 <?php
 
-namespace Foundation;
 
-require_once 'AbstractDataMapper.php';
 
-use Entity\Project;
 
 class ProjectMapper extends AbstractDataMapper {
 
@@ -85,7 +82,7 @@ class ProjectMapper extends AbstractDataMapper {
   }
 
   protected function createEntity($row) {
-    $project =  new Project($row["idAuthor"], $row["title"], $row["description"], $row["text"], $row["date"], $row["projectImage"]);
+    $project =  new ProjectEntity($row["idAuthor"], $row["title"], $row["description"], $row["text"], $row["date"], $row["projectImage"]);
     $project->setId($row["id"]);
 
     return $project;

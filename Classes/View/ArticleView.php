@@ -1,9 +1,4 @@
 <?php
-namespace View;
-
-include_once(dirname(__FILE__).'/../View/View.php');
-
-use Utility\Singleton;
 
 class ArticleView extends View {
 
@@ -74,7 +69,7 @@ class ArticleView extends View {
 
 	public function assignArticleData($articleId, $title, $text, $author, $image, $date, $comments)
 	{
-		$session = Singleton::getInstance("\Control\Session");
+		$session = Singleton::getInstance("Session");
 		if($session->userIsLogged())
 		{
 			$this->assign('loggedIn', true);

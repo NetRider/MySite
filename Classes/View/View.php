@@ -1,5 +1,4 @@
 <?php
-namespace View;
 
 require('Library/Smarty-3.1.18/libs/Smarty.class.php');
 
@@ -17,7 +16,6 @@ abstract class View extends \Smarty {
 
 	public function responseAjaxCall($data)
 	{
-		error_log("faccio echo di " . $data);
 		echo($data);
 	}
 }

@@ -1,13 +1,6 @@
 <?php
-namespace Entity;
 
-include_once(dirname(__FILE__).'/../Foundation/ACLMapper.php');
-include_once(dirname(__FILE__).'/../Foundation/Database.php');
-
-use Foundation\Database;
-use Foundation\ACLMapper;
-
-	class User
+	class UserEntity
 	{
 		private $id;
 		private $username;

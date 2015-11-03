@@ -1,8 +1,6 @@
 <?php
 
-namespace Entity;
 
-require_once 'Comment.php';
 /*
 Classe che gestisce gli articoli. La mia logica è stata quella di mettere all'interno di questa classe
 un array di istanze della classe Comment.php. Questo perché nel caso in cui si decida di cancellare per
@@ -10,7 +8,7 @@ qualche ragione l'articolo del blog vengono automaticamente rimossi anche tutti 
 quell'articolo richiamando la funzione distruttore.
 */
 
-class Article {
+class ArticleEntity {
 
 	private $id;
 	private $userId;

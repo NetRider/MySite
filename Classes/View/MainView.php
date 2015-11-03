@@ -1,9 +1,4 @@
 <?php
-namespace View;
-
-include_once(dirname(__FILE__).'/../View/View.php');
-
-use Utility\Singleton;
 
 class MainView extends View {
 	private $rightMenu;
@@ -16,7 +11,7 @@ class MainView extends View {
 
 	public function setRightMenuUser()
 	{
-		$session = Singleton::getInstance("\Control\Session");
+		$session = Singleton::getInstance("Session");
 		$this->assign('userImage', $session->getUserImage());
 		$this->assign('username', $session->get('username'));
 		$this->rightMenu = $this->fetch("logged.tpl");

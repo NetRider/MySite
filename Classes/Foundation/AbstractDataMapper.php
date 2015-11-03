@@ -6,8 +6,6 @@
  * Time: 12:32
  */
 
-namespace Foundation;
-
 abstract class AbstractDataMapper
 {
     protected $adapter;

@@ -1,9 +1,6 @@
 <?php
-namespace Control;
 
-include_once(dirname(__FILE__).'/../View/View.php');
 
-use View\View;
 
 abstract Class Controller {
 

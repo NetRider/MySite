@@ -1,10 +1,8 @@
 <?php
 
-	namespace Entity;
 
-	require_once 'User.php';
 
-	class Comment
+	class CommentEntity
 	{
 		private $text;
         private $date;

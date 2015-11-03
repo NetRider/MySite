@@ -3,7 +3,6 @@
  * Singleton class definition.
  *
  */
-namespace Utility;
 
 /**
  * Singleton class.

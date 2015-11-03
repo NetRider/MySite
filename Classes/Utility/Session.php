@@ -1,13 +1,4 @@
 <?php
-namespace Control;
-
-include_once(dirname(__FILE__).'/../Entity/User.php');
-include_once(dirname(__FILE__).'/../Foundation/UserMapper.php');
-include_once(dirname(__FILE__).'/../Foundation/Database.php');
-
-use Entity\User;
-use Foundation\Database;
-use Foundation\UserMapper;
 
 class Session {
     private $lifetime;

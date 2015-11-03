@@ -1,9 +1,5 @@
 <?php
-namespace View;
 
-include_once(dirname(__FILE__).'/../View/View.php');
-
-use Utility\Singleton;
 
 
 class ProjectView extends View {
@@ -65,7 +61,7 @@ class ProjectView extends View {
 
 	public function assignProjectData($projectId, $title, $text, $author, $image, $date, $comments, $dependencies)
 	{
-		$session = Singleton::getInstance("\Control\Session");
+		$session = Singleton::getInstance("Session");
 		if($session->userIsLogged())
 		{
 			$this->assign('loggedIn', true);

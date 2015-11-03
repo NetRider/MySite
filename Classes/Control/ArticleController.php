@@ -1,21 +1,4 @@
 <?php
-namespace Control;
-
-include_once(dirname(__FILE__).'/../Entity/Article.php');
-include_once(dirname(__FILE__).'/../Foundation/ArticleMapper.php');
-include_once(dirname(__FILE__).'/../Foundation/UserMapper.php');
-include_once(dirname(__FILE__).'/../Foundation/CommentMapper.php');
-include_once(dirname(__FILE__).'/../Foundation/Database.php');
-include_once(dirname(__FILE__).'/../View/View.php');
-
-use Control\Controller;
-use View\View;
-use Foundation\CommentMapper;
-use Foundation\Database;
-use Foundation\ArticleMapper;
-use Entity\Article;
-use Foundation\UserMapper;
-use Utility\Singleton;
 
 class ArticleController extends Controller {
 
@@ -100,7 +83,7 @@ class ArticleController extends Controller {
     {
         $databaseAdapter = new Database();
         $articleMapper = new ArticleMapper($databaseAdapter);
-        $session = Singleton::getInstance("\Control\Session");
+        $session = Singleton::getInstance("Session");
         $article = new Article($session->getUserId(), $this->view->getArticleTitle(), $this->view->getArticleDescription(), $this->view->getArticleText(), date('o-m-d H:i:s'), $this->view->getArticleImage());
         $this->view->responseAjaxCall($articleMapper->insert($article));
     }

@@ -1,10 +1,7 @@
 <?php
 
-namespace Foundation;
 
-require_once 'AbstractDataMapper.php';
 
-use Entity\Comment;
 
 class CommentMapper extends AbstractDataMapper {
     protected $entityTable = "comment";
@@ -67,7 +64,7 @@ class CommentMapper extends AbstractDataMapper {
 
     protected function createEntity($row)
     {
-        return new Comment($row["text"], $row["date"], $row["idAuthor"]);
+        return new CommentEntity($row["text"], $row["date"], $row["idAuthor"]);
     }
 
 }

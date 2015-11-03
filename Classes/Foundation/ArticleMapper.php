@@ -1,11 +1,5 @@
 <?php
 
-namespace Foundation;
-
-require_once 'AbstractDataMapper.php';
-
-use Entity\Article;
-
 class ArticleMapper extends AbstractDataMapper {
 
     protected $entityTable = "article";
@@ -71,7 +65,7 @@ class ArticleMapper extends AbstractDataMapper {
 
     protected function createEntity($row)
     {
-        $article =  new Article($row["idAuthor"], $row["title"], $row["description"], $row["text"], $row["date"], $row["articleImage"]);
+        $article = new ArticleEntity($row["idAuthor"], $row["title"], $row["description"], $row["text"], $row["date"], $row["articleImage"]);
         $article->setId($row["id"]);
         return $article;
     }

@@ -1,9 +1,5 @@
 <?php
-namespace View;
 
-include_once(dirname(__FILE__).'/../View/View.php');
-
-use Utility\Singleton;
 
 class UserAccessView extends View {
 
@@ -84,7 +80,7 @@ class UserAccessView extends View {
 
 	public function login()
 	{
-		$session = Singleton::getInstance("\Control\Session");
+		$session = Singleton::getInstance("Session");
 		$this->assign('username', $session->get('username'));
 		error_log(print_r("sono nel login", true));
 		return $this->fetch('correctLogin.tpl');
@@ -92,7 +88,7 @@ class UserAccessView extends View {
 
 	public function logout()
 	{
-		$session = Singleton::getInstance("\Control\Session");
+		$session = Singleton::getInstance("Session");
 		$this->assign('username', $session->get('username'));
 		return $this->fetch('correctLogout.tpl');
 	}

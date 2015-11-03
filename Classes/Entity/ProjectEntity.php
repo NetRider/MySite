@@ -1,10 +1,8 @@
 <?php
 
-namespace Entity;
 
-require_once 'Comment.php';
 
-class Project {
+class ProjectEntity {
 
 	private $id;
 	private $userId;

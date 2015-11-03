@@ -1,25 +1,7 @@
 <?php
 
-namespace Control;
 
-include_once(dirname(__FILE__).'/../Entity/Article.php');
-include_once(dirname(__FILE__).'/../Foundation/ProjectMapper.php');
-include_once(dirname(__FILE__).'/../Foundation/ArticleMapper.php');
-include_once(dirname(__FILE__).'/../Foundation/UserMapper.php');
-include_once(dirname(__FILE__).'/../Foundation/CommentMapper.php');
-include_once(dirname(__FILE__).'/../Foundation/ACLMapper.php');
-include_once(dirname(__FILE__).'/../Foundation/Database.php');
-include_once(dirname(__FILE__).'/../View/View.php');
 
-use Control\Controller;
-use View\View;
-use Foundation\Database;
-use Foundation\ArticleMapper;
-use Foundation\ProjectMapper;
-use Foundation\ACLMapper;
-use Foundation\UserMapper;
-use Foundation\CommentMapper;
-use Utility\Singleton;
 
 class DashboardController extends Controller {
 
@@ -27,7 +9,7 @@ class DashboardController extends Controller {
     {
         $task = $this->view->getTask();
         error_log($task);
-        $session = Singleton::getInstance("\Control\Session");
+        $session = Singleton::getInstance("Session");
         if($session->checkPermission($task))
         {
             switch($task)
@@ -111,7 +93,7 @@ class DashboardController extends Controller {
     private function getProfilePage()
     {
 
-        $session = Singleton::getInstance("\Control\Session");
+        $session = Singleton::getInstance("Session");
 
 
         $this->view->setProfilePage($session->getUsername(), $session->getUserEmail(), $session->getUserImage());
@@ -149,7 +131,7 @@ class DashboardController extends Controller {
     {
         $databaseAdapter = new Database();
         $commentMapper = new CommentMapper($databaseAdapter);
-        $session = Singleton::getInstance("\Control\Session");
+        $session = Singleton::getInstance("Session");
         $articlesComments = $commentMapper->getCommentsArticlesByAuthorId($session->getUserId());
         $projectsComments = $commentMapper->getCommentsProjectsByAuthorId($session->getUserId());
 

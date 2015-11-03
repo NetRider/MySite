@@ -1,23 +1,5 @@
 <?php
-namespace Control;
 
-include_once(dirname(__FILE__).'/../Entity/Project.php');
-include_once(dirname(__FILE__).'/../Foundation/ProjectMapper.php');
-include_once(dirname(__FILE__).'/../Foundation/UserMapper.php');
-include_once(dirname(__FILE__).'/../Foundation/ArticleMapper.php');
-include_once(dirname(__FILE__).'/../Foundation/CommentMapper.php');
-include_once(dirname(__FILE__).'/../Foundation/Database.php');
-include_once(dirname(__FILE__).'/../View/View.php');
-
-use Control\Controller;
-use View\View;
-use Foundation\CommentMapper;
-use Foundation\Database;
-use Entity\Project;
-use Foundation\ProjectMapper;
-use Foundation\UserMapper;
-use Foundation\ArticleMapper;
-use Utility\Singleton;
 
 class ProjectController extends Controller {
 
@@ -104,7 +86,7 @@ class ProjectController extends Controller {
     {
         $databaseAdapter = new Database();
         $projectMapper = new ProjectMapper($databaseAdapter);
-        $session = Singleton::getInstance("\Control\Session");
+        $session = Singleton::getInstance("Session");
         $project = new Project($session->getUserId(), $this->view->getProjectTitle(), $this->view->getProjectDescription(), $this->view->getProjectText(), date('o-m-d H:i:s'), "Data/projects_images/" . $this->view->getProjectImage());
         $dependencies = $this->view->getProjectDependencies();
         $this->view->responseAjaxCall($projectMapper->insertProject($project, $dependencies));

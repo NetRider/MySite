@@ -1,7 +1,5 @@
 <?php
-namespace View;
 
-include_once(dirname(__FILE__).'/../View/View.php');
 
 class HomeView extends View {
 

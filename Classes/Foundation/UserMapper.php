@@ -1,10 +1,5 @@
 <?php
 
-namespace Foundation;
-require_once 'AbstractDataMapper.php';
-
-use Entity\User;
-
 class UserMapper extends AbstractDataMapper {
     protected $entityTable = "user";
 
@@ -87,7 +82,7 @@ class UserMapper extends AbstractDataMapper {
     }
 
     protected function createEntity($row) {
-        $user = new User($row["username"], $row["email"], $row["password"], $row["profileImage"], $row["role"]);
+        $user = new UserEntity($row["username"], $row["email"], $row["password"], $row["profileImage"], $row["role"]);
         $user->setId($row["id"]);
         return $user;
     }

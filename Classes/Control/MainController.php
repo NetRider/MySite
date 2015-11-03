@@ -1,42 +1,6 @@
 <?php
 
-namespace Control;
-/*
-function autoloadModel($class_name) {
-print($class_name);
-include($class_name . '.php');
-}
-spl_autoload_register('Control\autoloadModel');
-*/
-/**
-* require is identical to include except upon failure it will also produce a
-* fatal E_COMPILE_ERROR level error. In other words, it will halt the script
-* whereas include only emits a warning (E_WARNING) which allows the script to
-* continue.
-*/
-require_once('HomeController.php');
-require_once('RegistrationController.php');
-require_once('ArticleController.php');
-require_once('UserAccessController.php');
-require_once('DashboardController.php');
-require_once('CommentController.php');
-require_once('ProjectController.php');
 
-require_once(dirname(__FILE__).'/../Entity/User.php');
-require_once(dirname(__FILE__) . '/../View/MainView.php');
-require_once(dirname(__FILE__) . '/../View/HomeView.php');
-require_once(dirname(__FILE__) . '/../View/UserAccessView.php');
-require_once(dirname(__FILE__) . '/../View/ArticleView.php');
-require_once(dirname(__FILE__) . '/../View/DashboardView.php');
-require_once(dirname(__FILE__) . '/../View/ProjectView.php');
-require_once(dirname(__FILE__) . '/../View/CommentView.php');
-require_once(dirname(__FILE__) . '/../View/RegistrationView.php');
-require_once(dirname(__FILE__) . '/../Utility/Session.php');
-
-use View\MainView;
-use View\UserAccessView;
-use Control\Controller;
-use Utility\Singleton;
 /**
 *It is the main project controller,
 *
@@ -53,7 +17,7 @@ class MainController extends Controller {
 	 */
 	public function getPage()
 	{
-		$session = Singleton::getInstance("\Control\Session");
+		$session = Singleton::getInstance("Session");
 
 		$data = $this->executeTask();
 
@@ -62,7 +26,7 @@ class MainController extends Controller {
 		In altre parole il controllore non mi ritorna la pagina da aggiungere al main.tpl
 		Quindi non devo fare nulla ci pensa la View del rispettivo controllore ad inviare i dati
 		 */
-		
+
 		if($data != null)
 		{
 			$this->view->setContent($data);
@@ -88,13 +52,13 @@ class MainController extends Controller {
 				condividono il nome ad eccezione della parte terminale che è rispettivamente
 				"Controller" e "View"
 			 */
-			$controllerAwakened = "Control\\".$this->view->wakeUpController()."Controller";
-			$controllerView = "View\\".$this->view->wakeUpController()."View";
+			$controllerAwakened = $this->view->wakeUpController()."Controller";
+			$controllerView = $this->view->wakeUpController()."View";
 		}
 		else
 		{
-			$controllerAwakened = 'Control\HomeController';
-			$controllerView = 'View\HomeView';
+			$controllerAwakened = 'HomeController';
+			$controllerView = 'HomeView';
 		}
 		/*
 			Qui vengono effettivamente istanziati il controllore svegliato dalla MainView e la view

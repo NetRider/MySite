@@ -1,18 +1,5 @@
 <?php
-namespace Control;
-include_once(dirname(__FILE__).'/../Foundation/ArticleMapper.php');
-include_once(dirname(__FILE__).'/../Foundation/UserMapper.php');
-include_once(dirname(__FILE__).'/../Foundation/ProjectMapper.php');
-include_once(dirname(__FILE__).'/../View/View.php');
-include_once(dirname(__FILE__).'/Controller.php');
 
-
-use Control\Controller;
-use View\View;
-use Foundation\Database;
-use Foundation\ArticleMapper;
-use Foundation\UserMapper;
-use Foundation\ProjectMapper;
 
 class HomeController extends Controller {
 
