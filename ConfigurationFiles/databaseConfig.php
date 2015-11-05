@@ -10,4 +10,4 @@ global $mysqlConfig;
 $mysqlConfig['username'] = 'u649457658_matt';
 $mysqlConfig['password'] = 'matt_uni_sito';
 $mysqlConfig['host'] = 'mysql.hostinger.it';
-$mysqlConfig['database'] = 'u649457658_ elect';
+$mysqlConfig['database'] = 'u649457658_elect';
