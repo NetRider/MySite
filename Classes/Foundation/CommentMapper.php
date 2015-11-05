@@ -1,8 +1,5 @@
 <?php
 
-
-
-
 class CommentMapper extends AbstractDataMapper {
     protected $entityTable = "comment";
 

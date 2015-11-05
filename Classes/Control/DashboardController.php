@@ -1,8 +1,5 @@
 <?php
 
-
-
-
 class DashboardController extends Controller {
 
     public function executeTask()
@@ -70,7 +67,7 @@ class DashboardController extends Controller {
         $projectMapper = new ProjectMapper($databaseAdapter);
         $articleMapper = new ArticleMapper($databaseAdapter);
         $userMapper = new UserMapper($databaseAdapter);
-        $commentMapper = new commentMapper($databaseAdapter);
+        $commentMapper = new CommentMapper($databaseAdapter);
 
         $this->view->setStatisticsPage($commentMapper->getNumberOfComments()[0]["COUNT(*)"], $articleMapper->getNumberOfArticles()[0]["COUNT(*)"], $projectMapper->getNumberOfProjects()[0]["COUNT(*)"], $userMapper->getNumberOfUsers()[0]["COUNT(*)"]);
         return $this->view->getContent();

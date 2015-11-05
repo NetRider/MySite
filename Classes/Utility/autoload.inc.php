@@ -1,8 +1,5 @@
 <?php
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
-*/
+
 function __autoload($class_name) {
     if (strpos($class_name,'Control') !== false)
         require_once ('./Classes/Control/'.$class_name.'.php');
