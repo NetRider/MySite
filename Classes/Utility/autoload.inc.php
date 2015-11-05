@@ -19,7 +19,7 @@ function __autoload($class_name) {
     elseif($class_name == "Database")
         require_once ('./Classes/Foundation/'.$class_name.'.php');
     else {
-            var_dump("non ho trovao questo file: " . $class_name);
+            require_once('/home/u649457658/public_html/Library/Smarty-3.1.18/libs/sysplugins/' . strtolower($class_name) . '.php');
         }
 }
 
