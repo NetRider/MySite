@@ -172,7 +172,14 @@
         public function executeQuery()
         {
             $result = $this->dbConnection->query($this->statement);
-            return $result->fetch_all(MYSQLI_ASSOC);
+            /* Not supported by Hostinger
+                return $result->fetch_all(MYSQLI_ASSOC);
+            */
+            $results_array = array();
+            while ($row = $result->fetch_assoc()) {
+                $results_array[] = $row;
+            }
+            return $results_array;
         }
 
         public function getLastId()
