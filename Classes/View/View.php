@@ -1,5 +1,7 @@
 <?php
 
+require('/home/u649457658/public_html/Library/Smarty-3.1.18/libs/Smarty.class.php');
+
 abstract class View extends Smarty {
 
 	public function __construct()
