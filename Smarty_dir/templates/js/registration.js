@@ -88,7 +88,7 @@ function checkForm(){
 		submitHandler: function() {
 			var formData = new FormData($("#registrationForm")[0]);
 			$.ajax({
-				url: 'index.php?controller=registration&task=addNewUser',
+				url: 'index.php?controller=Registration&task=addNewUser',
 				type: 'POST',
 				data: formData,
 				processData: false,

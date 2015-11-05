@@ -15,7 +15,7 @@ class RegistrationController extends Controller {
 				{
 
 				}else {
-					$user = new UserEntity($this->view->getUsername(), $this->view->getEmail(), md5($this->view->getPassword()), $image, 2);
+					$user = new UserEntity($this->view->getUsername(), $this->view->getEmail(), $this->view->getPassword(), $image, 2);
 					$this->view->responseAjaxCall($userMapper->insert($user));
 				}
 			break;
