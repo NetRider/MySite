@@ -4,7 +4,7 @@ class ArticleMapper extends AbstractDataMapper {
 
     protected $entityTable = "article";
 
-    public function insert(Article $article)
+    public function insert(ArticleEntity $article)
     {
         return $this->adapter->insert($this->entityTable, array("idAuthor"=>$article->getAuthorId(), "title"=>$article->getTitle(), "description"=>$article->getDescription(), "text"=>$article->getText(), "date"=>$article->getDate(), "articleImage"=>$article->getImage()));
     }

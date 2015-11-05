@@ -7,7 +7,7 @@
  */
 global $mysqlConfig;
 
-$mysqlConfig['username'] = 'root';
-$mysqlConfig['password'] = 'pippo';
-$mysqlConfig['host'] = 'localhost';
-$mysqlConfig['database'] = 'ElectronicsHub';
+$mysqlConfig['username'] = 'u649457658_matt';
+$mysqlConfig['password'] = 'matt_uni_sito';
+$mysqlConfig['host'] = ' electronicshubit.esy.es';
+$mysqlConfig['database'] = 'u649457658_ elect';

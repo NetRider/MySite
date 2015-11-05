@@ -84,7 +84,7 @@ class ArticleController extends Controller {
         $databaseAdapter = new Database();
         $articleMapper = new ArticleMapper($databaseAdapter);
         $session = Singleton::getInstance("Session");
-        $article = new Article($session->getUserId(), $this->view->getArticleTitle(), $this->view->getArticleDescription(), $this->view->getArticleText(), date('o-m-d H:i:s'), $this->view->getArticleImage());
+        $article = new ArticleEntity($session->getUserId(), $this->view->getArticleTitle(), $this->view->getArticleDescription(), $this->view->getArticleText(), date('o-m-d H:i:s'), $this->view->getArticleImage());
         $this->view->responseAjaxCall($articleMapper->insert($article));
     }
 

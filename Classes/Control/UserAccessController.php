@@ -58,7 +58,7 @@ class UserAccessController extends Controller {
     {
         $databaseAdapter = new Database();
         $userMapper = new UserMapper($databaseAdapter);
-        if($userMapper->validateLogin($username, md5($password)))
+        if($userMapper->validateLogin($username, $password))
             return true;
         else
             return false;
