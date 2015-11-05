@@ -94,6 +94,7 @@ function checkForm(){
 				processData: false,
 				contentType: false
 			}).done(function(data){
+				console.log(data);
 				if(data == "1")
 				{
 					$("#myModalRegistrationTitle").text("Utente Registrato");
