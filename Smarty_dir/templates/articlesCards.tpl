@@ -10,7 +10,7 @@
 
     <!-- Cards Row -->
     <div class="grid text-center">
-        <div class="grid-sizer"></div>
+        <div class="grid-sizer">
         {foreach $articlesCards as $articleCard}
             <div class="grid-item hero-feature">
                     <div class="thumbnail">
@@ -25,17 +25,7 @@
                 </div>
             </div>
         {/foreach}
+        </div>
     </div>
 </div>
-<script>
-$(document).ready( function() {
-
-  $('.grid').masonry({
-    itemSelector: '.grid-item',
-    columnWidth: '.grid-sizer',
-    gutter: 20,
-    percentPosition: true
-  });
-
-});
-</script>
+<script src="Smarty_dir/templates/js/articlesCards.js"></script>
