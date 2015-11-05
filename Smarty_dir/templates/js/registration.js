@@ -63,7 +63,7 @@ function checkForm(){
 			},
 			image: {
 				extension: "png|gif|jpeg|jpg",
-				filesize: 524288
+				filesize: 65536
 			}
 		},
 		messages: {
