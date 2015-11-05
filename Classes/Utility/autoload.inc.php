@@ -18,6 +18,9 @@ function __autoload($class_name) {
         require_once ('./Classes/Utility/'.$class_name.'.php');
     elseif($class_name == "Database")
         require_once ('./Classes/Foundation/'.$class_name.'.php');
+    else {
+            var_dump("non ho trovao questo file: " . $class_name);
+        }
 }
 
 ?>
