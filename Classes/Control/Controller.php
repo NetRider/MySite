@@ -1,7 +1,5 @@
 <?php
 
-
-
 abstract Class Controller {
 
 	protected $view;

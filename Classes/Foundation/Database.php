@@ -173,7 +173,7 @@
         public function executeQuery()
         {
             $result = $this->dbConnection->query($this->statement);
-            return $result->fetch_assoc();
+            return mysqli_fetch_all($result, MYSQLI_ASSOC);
         }
 
         public function getLastId()
