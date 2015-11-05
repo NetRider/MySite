@@ -8,6 +8,10 @@ $(function(){
 	return this.optional(element) || /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
 	}, "Please enter a valid email address.");
 
+	jQuery.validator.addMethod('filesize', function(value, element, param) {
+    return this.optional(element) || (element.files[0].size <= param);
+	}, "Inserisci una immagine inferiore ai 500kb");
+
 	$("#registrationForm").change(function(){
 		checkForm();
 	});
@@ -58,7 +62,8 @@ function checkForm(){
 				}
 			},
 			image: {
-				extension: "png|gif|jpeg|jpg"
+				extension: "png|gif|jpeg|jpg",
+				filesize: 524288
 			}
 		},
 		messages: {
