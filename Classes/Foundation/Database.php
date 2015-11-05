@@ -28,7 +28,6 @@
             if ($this->dbConnection) {
                 return;
             }
-            var_dump($this->config['host']);
             $this->dbConnection = new mysqli($this->config['host'], $this->config['username'], $this->config['password'], $this->config['database']);
 
             if($this->dbConnection->connect_error){
@@ -173,7 +172,7 @@
         public function executeQuery()
         {
             $result = $this->dbConnection->query($this->statement);
-            return mysqli_fetch_all($result, MYSQLI_ASSOC);
+            return $result->fetch_all(MYSQLI_ASSOC);
         }
 
         public function getLastId()
