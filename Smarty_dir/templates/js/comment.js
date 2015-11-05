@@ -27,6 +27,7 @@ function submitButton(btn) {
 			type: 'POST',
             data: formData,
 		}).done(function(data){
+			console.log(data);
             location.reload();
 		});
 	});
