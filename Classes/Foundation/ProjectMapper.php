@@ -7,7 +7,7 @@ class ProjectMapper extends AbstractDataMapper {
 
     protected $entityTable = "project";
 
-    public function insertProject(Project $project, $dependencies)
+    public function insertProject(ProjectEntity $project, $dependencies)
     {
         $status = false;
 

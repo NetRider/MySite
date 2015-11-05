@@ -3,7 +3,7 @@
 class CommentMapper extends AbstractDataMapper {
     protected $entityTable = "comment";
 
-    public function insertArticleComment(Comment $comment, $idArticle) {
+    public function insertArticleComment(CommentEntity $comment, $idArticle) {
         if($this->adapter->insert($this->entityTable, array("text"=>$comment->getText(), "idAuthor"=>$comment->getUserId(), "date"=>$comment->getDate())))
         {
             if($this->adapter->insert("comments_articles", array("idComment"=>$this->adapter->getLastId(), "idArticle"=>$idArticle)))
@@ -11,7 +11,7 @@ class CommentMapper extends AbstractDataMapper {
         }
     }
 
-    public function insertProjectComment(Comment $comment, $idProject) {
+    public function insertProjectComment(CommentEntity $comment, $idProject) {
         if($this->adapter->insert($this->entityTable, array("text"=>$comment->getText(), "idAuthor"=>$comment->getUserId(), "date"=>$comment->getDate())))
         {
             if($this->adapter->insert("comments_projects", array("idComment"=>$this->adapter->getLastId(), "idProject"=>$idProject)))

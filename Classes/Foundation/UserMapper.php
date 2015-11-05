@@ -3,7 +3,7 @@
 class UserMapper extends AbstractDataMapper {
     protected $entityTable = "user";
 
-    public function insert(User $user)
+    public function insert(UserEntity $user)
     {
         return $this->adapter->insert($this->entityTable, array("username"=>$user->getUserName(), "profileImage"=>$user->getImage(), "email"=>$user->getEmail(), "password"=>$user->getPassword(), "role"=>$user->getRole()));
     }

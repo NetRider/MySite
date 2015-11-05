@@ -87,7 +87,7 @@ class ProjectController extends Controller {
         $databaseAdapter = new Database();
         $projectMapper = new ProjectMapper($databaseAdapter);
         $session = Singleton::getInstance("Session");
-        $project = new Project($session->getUserId(), $this->view->getProjectTitle(), $this->view->getProjectDescription(), $this->view->getProjectText(), date('o-m-d H:i:s'), "Data/projects_images/" . $this->view->getProjectImage());
+        $project = new ProjectEntity($session->getUserId(), $this->view->getProjectTitle(), $this->view->getProjectDescription(), $this->view->getProjectText(), date('o-m-d H:i:s'), "Data/projects_images/" . $this->view->getProjectImage());
         $dependencies = $this->view->getProjectDependencies();
         $this->view->responseAjaxCall($projectMapper->insertProject($project, $dependencies));
     }
