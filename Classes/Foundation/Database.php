@@ -28,6 +28,7 @@
             if ($this->dbConnection) {
                 return;
             }
+            var_dump($thi->config['host']);
             $this->dbConnection = new mysqli($this->config['host'], $this->config['username'], $this->config['password'], $this->config['database']);
 
             if($this->dbConnection->connect_error){
