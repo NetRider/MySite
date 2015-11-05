@@ -11,6 +11,7 @@ abstract class View extends \Smarty {
 	    $this->compile_dir = '/home/u649457658/public_html/Smarty_dir/templates_C';
 	    $this->config_dir = '/home/u649457658/public_html/Smarty_dir/cache';
 	    $this->cache_dir = '/home/u649457658/public_html/Smarty_dir/configs';
+		var_dump("ci sono risucito");
 	    $this->caching = false;
 	}
 
