@@ -28,4 +28,5 @@
         </div>
     </div>
 </div>
+<script src="Library/masonry.pkgd.min.js"></script>
 <script src="Smarty_dir/templates/js/articlesCards.js"></script>

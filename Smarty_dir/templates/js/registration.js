@@ -13,7 +13,7 @@ $(function(){
 	});
 
 	$('#registrationModal').on('hidden.bs.modal', function () {
-		location.replace("//index.php");
+		location.replace("index.php");
 	});
 });
 

@@ -131,7 +131,6 @@
 
         <!-- JavaScript import -->
         <script src="Smarty_dir/templates/js/login.js"></script>
-        <script src="Library/masonry.pkgd.min.js"></script>
         <script src="Library/adminPanel/bower_components/metisMenu/dist/metisMenu.min.js"></script>
         <script src="Library/adminPanel/dist/js/sb-admin-2.js"></script>
 
