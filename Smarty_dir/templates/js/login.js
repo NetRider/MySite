@@ -25,7 +25,7 @@ $(document).ready(function(){
         			title.text("Login effettuato!");
                     button.click(function() {
                         if(location.search == "?controller=UserAccess&task=logout")
-                            location.replace("/MySite/index.php");
+                            location.replace("index.php");
                         else
                             location.reload();
                     });

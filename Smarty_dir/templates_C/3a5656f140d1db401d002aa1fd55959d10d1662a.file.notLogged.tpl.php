@@ -1,0 +1,30 @@
+<?php /* Smarty version Smarty-3.1.18, created on 2015-11-06 09:44:37
+         compiled from "/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/notLogged.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:1060549922563c68753fcdb9-19715835%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '3a5656f140d1db401d002aa1fd55959d10d1662a' => 
+    array (
+      0 => '/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/notLogged.tpl',
+      1 => 1443865562,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '1060549922563c68753fcdb9-19715835',
+  'function' => 
+  array (
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.18',
+  'unifunc' => 'content_563c6875407127_60132008',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_563c6875407127_60132008')) {function content_563c6875407127_60132008($_smarty_tpl) {?><ul class="nav navbar-nav navbar-right">
+    <li>
+        <a data-toggle="modal" data-target="#myModal">Login</a>
+    </li>
+    <li>
+        <a href="index.php?controller=Registration&task=getRegistrationPage">Registrati</a>
+    </li>
+</ul>
+<?php }} ?>

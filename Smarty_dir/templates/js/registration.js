@@ -1,5 +1,5 @@
 $(function(){
-
+	
 	jQuery.validator.addMethod("alphanumeric", function(value, element) {
 		return this.optional(element) || /^\w+$/i.test(value);
 	}, "Letters, numbers, and underscores only please");
@@ -10,7 +10,7 @@ $(function(){
 
 	jQuery.validator.addMethod('filesize', function(value, element, param) {
     return this.optional(element) || (element.files[0].size <= param);
-	}, "Inserisci una immagine inferiore ai 500kb");
+	}, "Inserisci una immagine inferiore ai 64kb");
 
 	$("#registrationForm").change(function(){
 		checkForm();

@@ -1,5 +1,6 @@
 $(document).ready( function() {
 
+
   $('.grid').masonry({
     itemSelector: '.grid-item',
     columnWidth: '.grid-sizer',
@@ -7,4 +8,10 @@ $(document).ready( function() {
     percentPosition: true
   });
 
+});
+
+$(window).scroll(function() {
+   if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+       alert("near bottom!");
+   }
 });
