@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2015-11-06 09:44:37
+<?php /* Smarty version Smarty-3.1.18, created on 2015-11-06 10:11:33
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/main.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1933232947563c687540b108-78166654%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9deaa0b50af1d1059bb0f70894b4df4121a30c68' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/main.tpl',
-      1 => 1446759905,
+      1 => 1446801088,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.18',
+  'unifunc' => 'content_563c6875416db2_79643262',
   'variables' => 
   array (
     'rightMenu' => 0,
     'content' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.18',
-  'unifunc' => 'content_563c6875416db2_79643262',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_563c6875416db2_79643262')) {function content_563c6875416db2_79643262($_smarty_tpl) {?><!DOCTYPE html>
 <html>
@@ -75,7 +75,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="index.php?controller=Article&task=getArticlesCards">Articoli</a>
+                            <a href="index.php?controller=Article&task=getArticlesCardsPage">Articoli</a>
                         </li>
                         <li>
                             <a href="index.php?controller=Project&task=getProjectsCards">Progetti</a>

@@ -19,7 +19,7 @@ abstract class AbstractDataMapper
         return $this->adapter;
     }
 
-    public function find($cond = array(), $bind = array(), $op='', $order='', $limit='', $joinTable='', $joinBind = array(), $groupBy = array())
+    public function find($cond = array(), $bind = array(), $op='', $order='', $limit=array(), $joinTable='', $joinBind = array(), $groupBy = array())
     {
         $rows = $this->adapter->select($this->entityTable, $cond, $bind, $op, $order, $limit, $joinTable, $joinBind, $groupBy);
         if(count($rows) == 1)
@@ -40,7 +40,7 @@ abstract class AbstractDataMapper
             return false;
     }
 
-    public function returnAssociativeArray($cond = array(), $bind = array(), $op='', $order='', $limit='', $joinTable='', $joinBind = array(), $groupBy = array())
+    public function returnAssociativeArray($cond = array(), $bind = array(), $op='', $order='', $limit=array(), $joinTable='', $joinBind = array(), $groupBy = array())
     {
         return $rows = $this->adapter->select($this->entityTable, $cond, $bind, $op, $order, $limit, $joinTable, $joinBind, $groupBy);
     }

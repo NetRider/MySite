@@ -63,6 +63,11 @@ class ArticleMapper extends AbstractDataMapper {
         return $this->returnAssociativeArray(array(), "COUNT");
     }
 
+    public function getArticlesCardsByPageNumber($pageNumber)
+    {
+        return $this->find(array(), array(), "", "" , $pageNumber);
+    }
+
     protected function createEntity($row)
     {
         $article = new ArticleEntity($row["idAuthor"], $row["title"], $row["description"], $row["text"], $row["date"], $row["articleImage"]);

@@ -47,6 +47,11 @@ class ArticleView extends View {
 		return $this->getRequest('articleToRemove');
 	}
 
+	public function getPageNumber()
+	{
+		return $this->getRequest('page');
+	}
+
 	public function getArticleImage()
 	{
         if(is_uploaded_file($_FILES['image']['tmp_name']))

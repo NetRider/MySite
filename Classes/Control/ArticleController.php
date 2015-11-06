@@ -14,8 +14,12 @@ class ArticleController extends Controller {
                 return $this->getArticleView();
             break;
 
-            case 'getArticlesCards':
-                return $this->getArticlesCards();
+            case 'getArticlesCardsPage':
+                return $this->getArticlesCardsPage();
+            break;
+
+            case 'getArticlesCardsByPage':
+                return $this->getArticlesCardsByPage();
             break;
 
             case 'deleteArticle':
@@ -24,12 +28,22 @@ class ArticleController extends Controller {
         }
     }
 
-    private function getArticlesCards()
+    private function getArticlesCardsByPage()
     {
         $databaseAdapter = new Database();
         $articleMapper = new ArticleMapper($databaseAdapter);
         $userMapper = new UserMapper($databaseAdapter);
-        $articles = $articleMapper->getAllArticles();
+        $pageNumber = $this->view->getPageNumber();
+
+        if($pageNumber == "1")
+            $bottomLimit = $pageNumber;
+        else
+            $bottomLimit = ($pageNumber - 1) * 10 + 1;
+
+        $topLimit = $pageNumber * 10;
+
+        $articles = $articleMapper->getArticlesCardsByPageNumber(array($bottomLimit, $topLimit));
+        
         $data = array();
 
         if($articles)
@@ -40,9 +54,14 @@ class ArticleController extends Controller {
             }
         }
 
-        $this->view->assignArticlesCards($data);
+        $this->view->responseAjaxCall(json_encode($data));
+    }
+
+    private function getArticlesCardsPage()
+    {
         $this->view->setTemplate('articlesCards');
         return $this->view->getContent();
+
     }
 
     private function getArticleView()

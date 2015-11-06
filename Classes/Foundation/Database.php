@@ -85,8 +85,14 @@
 
             if($order!='')
                 $sql = $sql . " ORDER BY " . $order;
-            if($limit!='')
-                $sql = $sql . " LIMIT " . $limit;
+
+            if(!empty($limit))
+            {
+                if(sizeof($limit) > 1)
+                    $sql = $sql . " LIMIT " . $limit[0] . ", " . $limit[1];
+                else
+                    $sql = $sql . " LIMIT " . $limit;
+            }
 
             if(!empty($groupBy))
             {

@@ -49,7 +49,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="index.php?controller=Article&task=getArticlesCards">Articoli</a>
+                            <a href="index.php?controller=Article&task=getArticlesCardsPage">Articoli</a>
                         </li>
                         <li>
                             <a href="index.php?controller=Project&task=getProjectsCards">Progetti</a>
