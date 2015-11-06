@@ -11,9 +11,9 @@
     <!-- Cards Row -->
     <div class="grid text-center">
         <div class="grid-sizer" id="cardsAnchor">
-
         </div>
     </div>
+    <img style="margin-left:50%;" src="Smarty_dir/templates/img/ajax-loader.gif" alt="">
 </div>
 <script src="Library/masonry.pkgd.min.js"></script>
 <script src="Library/handlebars-v4.0.4.js"></script>

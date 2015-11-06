@@ -32,6 +32,7 @@ $(document).ready( function() {
 });
 
 function aggiungiCards(page, template) {
+    
     console.log("faccio aggiungiCards");
     //qui scarico i dati di 10 articoli. Ripeto la stessa funzione ogni volta che
     //l'utente fa lo scroll verso il basso e arriva quasi fino al bottom del documento
