@@ -53,6 +53,7 @@ function updateValue(sel) {
             $("#myModalDashUsersTitle").text("Cambio di ruolo fallito");
             $("#myModalDashUsersBody").append("E' stato riscontrato un problema con il server.");
             $("#buttonDashUsersForm").addClass("btn-failure");
-            $("#dashUsersModal").modal('show');        }
+            $("#dashUsersModal").modal('show');
+        }
 	});
 }

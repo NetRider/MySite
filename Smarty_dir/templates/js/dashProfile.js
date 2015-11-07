@@ -2,11 +2,11 @@ $(function() {
 
 	jQuery.validator.addMethod("alphanumeric", function(value, element) {
     	return this.optional(element) || /^\w+$/i.test(value);
-	}, "Letters, numbers, and underscores only please");
+	}, "Lettere, numeri, and underscores sono ammessi");
 
 	jQuery.validator.addMethod("customemail", function(value, element) {
     return this.optional(element) || /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
-	}, "Please enter a valid email address.");
+	}, "Indirizzo email non è valido.");
 
 	$("#updateForm").change(function(){
 		checkForm();
@@ -19,12 +19,13 @@ $(function() {
 
 // validate signup form on keyup and submit
 function checkForm(){
+	console.log("faccio il chekFOrm");
 	var validator = $("#updateForm").validate({
 		rules: {
 			username: {
 				required: true,
-				alphanumeric: true,
 				minlength: 5,
+				alphanumeric: true,
 				remote: {
         			url: "index.php?controller=Registration&task=checkUsername",
         			type: "POST",
@@ -34,13 +35,6 @@ function checkForm(){
           				}
         			}
 				}
-			},
-			password: {
-				minlength: 5
-			},
-			password_confirm: {
-				minlength: 5,
-				equalTo: "#password"
 			},
 			email: {
 				required: true,
@@ -55,27 +49,43 @@ function checkForm(){
         			}
 				}
 			},
-
 			image: {
 				extension: "png|gif|jpeg|jpg"
+			},
+			password: {
+				minlength: 5
+			},
+			password_confirm: {
+				minlength: 5,
+				equalTo: "#password"
 			}
 		},
 		messages: {
-
-			password_confirm: {
-				required: "Ripeti password",
+			username: {
+				required: "devi inserire un nome utente",
+				remote: "nome utente già utilizzato",
+				minlength: "inserisci almeno 5 caratteri"
 			},
-
+			email: {
+				required: "inserisci l'email",
+				remote: "email già utilizzata",
+			},
 			image: {
 				extension: "Questa estensione non è valida"
+			},
+			password_confirm: {
+				equalTo: "Le password non coincidono"
 			}
 		},
 		// the errorPlacement has to take the table layout into account
 		errorPlacement: function(error, element) {
 			error.appendTo(element.parent().next());
+			console.log(error);
+
 		},
 		// specifying a submitHandler prevents the default submit, good for the demo
 		submitHandler: function() {
+			console.log("invio i dati");
 			var formData = new FormData($("#updateForm")[0]);
 			$.ajax({
 				url: 'index.php?controller=UserAccess&task=updateUser',
@@ -84,22 +94,21 @@ function checkForm(){
 				processData: false,
 				contentType: false
 			}).done(function(data){
+				console.log(data);
 				if(data == "1")
 				{
 					$("#myModalDashProfileTitle").text("Aggiornamento completato");
 		            $("#myModalDashProfileBody").text("I dati del profilo sono stati aggioranti sul server!");
 		            $("#buttonDashProfileForm").addClass("btn-success");
-		            $("#dashProfileModal").modal('show');
-
 				}
 				else
 				{
 					$("#myModalDashProfileTitle").text("L'aggiornamento non completato");
 					$("#myModalDashProfileBody").append("E' stato riscontrato un problema con il server.");
 					$("#buttonDashProfileForm").addClass("btn-failure");
-					$("#dashProfileModal").modal('show');
-
 				}
+				$("#dashProfileModal").modal('show');
+
 			});
 		},
 		// set this class to error-labels to indicate valid fields
@@ -112,6 +121,7 @@ function checkForm(){
 
 		},
 		highlight: function(element, errorClass) {
+			console.log("highlight");
 			var child = $(element).parent();
 			child.removeClass("has-success");
 			child.addClass("has-error");

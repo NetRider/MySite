@@ -6,7 +6,7 @@ $(function(){
 
 	jQuery.validator.addMethod('filesize', function(value, element, param) {
     return this.optional(element) || (element.files[0].size <= param);
-}, "Inserisci una immagine inferiore ai 500kb");
+	}, "Inserisci una immagine inferiore ai 500kb");
 
 	$("#buttonDashArticleForm").click(function() {
 		location.reload();

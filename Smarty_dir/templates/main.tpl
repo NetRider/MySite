@@ -30,6 +30,38 @@
     </head>
 
     <body>
+        <noscript>
+            <div style="position: fixed; top: 0px; left: 0px; z-index: 3000;
+                height: 100%; width: 100%; background-color: rgba(0,0,0,0.7);" >
+                <div style="margin-left:28%; margin-top:10%;">
+                    <h1 style="color: #FFFFFF">Attiva Javascript nel tuo browser</h1>
+                    <img style="margin-left:15%; margin-top:5%;" src="./Smarty_dir/templates/img/javascript_logo.png">
+                </div>
+            </div>
+        </noscript>
+        <div style="position: fixed; top: 0px; left: 0px; z-index: 3000;
+            height: 100%; width: 100%; background-color: rgba(0,0,0,0.7);" id="cookie" hidden>
+            <div style="margin-left:29%; margin-top:10%; opacity:1.0;">
+                <h1 style="color: #FFFFFF">Abilita i cookie nel tuo browser</h1>
+                <img style="margin-left:15%; margin-top:5%" src="./Smarty_dir/templates/img/cookie.jpg">
+            </div>
+        </div>
+        <div class="modal fade" id="cookieModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="panel-title">Informativa Utilizzo Cookie</h3>
+                        </div>
+                        <div class="modal-body">
+                            Questo sito utilizza cookie tecnici e di profilazione propri per le sue
+                            funzionalità. Chiudendo questo banner all’uso dei cookie.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn" data-dismiss="modal" id="cookieButton">Chiudi</button>
+                        </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -133,6 +165,7 @@
         <script src="Smarty_dir/templates/js/login.js"></script>
         <script src="Library/adminPanel/bower_components/metisMenu/dist/metisMenu.min.js"></script>
         <script src="Library/adminPanel/dist/js/sb-admin-2.js"></script>
-
+        <script src="Library/jquery.cookie.js"></script>
+        <script src="Smarty_dir/templates/js/main.js"></script>
     </body>
 </html>

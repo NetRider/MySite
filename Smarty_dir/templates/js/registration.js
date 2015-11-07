@@ -1,5 +1,5 @@
 $(function(){
-	
+
 	jQuery.validator.addMethod("alphanumeric", function(value, element) {
 		return this.optional(element) || /^\w+$/i.test(value);
 	}, "Letters, numbers, and underscores only please");
@@ -68,8 +68,8 @@ function checkForm(){
 		},
 		messages: {
 			username: {
-				required: "Enter a username",
-				remote: jQuery.validator.format('This username is already in use, please choose a different name')
+				required: "Inserisci username",
+				remote: "Username già utilizzato"
 			},
 			password: {
 				required: "Provide a password",
@@ -79,7 +79,7 @@ function checkForm(){
 			},
 			email: {
 				required: "Please enter a valid email address",
-				remote: jQuery.validator.format('This eamil is already in use, please choose a different email')
+				remote: "This eamil is already in use, please choose a different email"
 			},
 			image: {
 				extension: "Questa estensione non è valida"

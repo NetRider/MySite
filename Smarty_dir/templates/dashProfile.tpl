@@ -38,7 +38,7 @@
                         <div class="form-group col-lg-6">
                             <label>Immagine profilo</label> <br>
                             <img src="{$userImage}" class="img-rounded" width="200px" height="150px">
-                            <input name="image" id="image" type="file">
+                            <input type="file" name="image" id="image" >
                         </div>
                         <div class="form-group col-lg-4 myTooltip" hidden>
                         </div>
@@ -48,7 +48,7 @@
                     <div class="row">
                         <div class="form-group col-lg-6">
                             <label>Password</label>
-                            <input type="password" name="password" class="form-control" id="password" value="">
+                            <input type="password" name="password" class="form-control" id="password">
                         </div>
                         <div class="form-group col-lg-4 myTooltip" hidden>
                         </div>
@@ -57,7 +57,7 @@
                     <div class="row">
                         <div class="form-group col-lg-6">
                             <label>Repeat Password</label>
-                            <input type="password" name="password_confirm" class="form-control" id="password_confirm" value="">
+                            <input type="password" name="password_confirm" class="form-control" id="password_confirm">
                         </div>
                         <div class="form-group col-lg-4 myTooltip" hidden>
                         </div>
@@ -69,7 +69,7 @@
     </div>
     <div class="modal fade" id="dashProfileModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
-        <div class="modal-content">
+          <div class="modal-content">
                     <div class="modal-header">
                         <h3 class="panel-title" id="myModalDashProfileTitle">Utente eliminato correttamente</h3>
                     </div>
@@ -78,7 +78,6 @@
                     <div class="modal-footer">
                         <button type="button" class="btn" id="buttonDashProfileForm" data-dismiss="modal">Chiudi</button>
                     </div>
-                </div>
             </div>
         </div>
     </div>
