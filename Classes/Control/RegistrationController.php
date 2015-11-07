@@ -23,11 +23,12 @@ class RegistrationController extends Controller {
 			case 'checkUsername':
 				$databaseAdapter = new Database();
 				$userMapper = new UserMapper($databaseAdapter);
-				$found = $userMapper->existUserName($this->view->getUsernameToCheck());
+				$usernameToCheck = $this->view->getUsernameToCheck();
+				$found = $userMapper->existUserName($usernameToCheck);
 
 				$session = Singleton::getInstance("Session");
 
-				if($session->userIsLogged() && $this->view->getUsernameToCheck() == $session->getUsername()) {
+				if($session->userIsLogged() && $usernameToCheck == $session->getUsername()) {
 					$this->view->responseAjaxCall("true");
 				}else {
 					if($found)
@@ -42,11 +43,12 @@ class RegistrationController extends Controller {
 			case 'checkEmail':
 				$databaseAdapter = new Database();
 				$userMapper = new UserMapper($databaseAdapter);
-				$found = $userMapper->existUserEmail($this->view->getEmailToCheck());
+				$emailToCheck = $this->view->getEmailToCheck();
+				$found = $userMapper->existUserEmail($emailToCheck);
 
 				$session = Singleton::getInstance("Session");
 
-				if($session->userIsLogged() && $this->view->getEmailToCheck() == $session->getUserEmail()) {
+				if($session->userIsLogged() && $emailToCheck == $session->getUserEmail()) {
 					$this->view->responseAjaxCall("true");
 				}else {
 					if($found)

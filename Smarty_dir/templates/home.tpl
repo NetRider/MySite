@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="img-responsive" src="Smarty_dir/templates/img/header_image.jpg" alt="">
+                    <img class="img-responsive" style="width:100%;" src="Smarty_dir/templates/img/header_image.jpg" alt="">
                 </div>
             </div>
         </div>
