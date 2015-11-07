@@ -9,11 +9,10 @@
     <!-- /.row -->
 
     <!-- Cards Row -->
-    <div class="grid text-center">
-        <div class="grid-sizer" id="cardsAnchor">
-        </div>
+    <div class="grid text-center" id="mansoryContainer">
+        <div class="grid-sizer"></div>
     </div>
-    <img style="margin-left:50%;" src="Smarty_dir/templates/img/ajax-loader.gif" alt="">
+    <img style="margin-left:50%;" src="Smarty_dir/templates/img/ajax-loader.gif" id="spinner">
 </div>
 <script src="Library/masonry.pkgd.min.js"></script>
 <script src="Library/handlebars-v4.0.4.js"></script>

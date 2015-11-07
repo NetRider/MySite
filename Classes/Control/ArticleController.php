@@ -35,15 +35,10 @@ class ArticleController extends Controller {
         $userMapper = new UserMapper($databaseAdapter);
         $pageNumber = $this->view->getPageNumber();
 
-        if($pageNumber == "1")
-            $bottomLimit = $pageNumber;
-        else
-            $bottomLimit = ($pageNumber - 1) * 10 + 1;
-
-        $topLimit = $pageNumber * 10;
-
-        $articles = $articleMapper->getArticlesCardsByPageNumber(array($bottomLimit, $topLimit));
+        $bottomLimit = ($pageNumber - 1) * 10;
         
+        $articles = $articleMapper->getArticlesCardsByPageNumber(array($bottomLimit, 10));
+
         $data = array();
 
         if($articles)
