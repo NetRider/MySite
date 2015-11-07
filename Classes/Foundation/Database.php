@@ -71,16 +71,16 @@
             else
             {
                 if($op=='')
-                    $op = "AND";
+                    $op = "=";
                 $i = 0;
                 $condition = [];
 
                 foreach($cond as $key=>$value)
                 {
-                  $condition[$i] = $key."='".$value."'";
+                  $condition[$i] = $key. $op ."'".$value."'";
                   $i = $i + 1;
                 }
-                $sql = "SELECT " . $columns. " FROM " . $table . $joinString . " WHERE " . implode(" " . $op . " ", $condition);
+                $sql = "SELECT " . $columns. " FROM " . $table . $joinString . " WHERE " . implode(" " . "AND" . " ", $condition);
             }
 
             if($order!='')
@@ -96,13 +96,11 @@
 
             if(!empty($groupBy))
             {
-                error_log("faccio il groupBy");
                 $group=implode(",", $groupBy);
                 $sql = $sql . " GROUP BY " . $group;
             }
 
             $this->statement = $sql;
-            error_log($this->statement);
             return $this->executeQuery();
         }
 

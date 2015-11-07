@@ -79,8 +79,8 @@ class DashboardController extends Controller {
         $userMapper = new UserMapper($databaseAdapter);
         $aclMapper = new ACLMapper($databaseAdapter);
 
-        $users = $userMapper->getAllUsers();
-        $roles = $aclMapper->getAllRoles();
+        $users = $userMapper->getUsersDash();
+        $roles = $aclMapper->getRolesDash();
         $this->view->assignUsers($users);
         $this->view->assignRoles($roles);
         $this->view->setUsersPage();

@@ -21,7 +21,7 @@ class ProjectView extends View {
 
 	public function getProjectId()
 	{
-		return $this->getRequest('projectId');
+		return $this->getRequest('Id');
 	}
 
 	public function getProjectDependencies()

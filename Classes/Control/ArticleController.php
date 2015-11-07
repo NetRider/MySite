@@ -36,7 +36,7 @@ class ArticleController extends Controller {
         $pageNumber = $this->view->getPageNumber();
 
         $bottomLimit = ($pageNumber - 1) * 10;
-        
+
         $articles = $articleMapper->getArticlesCardsByPageNumber(array($bottomLimit, 10));
 
         $data = array();
@@ -70,7 +70,6 @@ class ArticleController extends Controller {
         $comments = $commentMapper->getCommentsByArticleId($article->getId());
         $articleAuthor = $userMapper->getuserById($article->getAuthorId());
         $data = array();
-        error_log(print_r($comments, true));
 
         if($comments)
         {

@@ -21,6 +21,12 @@ class ACLMapper extends AbstractDataMapper {
 		return $this->returnAssociativeArray(array(), array("id", "role_name"));
     }
 
+    public function getRolesDash()
+	{
+		$this->entityTable = "role";
+		return $this->returnAssociativeArray(array("role_name"=>"administrator"), array("id", "role_name"), "<>");
+    }
+
     protected function createEntity($row) {
         /* Not required yet*/
     }

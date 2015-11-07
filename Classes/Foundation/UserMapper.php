@@ -20,7 +20,12 @@ class UserMapper extends AbstractDataMapper {
 
     public function getAllUsers()
     {
-        return $this->returnAssociativeArray(array(), array("user.id", "user.username", "user.email", "user.profileImage", "role.role_name"), "", "", "", "role", array("user"=>"role", "role"=>"id"));
+        return $this->returnAssociativeArray(array("role.role_name"), array("user.id", "user.username", "user.email", "user.profileImage", "role.role_name"), "", "", "", "role", array("user"=>"role", "role"=>"id"));
+    }
+
+    public function getUsersDash()
+    {
+        return $this->returnAssociativeArray(array("role.role_name"=>"administrator"), array("user.id", "user.username", "user.email", "user.profileImage", "role.role_name"), "<>", "", "", "role", array("user"=>"role", "role"=>"id"));
     }
 
     public function updateUserRole($userId, $userRole)

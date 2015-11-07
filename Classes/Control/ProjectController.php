@@ -54,7 +54,9 @@ class ProjectController extends Controller {
         $commentMapper = new CommentMapper($databaseAdapter);
         $userMapper = new UserMapper($databaseAdapter);
 
+        error_log($this->view->getProjectId());
         $project = $projectMapper->getProjectById($this->view->getProjectId());
+        error_log(print_r($project,true));
         $comments = $commentMapper->getCommentsByProjectId($project->getId());
         $projectAuthor = $userMapper->getUserById($project->getUserId());
 

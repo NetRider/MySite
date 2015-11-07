@@ -19,12 +19,12 @@ class HomeController extends Controller {
 
 		foreach ($lastThreeArticles as $article)
 		{
-			array_push($articles, array("title"=>$article->getTitle(), "description"=>$article->getDescription(), "articleId"=>$article->getId(), "image"=>$article->getImage()));
+			array_push($articles, array("title"=>$article->getTitle(), "description"=>$article->getDescription(), "id"=>$article->getId(), "image"=>$article->getImage()));
 		}
 
 		foreach ($lastThreeProjects as $project)
 		{
-			array_push($projects, array("title"=>$project->getTitle(), "description"=>$project->getDescription(), "projectId"=>$project->getId(), "image"=>$project->getImage()));
+			array_push($projects, array("title"=>$project->getTitle(), "description"=>$project->getDescription(), "id"=>$project->getId(), "image"=>$project->getImage()));
 		}
 
 		$this->view->assignHomeArticles($articles, $projects);

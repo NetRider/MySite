@@ -29,7 +29,7 @@
                         <h3>{$homeArticle.title}</h3>
                         <p>{$homeArticle.description}</p>
                         <p>
-                            <a href="index.php?controller=Article&task=getArticleView&Id={$articleCard.id}" class="btn btn-success stretchButton">Leggi!</a>
+                            <a href="index.php?controller=Article&task=getArticleView&Id={$homeArticle.id}" class="btn btn-success stretchButton">Leggi!</a>
                         </p>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                         <h3>{$homeProject.title}</h3>
                         <p>{$homeProject.description}</p>
                         <p>
-                            <a href="index.php?controller=Article&task=getProjectView&Id={$homeProject.id}" class="btn btn-success stretchButton">Leggi!</a>
+                            <a href="index.php?controller=Project&task=getProjectView&Id={$homeProject.id}" class="btn btn-success stretchButton">Leggi!</a>
                         </p>
                     </div>
                 </div>
