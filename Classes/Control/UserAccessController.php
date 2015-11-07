@@ -34,11 +34,11 @@ class UserAccessController extends Controller {
         error_log("sono dentro a login");
         $username = $this->view->getUsername();
         $password = $this->view->getUserPassword();
-
+        $rememberMe = $this->view->getRememberMe();
+        error_log($rememberMe);
         if($this->userAuthentication($username, $password)) {
-            error_log("ho trovato lo user");
             $session = Singleton::getInstance("Session");
-            $session->login($username);
+            $session->login($username, $rememberMe);
             $this->view->responseAjaxCall(true);
 
         }else {

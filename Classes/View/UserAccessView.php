@@ -77,6 +77,10 @@ class UserAccessView extends View {
 		return $imagePath;
 	}
 
+  	public function getRememberMe()
+	{
+		return $this->getRequest("rememberMe");
+	}
 
 	public function login()
 	{

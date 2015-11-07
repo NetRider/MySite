@@ -8,9 +8,11 @@ $(document).ready(function(){
             var title = $('.modal-title');
             var username = $('#uLogin').val();
             var password = $('#uPassword').val();
+            var rememberMe = $('#uRememberMe').val();
+            console.log(rememberMe);
 
 
-            var loginData = {"username": username, "password": password};
+            var loginData = {"username": username, "password": password, "rememberMe": rememberMe };
 
             $.ajax({
                 url: "index.php?controller=UserAccess&task=login",

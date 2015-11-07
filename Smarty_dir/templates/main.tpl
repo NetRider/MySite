@@ -89,7 +89,7 @@
 
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox"> Remember me
+                                    <input type="checkbox" id="uRememberMe"> Remember me
                                 </label>
                             </div>
                         </form>

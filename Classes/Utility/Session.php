@@ -6,8 +6,9 @@ class Session {
 
     public function __construct()
     {
+        error_log("sono nel costruttore di session");
+
         $this->lifetime = 60*60*24*30; // 30 days
-        //$this->lifetime = 10; //seconds
         session_start();
 
         if($this->userIsLogged())
@@ -16,7 +17,6 @@ class Session {
 			$userMapper = new UserMapper($databaseAdapter);
             $this->user = $userMapper->getUserByUsername($_SESSION["username"]);
         }
-
         $this->updateSessionCookie();
     }
 
@@ -30,6 +30,7 @@ class Session {
     {
         if($this->get("rememberMe"))
         {
+            error_log("sto facendo l'update del cookie");
             /* Overwriting of the cookie created by session_start().*/
             setcookie(session_name(), session_id(), time()+$this->lifetime, "/");
             /*
@@ -115,9 +116,11 @@ class Session {
         $this->updateSessionCookie();
     }
 
-    public function login($username)
+    public function login($username, $rememberMe)
     {
         $this->set("username",$username);
+        if($rememberMe)
+            $this->set("rememberMe", $rememberMe);
     }
 
     public function userIsLogged()
