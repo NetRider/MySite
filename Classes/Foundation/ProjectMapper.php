@@ -57,6 +57,11 @@ class ProjectMapper extends AbstractDataMapper {
       return $this->returnAssociativeArray(array(), "COUNT");
   }
 
+  public function getProjectsCardsByPageNumber($pageNumber)
+  {
+      return $this->find(array(), array(), "", "" , $pageNumber);
+  }
+
   public function getProjectsForDash()
   {
       return $this->returnAssociativeArray(array(), array("user.username", "project.id", "project.title", "project.description"), "", "", "", "user", array("user"=>"id", "project"=>"idAuthor"));

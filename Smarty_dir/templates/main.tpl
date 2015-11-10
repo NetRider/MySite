@@ -84,7 +84,7 @@
                             <a href="index.php?controller=Article&task=getArticlesCardsPage">Articoli</a>
                         </li>
                         <li>
-                            <a href="index.php?controller=Project&task=getProjectsCards">Progetti</a>
+                            <a href="index.php?controller=Project&task=getProjectsCardsPage">Progetti</a>
                         </li>
                     </ul>
                     <div id="rigthMenu">

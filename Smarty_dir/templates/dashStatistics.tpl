@@ -8,7 +8,6 @@
     </div>
 </div>
 <div class="row">
-    <div class="panel panel-default">
         <div class="col-lg-3 col-md-6">
             <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -97,7 +96,6 @@
                 </a>
             </div>
         </div>
-        </div>
 </div>
         <div class="row" id="commentsAnchor">
         <div class="col-lg-12">
@@ -113,8 +111,6 @@
             </div>
         </div>
         </div>
-    </>
-
         <div class="row" id="articlesAnchor">
             <div class="col-lg-12">
                 <div class="panel panel-default">

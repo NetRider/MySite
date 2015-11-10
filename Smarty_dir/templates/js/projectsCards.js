@@ -18,7 +18,7 @@ $(document).ready( function() {
 
     //Tiro giù il template dal server delle cards
     $.ajax({
-        url: "HandlebarsTemplates/cardArticle.handlebars",
+        url: "HandlebarsTemplates/cardProject.handlebars",
         type: 'POST',
     }).done(function(data) {
         //lo compilo con Handlebars e lo metto nella variabile template che poi utilizzerò
@@ -67,7 +67,7 @@ function aggiungiCards(page, template) {
         var cards = "";
         //tiro giù ti dati dal server
         return $.ajax({
-            url: "index.php?controller=Article&task=getArticlesCardsByPage&page=" + page,
+            url: "index.php?controller=Project&task=getProjectsCardsByPage&page=" + page,
             type: 'POST',
         }).done(function(data) {
             var cardsData = JSON.parse(data);
@@ -104,6 +104,7 @@ $.fn.masonryImagesReveal = function(cards) {
     //la funzione imagesLoaded() va applicata al container con le immagini
     cards.imagesLoaded().progress( function( imgLoad, image ) {
         document.getElementById("spinner").style.display = "block";
+
         // get item
         // image is imagesLoaded class, not <img>, <img> is image.img
         var $card= $( image.img ).parents( itemSelector );

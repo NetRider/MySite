@@ -48,6 +48,11 @@ class ProjectView extends View {
 
 	}
 
+	public function getPageNumber()
+	{
+		return $this->getRequest('page');
+	}
+
 	public function setTemplate($template)
 	{
 		$this->template = $template;

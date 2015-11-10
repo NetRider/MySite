@@ -1,7 +1,18 @@
 <?php
+/**
+ * Article Controller File
+ *
+ * Questo file contine l'article controller
+ *
+ * @package Controller
+ * @author Matteo Polsinelli
+ */
 
 class ArticleController extends Controller {
 
+    /**
+	 * Smista le richieste in arrivo dalla ArticleView.
+	 */
     public function executeTask()
     {
         switch($this->view->getTask())
@@ -28,6 +39,9 @@ class ArticleController extends Controller {
         }
     }
 
+    /**
+	 * Prepara le cards dieci alla volta
+	 */
     private function getArticlesCardsByPage()
     {
         $databaseAdapter = new Database();
@@ -52,12 +66,18 @@ class ArticleController extends Controller {
         $this->view->responseAjaxCall(json_encode($data));
     }
 
+    /**
+     * Seleziona il template articlesCards
+     *
+     * @return string Rendered template output
+     */
     private function getArticlesCardsPage()
     {
         $this->view->setTemplate('articlesCards');
+        error_log(print_r($this->view->getContent(), true));
         return $this->view->getContent();
-
     }
+
 
     private function getArticleView()
     {

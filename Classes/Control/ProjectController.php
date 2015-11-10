@@ -15,8 +15,12 @@ class ProjectController extends Controller {
                 return $this->getProjectView();
             break;
 
-            case 'getProjectsCards':
-                return $this->getProjectsCards();
+            case 'getProjectsCardsPage':
+                return $this->getProjectsCardsPage();
+            break;
+
+            case 'getProjectsCardsByPage':
+                return $this->getProjectsCardsByPage();
             break;
 
             case 'deleteProject':
@@ -25,12 +29,23 @@ class ProjectController extends Controller {
         }
     }
 
-    private function getProjectsCards()
+    private function getProjectsCardsPage()
+    {
+        $this->view->setTemplate('projectsCards');
+        return $this->view->getContent();
+    }
+
+    private function getProjectsCardsByPage()
     {
         $databaseAdapter = new Database();
         $projectMapper = new ProjectMapper($databaseAdapter);
         $userMapper = new UserMapper($databaseAdapter);
-        $projects = $projectMapper->getAllProjects();
+        $pageNumber = $this->view->getPageNumber();
+
+        $bottomLimit = ($pageNumber - 1) * 10;
+
+        $projects = $projectMapper->getProjectsCardsByPageNumber(array($bottomLimit, 10));
+
         $data = array();
 
         if($projects)
@@ -41,9 +56,7 @@ class ProjectController extends Controller {
             }
         }
 
-        $this->view->assignProjectsCards($data);
-        $this->view->setTemplate('projectsCards');
-        return $this->view->getContent();
+        $this->view->responseAjaxCall(json_encode($data));
     }
 
     private function getProjectView()

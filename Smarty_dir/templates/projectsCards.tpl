@@ -9,21 +9,13 @@
     <!-- /.row -->
 
     <!-- Cards Row -->
-    <div class="row text-center masonry-container">
-        {foreach $projectsCards as $projectCard}
-            <div class="col-md-3 col-sm-6 hero-feature">
-                <div class="thumbnail">
-                    <img class="media-object cardImage" src="{$projectCard.image}" alt="">
-                    <div class="caption">
-                        <h3>{$projectCard.title}</h3>
-                        <p>{$projectCard.description}</p>
-                        <p>
-                            <a href="index.php?controller=Project&task=getProjectView&projectId={$projectCard.id}" class="btn btn-success stretchButton">Leggi!</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        {/foreach}
+    <div class="grid text-center" id="mansoryContainer">
+        <div class="grid-sizer"></div>
     </div>
-    <hr>
+        <img style="margin-left:50%;" src="Smarty_dir/templates/img/ajax-loader.gif" id="spinner">
 </div>
+
+<script src="Library/masonry.pkgd.min.js"></script>
+<script src="Library/handlebars-v4.0.4.js"></script>
+<script src="Library/imagesloaded.pkgd.min.js"></script>
+<script src="Smarty_dir/templates/js/projectsCards.js"></script>

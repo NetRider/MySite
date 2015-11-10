@@ -12,8 +12,9 @@
     <div class="grid text-center" id="mansoryContainer">
         <div class="grid-sizer"></div>
     </div>
-    <img style="margin-left:50%;" src="Smarty_dir/templates/img/ajax-loader.gif" id="spinner">
+        <img style="margin-left:50%;" src="Smarty_dir/templates/img/ajax-loader.gif" id="spinner">
 </div>
+
 <script src="Library/masonry.pkgd.min.js"></script>
 <script src="Library/handlebars-v4.0.4.js"></script>
 <script src="Library/imagesloaded.pkgd.min.js"></script>
