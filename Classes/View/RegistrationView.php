@@ -1,15 +1,26 @@
 <?php
-
-
+/**
+ * Registration View File
+ *
+ * Questo file contiene il Registration View
+ *
+ * @package View
+ * @author Matteo Polsinelli
+ */
 class RegistrationView extends View {
 
+	/**
+	* contiene il nome del template da caricare
+	*
+	* @var string
+	*/
 	private $template;
 
-	public function __construct()
-	{
-		 parent::__construct();
-	}
-
+	/**
+	 * metodo getTask
+	 *
+	 * @return string con il task per il controller - false altrimenti
+	 */
 	public function getTask()
 	{
 		if(isset($_REQUEST['task']))
@@ -18,66 +29,85 @@ class RegistrationView extends View {
 			return false;
 	}
 
+	/**
+	 * metodo getUsername
+	 *
+	 * @return string ritorna il valore associato a "username" dentro $_REQUEST
+	 */
 	public function getUsername()
 	{
 		return $this->getRequest('username');
 	}
 
+	/**
+	 * metodo getEmail
+	 *
+	 * @return string ritorna il valore associato a "email" dentro $_REQUEST
+	 */
 	public function getEmail()
 	{
 		return $this->getRequest('email');
 	}
 
+	/**
+	 * metodo getPassword
+	 *
+	 * @return string ritorna il valore associato a "password" dentro $_REQUEST
+	 */
 	public function getPassword()
 	{
 		return $this->getRequest('password');
 	}
 
+	/**
+	 * metodo getUsernameToCheck
+	 *
+	 * @return string ritorna il valore associato a "username" dentro $_REQUEST
+	 */
 	public function getUsernameToCheck()
 	{
 		return $this->getRequest('username');
 	}
 
+	/**
+	 * metodo getEmailToCheck
+	 *
+	 * @return string ritorna il valore associato a "email" dentro $_REQUEST
+	 */
 	public function getEmailToCheck()
 	{
 		return $this->getRequest('email');
 	}
 
+	/**
+	 * metodo getProfileImage
+	 *
+	 * @return string ritorna il valore associato a "image" dentro $_REQUEST
+	 */
 	public function getProfileImage()
 	{
-		$imagePath = "";
-
-        if(is_uploaded_file($_FILES['image']['tmp_name'])) {
-			$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
-			if(!preg_match("/\.(gif|png|jpg|jpeg)$/", $ext))
-			{
-				$image = basename($_FILES["image"]["name"]);
-	            $imagePath = "Data/profile_images/" . $image;
-	            move_uploaded_file($_FILES["image"]["tmp_name"], $imagePath);
-			}else {
-				return "beccato";
-			}
-
-        }else {
-			$imagePath = "Data/profile_images/default_profile_image.gif";
-		}
-
-		return $imagePath;
+		return $_FILES['image'];
 	}
 
-	private function getRequest($key)
-	{
-		if(isset($_REQUEST[$key]))
-			return $_REQUEST[$key];
-		else
-			return false;
-	}
-
+	/**
+	 * metodo setTemplate
+	 *
+	 * imposta il template da visualizzare
+	 *
+	 * @param string template
+	 */
 	public function setTemplate($template)
 	{
 		$this->template = $template;
 	}
 
+	/**
+	 * metodo getContent
+	 *
+	 * crea la pagina html
+	 *
+	 * @return string Ritorna il template costruito con smarty
+	 */
 	public function getContent()
 	{
 		return $this->fetch($this->template.'.tpl');

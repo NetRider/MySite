@@ -1,13 +1,20 @@
 <?php
-
-
+/**
+ * HomeView View File
+ *
+ * Questo file contiene la HomeView View
+ *
+ * @package View
+ * @author Matteo Polsinelli
+ */
 class HomeView extends View {
 
-	public function __construct()
-	{
-		 parent::__construct();
-	}
-
+	/**
+	 * metodo assignHomeArticles
+	 *
+	 * @param array $homeArticles
+	 * @param array $homeProjects
+	 */
 	public function assignHomeArticles($homeArticles, $homeProjects)
 	{
 		$this->assign('homeArticles', $homeArticles);
@@ -15,6 +22,13 @@ class HomeView extends View {
 
 	}
 
+	/**
+	 * metodo getContent
+	 *
+	 * crea la pagina html
+	 *
+	 * @return string Ritorna il template costruito con smarty
+	 */
 	public function getContent()
 	{
 		return $this->fetch('home.tpl');

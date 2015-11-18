@@ -1,13 +1,24 @@
 <?php
+/**
+ * Comment Controller File
+ *
+ * Questo file contiene il comment controller
+ *
+ * @package Controller
+ * @author Matteo Polsinelli
+ */
 
 class CommentController extends Controller {
 
-	public function executeTask()
-	{
-		switch ($this->view->getTask())
-		{
+	/**
+	 * Smista le richieste in arrivo dalla ArticleView.
+	 */
+	 public function executeTask()
+	 {
+		 switch ($this->view->getTask())
+		 {
 			case 'addComment':
-				return $this->addComment();
+			 	return $this->addComment();
 			break;
 
 			case 'removeCommentById':
@@ -16,6 +27,13 @@ class CommentController extends Controller {
 		}
 	}
 
+	/**
+	 * Memorizza un commento nel database
+	 *
+	 * Istanzia un commento con i dati in upload e prova ad inserirlo nel database.
+	 * Distingue se il commento è riferito ad un articolo oppure ad un progetto.
+	 *
+     */
 	private function addComment()
 	{
 		$databaseAdapter = new Database();
@@ -28,6 +46,13 @@ class CommentController extends Controller {
 		elseif($this->view->getProjectId() != "")
 			$this->view->responseAjaxCall($commentMapper->insertProjectComment($comment, $this->view->getProjectId()));
 	}
+
+	/**
+     * Cancella un commento dal database
+     *
+     * Cancella un commento dal database attraverso l'id.
+     *
+     */
 
 	private function removeCommentById()
 	{

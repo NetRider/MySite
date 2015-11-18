@@ -2,12 +2,11 @@
 /**
  * Article Controller File
  *
- * Questo file contine l'article controller
+ * Questo file contiene l'article controller
  *
  * @package Controller
  * @author Matteo Polsinelli
  */
-
 class ArticleController extends Controller {
 
     /**
@@ -40,7 +39,10 @@ class ArticleController extends Controller {
     }
 
     /**
-	 * Prepara le cards dieci alla volta
+	 * Costruisce un matrice dove su ogni riga è presente un articolo.
+	 * Su ogni colonna si trova il titolo, descrizione, id e immagine.
+	 * Gli articoli con cui si popolano la matrice dipende dal numero di pagina,
+	 * fornito dalla view. Si va da un massimo di 10 articolo per pagina a un minimo di 0
 	 */
     private function getArticlesCardsByPage()
     {
@@ -67,18 +69,21 @@ class ArticleController extends Controller {
     }
 
     /**
-     * Seleziona il template articlesCards
+     * Crea la struttura della pagina che conterrà le cards di tutti gli articoli
      *
-     * @return string Rendered template output
+     * @return string Ritorna il template costruito con smarty
      */
     private function getArticlesCardsPage()
     {
         $this->view->setTemplate('articlesCards');
-        error_log(print_r($this->view->getContent(), true));
         return $this->view->getContent();
     }
 
-
+    /**
+     * Crea la pagina adibita per la lettura di un articolo.
+     *
+     * @return string Ritorna il template costruito con smarty
+     */
     private function getArticleView()
     {
         $databaseAdapter = new Database();
@@ -112,15 +117,34 @@ class ArticleController extends Controller {
         return $this->view->getContent();
     }
 
+    /**
+	 * Memorizza un articolo nel database
+	 *
+	 * Istanzia un articolo con i dati in upload e prova ad inserirlo nel database
+	 *
+     */
     private function addNewArticle()
     {
         $databaseAdapter = new Database();
         $articleMapper = new ArticleMapper($databaseAdapter);
         $session = Singleton::getInstance("Session");
-        $article = new ArticleEntity($session->getUserId(), $this->view->getArticleTitle(), $this->view->getArticleDescription(), $this->view->getArticleText(), date('o-m-d H:i:s'), $this->view->getArticleImage());
-        $this->view->responseAjaxCall($articleMapper->insert($article));
+        $image = $this->Upload();
+        if($image)
+        {
+            $article = new ArticleEntity($session->getUserId(), $this->view->getArticleTitle(), $this->view->getArticleDescription(), $this->view->getArticleText(), date('o-m-d H:i:s'), $image);
+            $this->view->responseAjaxCall($articleMapper->insert($article));
+        }else
+        {
+            $this->view->responseAjaxCall(false);
+        }
     }
 
+    /**
+     * Cancella un articolo dal database
+     *
+     * Cancella un articolo dal database attraverso l'id. Se l'immagine associata non
+     * è quella di default la rimuove dal server
+     */
     private function deleteArticle()
     {
         $databaseAdapter = new Database();
@@ -129,5 +153,36 @@ class ArticleController extends Controller {
         if($file && $file != "Data/articles_images/default_article_image.jpg")
             unlink("/Applications/XAMPP/xamppfiles/htdocs/MySite/".$file);
         $this->view->responseAjaxCall($articleMapper->removeArticleById($this->view->getArticleToRemove()));
+    }
+
+    /**
+     * Gestisce upload immagine articolo
+     *
+     * @return string Ritorna il path dell'immagine se tutto è andato bene
+     */
+    private function Upload()
+    {
+        $imageUploaded = $this->view->getArticleImage();
+        $extensions = array("image/jpeg", "image/jpg", "image/gif", "image/png");
+        $type = $imageUploaded['type'];
+        $name = $imageUploaded['name'];
+        $size = $imageUploaded['size'];
+
+        if(is_uploaded_file($imageUploaded['tmp_name']))
+		{
+            if($size <= 262144 && in_array($type, $extensions))
+            {
+                $image = basename($name);
+                $target_file = "Data/articles_images/". date('o-m-d H:i:s') . $image;
+                move_uploaded_file($imageUploaded['tmp_name'], $target_file);
+    			return $target_file;
+            }
+            else {
+                return false;
+            }
+        }else
+		{
+			return "Data/articles_images/default_article_image.jpg";
+		}
     }
 }

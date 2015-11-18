@@ -1,8 +1,17 @@
 <?php
-
-
+/**
+ * Project Controller File
+ *
+ * Questo file contiene il project controller
+ *
+ * @package Controller
+ * @author Matteo Polsinelli
+ */
 class ProjectController extends Controller {
 
+    /**
+	 * Smista le richieste in arrivo dall'ArticleView.
+	 */
     public function executeTask()
     {
         switch($this->view->getTask())
@@ -29,12 +38,23 @@ class ProjectController extends Controller {
         }
     }
 
+    /**
+     * Crea la struttura della pagina che conterrà le cards di tutti i progetti
+     *
+     * @return string Ritorna il template costruito con smarty
+     */
     private function getProjectsCardsPage()
     {
         $this->view->setTemplate('projectsCards');
         return $this->view->getContent();
     }
 
+    /**
+     * Costruisce un matrice dove su ogni riga è presente un progetto.
+     * Su ogni colonna si trova il titolo, descrizione, id e immagine.
+     * I progetti con cui si popolano la matrice dipende dal numero di pagina,
+     * fornito dalla view. Si va da un massimo di 10 progetti per pagina a un minimo di 0
+     */
     private function getProjectsCardsByPage()
     {
         $databaseAdapter = new Database();
@@ -59,6 +79,11 @@ class ProjectController extends Controller {
         $this->view->responseAjaxCall(json_encode($data));
     }
 
+    /**
+     * Crea la pagina adibita per la lettura di un progetto.
+     *
+     * @return string Ritorna il template costruito con smarty
+     */
     private function getProjectView()
     {
         $databaseAdapter = new Database();
@@ -71,7 +96,7 @@ class ProjectController extends Controller {
         $project = $projectMapper->getProjectById($this->view->getProjectId());
         error_log(print_r($project,true));
         $comments = $commentMapper->getCommentsByProjectId($project->getId());
-        $projectAuthor = $userMapper->getUserById($project->getUserId());
+        $projectAuthor = $userMapper->getUserById($project->getAuthorId());
 
         $dataComments = array();
 
@@ -97,16 +122,36 @@ class ProjectController extends Controller {
         return $this->view->getContent();
     }
 
+    /**
+     * Memorizza un progetto nel database
+     *
+     * Istanzia un progetto con i dati in upload e prova ad inserirlo nel database
+     *
+     */
     private function addNewProject()
     {
         $databaseAdapter = new Database();
         $projectMapper = new ProjectMapper($databaseAdapter);
         $session = Singleton::getInstance("Session");
-        $project = new ProjectEntity($session->getUserId(), $this->view->getProjectTitle(), $this->view->getProjectDescription(), $this->view->getProjectText(), date('o-m-d H:i:s'), "Data/projects_images/" . $this->view->getProjectImage());
-        $dependencies = $this->view->getProjectDependencies();
-        $this->view->responseAjaxCall($projectMapper->insertProject($project, $dependencies));
+        $image = $this->Upload();
+        if($image)
+        {
+            $project = new ProjectEntity($session->getUserId(), $this->view->getProjectTitle(), $this->view->getProjectDescription(), $this->view->getProjectText(), date('o-m-d H:i:s'), $image);
+            $dependencies = $this->view->getProjectDependencies();
+            $this->view->responseAjaxCall($projectMapper->insertProject($project, $dependencies));
+        }
+        else
+        {
+            $this->view->responseAjaxCall(false);
+        }
     }
 
+    /**
+     * Cancella un progetto dal database
+     *
+     * Cancella un progetto dal database attraverso l'id. Se l'immagine associata non
+     * è quella di default la rimuove dal server
+     */
     private function deleteProject()
     {
         $databaseAdapter = new Database();
@@ -115,5 +160,36 @@ class ProjectController extends Controller {
         if($file && $file != "Data/projects_images/default_project_image.jpg")
             unlink("/Applications/XAMPP/xamppfiles/htdocs/MySite/".$file);
         $this->view->responseAjaxCall($projectMapper->removeProjectById($this->view->getProjectToRemove()));
+    }
+
+    /**
+     * Gestisce upload immagine progetto
+     *
+     * @return string Ritorna il path dell'immagine se tutto è andato bene
+     */
+    private function Upload()
+    {
+        $imageUploaded = $this->view->getProjectImage();
+        $extensions = array("image/jpeg", "image/jpg", "image/gif", "image/png");
+        $type = $imageUploaded['type'];
+        $name = $imageUploaded['name'];
+        $size = $imageUploaded['size'];
+
+        if(is_uploaded_file($imageUploaded['tmp_name']))
+		{
+            if($size <= 262144 && in_array($type, $extensions))
+            {
+                $image = basename($name);
+                $target_file = "Data/projects_images/" . date('o-m-d H:i:s') . $image;
+                move_uploaded_file($imageUploaded['tmp_name'], $target_file);
+    			return $target_file;
+            }
+            else {
+                return false;
+            }
+        }else
+		{
+			return "Data/projects_images/default_project_image.jpg";
+		}
     }
 }

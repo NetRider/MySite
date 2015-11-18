@@ -10,11 +10,18 @@ $(function(){
 
 	jQuery.validator.addMethod('filesize', function(value, element, param) {
     return this.optional(element) || (element.files[0].size <= param);
-	}, "Inserisci una immagine inferiore ai 64kb");
+}, "Max size allowed 256kb");
 
-	$("#registrationForm").change(function(){
+	var form = $("#registrationForm");
+
+	form.change(function(){
 		checkForm();
 	});
+
+	form.submit(function(event){
+		event.preventDefault();
+	});
+
 
 	$('#registrationModal').on('hidden.bs.modal', function () {
 		location.replace("index.php");
@@ -27,7 +34,7 @@ function checkForm(){
 		rules: {
 			username: {
 				required: true,
-				minlength: 5,
+				maxlength: 64,
 				alphanumeric: true,
 				remote: {
         			url: "index.php?controller=Registration&task=checkUsername",
@@ -63,13 +70,13 @@ function checkForm(){
 			},
 			image: {
 				extension: "png|gif|jpeg|jpg",
-				filesize: 65536
+				filesize: 262144
 			}
 		},
 		messages: {
 			username: {
-				required: "Inserisci username",
-				remote: "Username già utilizzato"
+				required: "Insert username",
+				remote: "Username already taken"
 			},
 			password: {
 				required: "Provide a password",
@@ -82,14 +89,13 @@ function checkForm(){
 				remote: "This eamil is already in use, please choose a different email"
 			},
 			image: {
-				extension: "Questa estensione non è valida"
+				extension: "This extensions is not valid"
 			}
 		},
 		// the errorPlacement has to take the table layout into account
 		errorPlacement: function(error, element) {
 			error.appendTo(element.parent().next());
 		},
-		// specifying a submitHandler prevents the default submit, good for the demo
 		submitHandler: function() {
 			var formData = new FormData($("#registrationForm")[0]);
 			$.ajax({

@@ -8,8 +8,14 @@ $(function() {
     return this.optional(element) || /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
 	}, "Indirizzo email non è valido.");
 
-	$("#updateForm").change(function(){
+	var form = $("#updateForm");
+
+	form.change(function(){
 		checkForm();
+	});
+
+	form.submit(function(event){
+		event.preventDefault();
 	});
 
 	$("#buttonDashProfileForm").click(function() {

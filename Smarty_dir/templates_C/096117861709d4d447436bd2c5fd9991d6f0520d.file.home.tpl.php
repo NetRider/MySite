@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2015-11-06 09:44:37
+<?php /* Smarty version Smarty-3.1.18, created on 2015-11-07 23:46:31
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/home.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1497045537563c687538d239-49328029%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '096117861709d4d447436bd2c5fd9991d6f0520d' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/home.tpl',
-      1 => 1446389234,
+      1 => 1446936389,
       2 => 'file',
     ),
   ),
@@ -15,17 +15,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.18',
+  'unifunc' => 'content_563c68753f3364_21704935',
   'variables' => 
   array (
     'homeArticles' => 0,
     'homeArticle' => 0,
-    'articleCard' => 0,
     'homeProjects' => 0,
     'homeProject' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.18',
-  'unifunc' => 'content_563c68753f3364_21704935',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_563c68753f3364_21704935')) {function content_563c68753f3364_21704935($_smarty_tpl) {?><!-- Page Content -->
 <div class="container">
@@ -33,7 +32,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="img-responsive" src="Smarty_dir/templates/img/header_image.jpg" alt="">
+                    <img class="img-responsive" style="width:100%;" src="Smarty_dir/templates/img/header_image.jpg" alt="">
                 </div>
             </div>
         </div>
@@ -65,7 +64,7 @@ $_smarty_tpl->tpl_vars['homeArticle']->_loop = true;
                         <p><?php echo $_smarty_tpl->tpl_vars['homeArticle']->value['description'];?>
 </p>
                         <p>
-                            <a href="index.php?controller=Article&task=getArticleView&Id=<?php echo $_smarty_tpl->tpl_vars['articleCard']->value['id'];?>
+                            <a href="index.php?controller=Article&task=getArticleView&Id=<?php echo $_smarty_tpl->tpl_vars['homeArticle']->value['id'];?>
 " class="btn btn-success stretchButton">Leggi!</a>
                         </p>
                     </div>
@@ -99,7 +98,7 @@ $_smarty_tpl->tpl_vars['homeProject']->_loop = true;
                         <p><?php echo $_smarty_tpl->tpl_vars['homeProject']->value['description'];?>
 </p>
                         <p>
-                            <a href="index.php?controller=Article&task=getProjectView&Id=<?php echo $_smarty_tpl->tpl_vars['homeProject']->value['id'];?>
+                            <a href="index.php?controller=Project&task=getProjectView&Id=<?php echo $_smarty_tpl->tpl_vars['homeProject']->value['id'];?>
 " class="btn btn-success stretchButton">Leggi!</a>
                         </p>
                     </div>

@@ -1,6 +1,12 @@
 <?php
-
-
+/**
+ * UserAccess Controller File
+ *
+ * Questo file contiene il comment controller
+ *
+ * @package Controller
+ * @author Matteo Polsinelli
+ */
 class UserAccessController extends Controller {
 
     public function executeTask()
@@ -29,6 +35,10 @@ class UserAccessController extends Controller {
         }
     }
 
+    /**
+     * Effettua il login dell'utente nel caso in cui i dati inseriti
+     * siano corretti.
+     */
     public function login()
     {
         error_log("sono dentro a login");
@@ -46,6 +56,11 @@ class UserAccessController extends Controller {
         }
     }
 
+    /**
+     * Esegue il logout dell'utente
+     *
+     * @return string Ritorna il template costruito con smarty
+     */
     public function logout()
     {
         $session = Singleton::getInstance("Session");
@@ -54,6 +69,10 @@ class UserAccessController extends Controller {
         return $logout;
     }
 
+    /**
+     * Controlla se le credenziali di accesso corrispondono a quelle
+     * di un utente nel database
+     */
     private function userAuthentication($username, $password)
     {
         $databaseAdapter = new Database();
@@ -64,6 +83,10 @@ class UserAccessController extends Controller {
             return false;
     }
 
+    /**
+     * Aggiorna il ruolo di un utente e salva le modifiche nel database
+     *
+     */
     private function updateUserRole()
     {
         $databaseAdapter = new Database();
@@ -71,6 +94,10 @@ class UserAccessController extends Controller {
         $this->view->responseAjaxCall($userMapper->updateUserRole($this->view->getUserIdForUpdate(), $this->view->getUserRoleToUpdate()));
     }
 
+    /**
+     * Rimuove un utente dal database
+     *
+     */
     private function removeUser()
     {
         $databaseAdapter = new Database();
@@ -83,7 +110,9 @@ class UserAccessController extends Controller {
 
         $this->view->responseAjaxCall($userMapper->removeUser($this->view->userToRemove()));
     }
-
+    /**
+     * Esegue l'update dei dati dell'utente
+     */
     private function updateUser()
     {
         $databaseAdapter = new Database();
@@ -95,9 +124,7 @@ class UserAccessController extends Controller {
         else
         {
             $username = $this->view->getUsername();
-            $session->login($username);
         }
-
 
         if($this->view->getUserEmail() == "")
             $email = $session->getUserEmail();
@@ -109,19 +136,48 @@ class UserAccessController extends Controller {
         else
             $password = $this->view->getUserPassword();
 
+        $image = $this->Upload();
 
-        $image = $this->view->getUpdateImage();
         if($image == "")
-
             $image = $session->getUserImage();
-        else
-        {
-            if($session->getUserImage() != "Data/profile_images/default_profile_image.gif")
-            {
-                unlink($session->getUserImage());
-            }
-        }
 
-        $this->view->responseAjaxCall($userMapper->updateUser($session->getUserId(), $username, $email, $image, $password));
+
+        if($image != $session->getUserImage() && $image != "Data/profile_images/default_profile_image.gif")
+                unlink($session->getUserImage());
+
+        if($userMapper->updateUser($session->getUserId(), $username, $email, $image, $password))
+        {
+            $session->updateUser($username);
+            $this->view->responseAjaxCall(true);
+        }else {
+            $this->view->responseAjaxCall(false);
+        }
+    }
+
+
+    private function Upload()
+    {
+        $imageUploaded = $this->view->getUpdateImage();
+        $extensions = array("image/jpeg", "image/jpg", "image/gif", "image/png");
+        $type = $imageUploaded['type'];
+        $name = $imageUploaded['name'];
+        $size = $imageUploaded['size'];
+
+        if(is_uploaded_file($imageUploaded['tmp_name']))
+		{
+            if($size <= 65536 && in_array($type, $extensions))
+            {
+                $image = basename($name);
+                $target_file = "Data/profile_images/". date('o-m-d H:i:s') . $image;
+                move_uploaded_file($imageUploaded['tmp_name'], $target_file);
+    			return $target_file;
+            }
+            else {
+                return false;
+            }
+        }else
+		{
+			return "";
+		}
     }
 }

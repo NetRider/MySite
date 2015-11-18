@@ -1,24 +1,43 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: matteopolsinelli
- * Date: 24/05/15
- * Time: 12:32
+ * classe AbstractDataMapper
+ *
+ * @package Foundation
+ * @author Matteo Polsinelli
  */
-
 abstract class AbstractDataMapper
 {
+    /**
+    *l'oggetto di tipo database
+    *
+    * @var Database
+    */
     protected $adapter;
-    protected $entityTable;
 
+    /**
+	 * Costruttore di AbstractDataMapper
+	 *
+	 *
+	 * @param Database $adapter
+	 */
     public function __construct(Database $adapter) {
         $this->adapter = $adapter;
     }
 
+    /**
+	 * Ritorna il database $adapter
+	 *
+	 * @return Database $adapter
+	 */
     public function getAdapter() {
         return $this->adapter;
     }
 
+    /**
+	 * Cerca elementi all'interno del database e crea un oggetto/un array
+	 * di oggetti
+	 *
+	 */
     public function find($cond = array(), $bind = array(), $op='', $order='', $limit=array(), $joinTable='', $joinBind = array(), $groupBy = array())
     {
         $rows = $this->adapter->select($this->entityTable, $cond, $bind, $op, $order, $limit, $joinTable, $joinBind, $groupBy);
@@ -40,14 +59,18 @@ abstract class AbstractDataMapper
             return false;
     }
 
+    /**
+	 * Cerca elementi all'interno del database e ritorna un array associativo
+	 *
+	 */
     public function returnAssociativeArray($cond = array(), $bind = array(), $op='', $order='', $limit=array(), $joinTable='', $joinBind = array(), $groupBy = array())
     {
         return $rows = $this->adapter->select($this->entityTable, $cond, $bind, $op, $order, $limit, $joinTable, $joinBind, $groupBy);
     }
 
     /*
-     * Questa funzione deve essere creata dai mappers concreti!
-     * Questo perché conoscono il tipo di modello
+     * Questo metodo deve essere creata dai mappers concreti.
+     *
      */
     abstract protected function createEntity($row);
 }

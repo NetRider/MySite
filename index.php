@@ -7,6 +7,17 @@
 
 	require_once './Classes/Utility/autoload.inc.php';
 
-	$mainView = new MainView();
-	$mainController = new MainController($mainView);
-	$mainController->getPage();
+	$installView = new InstallerView();
+	$installerController = new InstallerController($installView);
+
+	if($installerController->testInstallation())
+	{
+		$mainView = new MainView();
+		$mainController = new MainController($mainView);
+		$mainController->getPage();
+	}
+	else
+	{
+
+		$installerController->executeTask();
+	}

@@ -55,7 +55,7 @@
                         </table>
                     </div>
 
-                    <button class="btn btn-danger" id="removeButton">Rimuovi selezionati</button>
+                    <button class="btn btn-danger" id="removeButton">Rimuovi selezionato</button>
 
                 </div>
             </div>

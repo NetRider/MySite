@@ -1,0 +1,137 @@
+/*!
+ * Start Bootstrap - Heroic Features HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+.hero-spacer {
+    margin-top: 50px;
+}
+
+.hero-feature {
+    margin-bottom: 30px;
+}
+
+.business-header {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.thumbnail {
+}
+
+/* Customize the text color and shadow color and to optimize text legibility. */
+
+.tagline {
+    text-shadow: 0 0 10px #000;
+    color: #fff;
+}
+
+.img-center {
+    margin: 0 auto;
+}
+
+.commentImage {
+    width: 64px;
+    height: 64px;
+}
+
+.cardImage {
+    width: 800px;
+    height: 500px;
+}
+
+footer {
+    height: 5em;
+    color: #696969;
+    background-color: #CCCCCC;
+    padding-top: 0.5em;
+}
+
+footer a {
+    font-size: 3em;
+    margin-left: 10px;
+    color: #696969;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.grid-sizer,
+.grid-item {
+  width: 31%;
+  min-width: 200px;
+}
+
+.stretchButton {
+    width: 80%;
+}
+
+#imgProfile {
+    height: 6%;
+    width: 6%;
+}
+
+.myTooltip {
+	padding: 6px 12px;
+	margin-top: 23px;
+	border-radius: 4px;
+	background-color: #FFFDCC;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(119, 122, 107, 0.6);
+}
+
+.errorLabel {
+    color: #FF0000;
+    margin-left: 2%;
+}
+
+.footer-slogan {
+    font-size: 2.5em;
+}
+
+.navbar-nav a {
+    font-size: 1.3em;
+}
+
+.navbar-brand {
+    font-size: 1.5em;
+}
+
+.higthContr {
+    color: #FFFFFF
+}
+
+.errorDiv {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 3000;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.errorDivJsContent {
+    margin-left:28%;
+    margin-top:10%;
+}
+
+.errorDivCooContent {
+    margin-left:29%;
+    margin-top:10%;
+    opacity:1.0;
+}
+
+.imageError {
+    margin-left:15%;
+    margin-top:5%;
+}

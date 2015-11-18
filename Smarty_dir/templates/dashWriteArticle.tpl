@@ -38,7 +38,7 @@
                                     <label class="errorLabel"></label>
                                     <input type="file" name="image">
                                 </div>
-                                <button type="submit" class="btn btn-default" id="saveProjectButton" data-toggle="modal" data-target="#statusArticle">Submit Button</button>
+                                <button type="submit" class="btn btn-default" id="saveProjectButton" data-toggle="modal" data-target="#statusArticle">Pubblica Articoli</button>
                             </form>
                         </div>
                     </div>

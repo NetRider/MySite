@@ -1,13 +1,13 @@
 <?php
 
-
 /**
-*It is the main project controller,
-*
-*Every request passes through it
-*and it manages these request and call the respective controller
-*
-*/
+ * Main Controller File
+ *
+ * Questo file contiene il main controller
+ *
+ * @package Controller
+ * @author Matteo Polsinelli
+ */
 
 class MainController extends Controller {
 
@@ -25,8 +25,7 @@ class MainController extends Controller {
 		Se sto rispondendo ad una chiamata Ajax non devo visualizzare una nuova pagina.
 		In altre parole il controllore non mi ritorna la pagina da aggiungere al main.tpl
 		Quindi non devo fare nulla ci pensa la View del rispettivo controllore ad inviare i dati
-		 */
-
+		*/
 		if($data != null)
 		{
 			$this->view->setContent($data);
@@ -41,6 +40,10 @@ class MainController extends Controller {
 		}
 	}
 
+	/**
+	 * Instrada il task richiesto in arrivo dalla main view.
+	 * Instanzia il controller e la view per il soddisfacimento di tale task.
+	 */
 	public function executeTask()
 	{
 
@@ -68,7 +71,7 @@ class MainController extends Controller {
 		$controller = new $controllerAwakened($view);
 
 		/*
-			Ritorna il contenuto da impostare nel mainView oppure i dati di risposta alle form
+			Ritorna il contenuto da impostare nel mainView oppure un valore vuoto
 		 */
 		return $controller->executeTask();
 	}

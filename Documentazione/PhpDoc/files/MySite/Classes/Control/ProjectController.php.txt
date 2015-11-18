@@ -1,0 +1,107 @@
+<?php
+
+
+class ProjectController extends Controller {
+
+    public function executeTask()
+    {
+        switch($this->view->getTask())
+        {
+            case 'addNewProject':
+                return $this->addNewProject();
+            break;
+
+            case 'getProjectView':
+                return $this->getProjectView();
+            break;
+
+            case 'getProjectsCards':
+                return $this->getProjectsCards();
+            break;
+
+            case 'deleteProject':
+                return $this->deleteProject();
+            break;
+        }
+    }
+
+    private function getProjectsCards()
+    {
+        $databaseAdapter = new Database();
+        $projectMapper = new ProjectMapper($databaseAdapter);
+        $userMapper = new UserMapper($databaseAdapter);
+        $projects = $projectMapper->getAllProjects();
+        $data = array();
+
+        if($projects)
+        {
+            foreach ($projects as $project)
+            {
+                array_push($data, array("image"=>$project->getImage(), "title"=>$project->getTitle(), "description"=>$project->getDescription(), "id"=>$project->getId()));
+            }
+        }
+
+        $this->view->assignProjectsCards($data);
+        $this->view->setTemplate('projectsCards');
+        return $this->view->getContent();
+    }
+
+    private function getProjectView()
+    {
+        $databaseAdapter = new Database();
+        $projectMapper = new ProjectMapper($databaseAdapter);
+        $articleMapper = new ArticleMapper($databaseAdapter);
+        $commentMapper = new CommentMapper($databaseAdapter);
+        $userMapper = new UserMapper($databaseAdapter);
+
+        error_log($this->view->getProjectId());
+        $project = $projectMapper->getProjectById($this->view->getProjectId());
+        error_log(print_r($project,true));
+        $comments = $commentMapper->getCommentsByProjectId($project->getId());
+        $projectAuthor = $userMapper->getUserById($project->getUserId());
+
+        $dataComments = array();
+
+        if($comments)
+        {
+            if(is_array($comments))
+            {
+                foreach ($comments as $comment)
+                {
+                    $user = $userMapper->getUserByID($comment->getUserId());
+                    array_push($dataComments, array("author"=>$user->getUsername(), "image"=>$user->getImage(), "text"=>$comment->getText(), "authorId"=>$user->getId(), "date"=>$comment->getDate()));
+                }
+            }else {
+                $user = $userMapper->getUserByID($comments->getUserId());
+                array_push($dataComments, array("author"=>$user->getUsername(), "image"=>$user->getImage(), "text"=>$comments->getText(), "authorId"=>$user->getId(), "date"=>$comments->getDate()));
+            }
+
+        }
+
+        $dependencies = $articleMapper->getArticlesDependenciesByProjectId($project->getId());
+        $this->view->assignProjectData($project->getId(), $project->getTitle(), $project->getText(), $projectAuthor->getUsername(), $project->getImage(), $project->getDate(), $dataComments, $dependencies);
+        $this->view->setTemplate('projectViewer');
+        return $this->view->getContent();
+    }
+
+    private function addNewProject()
+    {
+        $databaseAdapter = new Database();
+        $projectMapper = new ProjectMapper($databaseAdapter);
+        $session = Singleton::getInstance("Session");
+        $project = new ProjectEntity($session->getUserId(), $this->view->getProjectTitle(), $this->view->getProjectDescription(), $this->view->getProjectText(), date('o-m-d H:i:s'), "Data/projects_images/" . $this->view->getProjectImage());
+        $dependencies = $this->view->getProjectDependencies();
+        $this->view->responseAjaxCall($projectMapper->insertProject($project, $dependencies));
+    }
+
+    private function deleteProject()
+    {
+        $databaseAdapter = new Database();
+        $projectMapper = new ProjectMapper($databaseAdapter);
+        $file = $projectMapper->getProjectImageById($this->view->getProjectToRemove());
+        if($file && $file != "Data/projects_images/default_project_image.jpg")
+            unlink("/Applications/XAMPP/xamppfiles/htdocs/MySite/".$file);
+        $this->view->responseAjaxCall($projectMapper->removeProjectById($this->view->getProjectToRemove()));
+    }
+}
+

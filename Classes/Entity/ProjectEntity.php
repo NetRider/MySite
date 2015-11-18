@@ -1,19 +1,73 @@
 <?php
-
-
-
+/**
+ * classe ProjectEntity
+ *
+ * @package Entity
+ * @author Matteo Polsinelli
+ */
 class ProjectEntity {
 
+	/**
+	* numero intero identificativo del progetto gestito da Database
+	* @var int
+	*/
 	private $id;
+
+	/**
+	* numero intero identificativo dell'autore del progetto gestito da Database
+	*
+	* @var int
+	*/
 	private $userId;
+
+	/**
+	* il titolo del progetto
+	*
+	* @var string
+	*/
 	private $title;
+
+	/**
+	* il testo del progetto
+	*
+	* @var string
+	*/
 	private $text;
+
+	/**
+	* la data di inserimento del progetto
+	*
+	* @var string
+	*/
 	private $date;
+
+	/**
+	*la descrizione del progetto
+	*
+	* @var string
+	*/
 	private $description;
-	private $comments;
-	private $dependencies;
+
+	/**
+	* il path dell'immagine all'interno del file system
+	* 
+	* @var string
+	*/
 	private $image;
 
+
+	/**
+	* Costruttore di ProjectEntity
+	*
+	* Crea un nuovo progetto
+	*
+	* @param int $userId
+	* @param string $title
+	* @param string $description
+	* @param string $text
+	* @param string $date
+	* @param string $image
+	*/
 	public function __construct($userId, $title, $description, $text, $date, $image) {
 		$this->userId = $userId;
 		$this->title = $title;
@@ -21,95 +75,150 @@ class ProjectEntity {
 		$this->text = $text;
 		$this->date = $date;
 		$this->image = $image;
+		$this->id = -1;
 	}
 
-	public function addComment($comment) {
-
+	/**
+	 * metodo getTitle
+	 *
+	 * ritorna il titolo del progetto
+	 *
+	 * @return string
+	 */
+	 public function getTitle() {
+		 return $this->title;
 	}
 
-	public function removeComment() {
-
-	}
-
-
-	//GET FUNCTIONS
-
-	public function getComments() {
-		if(count($this->comments) != 0)
-		return $this->comments;
-		else
-		return false;
-	}
-
-	public function getNumberOfComments() {
-		return count($this->comments);
-	}
-
-	public function getTitle() {
-		return $this->title;
-	}
-
-	public function getText() {
+	/**
+	 * metodo getText
+	 *
+	 * ritorna il testo del progetto
+	 *
+	 * @return string
+	 */
+	 public function getText() {
 		return $this->text;
 	}
 
-	public function getDate() {
+	/**
+	 * metodo getDate
+	 *
+	 * ritorna la data del progetto
+	 *
+	 * @return string
+	 */
+	 public function getDate() {
 		return $this->date;
-	}
+	 }
 
-	public function getId() {
-		return $this->id;
-	}
+	/**
+	 * metodo getId
+	 *
+	 * ritorna l'id dell'progetto. Se non è stato impostato ritorna il valore -1
+	 *
+	 * @return int
+	 */
+	 public function getId() {
 
-	public function getUserId() {
+		 return $this->id;
+	 }
+
+	 /**
+ 	 * metodo getAuthorId
+ 	 *
+ 	 * ritorna l'id dell'autore del progetto
+ 	 *
+ 	 * @return int
+ 	 */
+	 public function getAuthorId() {
 		return $this->userId;
-	}
+	 }
 
+	/**
+	* metodo getDescription
+	*
+	* ritorna la descrizione del progetto
+	*
+	* @return string
+	*/
 	public function getDescription() {
 		return $this->description;
 	}
 
-  public function getDependencies() {
-    return $this->dependencies;
-  }
+	/**
+	* metodo getImage
+	*
+	* ritorna il path dell'immagine del progetto
+	*
+	* @return string
+	*/
+	public function getImage() {
+		return $this->image;
+	}
 
-  public function getImage()
-  {
-	  return $this->image;
-  }
-
-	//SET FUNCTIONS
-
+	/**
+	 * metodo setTitle
+	 *
+	 * imposta il titolo del progetto
+	 *
+	 * @param string $title
+	 */
 	public function setTitle($title) {
 		$this->title = $title;
 	}
 
+	/**
+	 * metodo setText
+	 *
+	 * imposta il testo del progetto
+	 *
+	 * @param string $title
+	 */
 	public function setText($text) {
 		$this->text = $text;
 	}
 
+	/**
+	 * metodo setDate
+	 *
+	 * imposta la data del progetto
+	 *
+	 * @param string $date
+	 */
 	public function setDate($date) {
 		$this->date = $date;
 	}
 
-	public function setComments($comments) {
-		$this->comments = $comments;
-	}
-
-	public function setId($id) {
+	/**
+	 * metodo setId
+	 *
+	 * imposta l'id del progetto gestito dal database
+	 *
+	 * @param int $id
+	 */
+	public function setId($id){
 		$this->id = $id;
 	}
 
+	/**
+	 * metodo setDescription
+	 *
+	 * imposta la descrizione del progetto
+	 *
+	 * @param string $id
+	 */
 	public function setDescription($description) {
 		$this->description = $description;
 	}
 
-  	public function setDependencies($dependencies) {
-    	$this->dependencies = $dependencies;
-  }
-
-  public function setImage($image)
-  {
-	 	$this->image = $image;
-  }
+	/**
+	 * metodo setImage
+	 *
+	 * imposta il path dell'immagine del progetto
+	 *
+	 * @param string $id
+	 */
+	public function setImage($imge) {
+		$this->image = $image;
+	}
 }

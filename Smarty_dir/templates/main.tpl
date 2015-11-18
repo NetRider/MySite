@@ -13,9 +13,8 @@
         <link href="Library/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom CSS -->
-        <link href="Smarty_dir/templates/css/heroic-features.css" rel="stylesheet">
+        <link href="Smarty_dir/templates/css/main.css" rel="stylesheet">
         <link href="Smarty_dir/templates/css/login.css" rel="stylesheet">
-        <link href="Smarty_dir/templates/css/3-col-portfolio.css" rel="stylesheet">
 
         <link href="Library/adminPanel/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
         <link href="Library/adminPanel/dist/css/timeline.css" rel="stylesheet">
@@ -25,25 +24,21 @@
         <script src="Library/jquery-1.11.3.min.js"></script>
 
         <script src="Library/masonry.pkgd.min.js"></script>
-
-
     </head>
 
     <body>
         <noscript>
-            <div style="position: fixed; top: 0px; left: 0px; z-index: 3000;
-                height: 100%; width: 100%; background-color: rgba(0,0,0,0.7);" >
-                <div style="margin-left:28%; margin-top:10%;">
-                    <h1 style="color: #FFFFFF">Attiva Javascript nel tuo browser</h1>
-                    <img style="margin-left:15%; margin-top:5%;" src="./Smarty_dir/templates/img/javascript_logo.png">
+            <div class="errorDiv">
+                <div class="errorDivJsContent">
+                    <h1 class="higthContr">Attiva Javascript nel tuo browser</h1>
+                    <img class="imageError" src="./Smarty_dir/templates/img/javascript_logo.png">
                 </div>
             </div>
         </noscript>
-        <div style="position: fixed; top: 0px; left: 0px; z-index: 3000;
-            height: 100%; width: 100%; background-color: rgba(0,0,0,0.7);" id="cookie" hidden>
-            <div style="margin-left:29%; margin-top:10%; opacity:1.0;">
-                <h1 style="color: #FFFFFF">Abilita i cookie nel tuo browser</h1>
-                <img style="margin-left:15%; margin-top:5%" src="./Smarty_dir/templates/img/cookie.jpg">
+        <div class="errorDiv" id="cookie" hidden>
+            <div class="errorDivCooContent">
+                <h1 class="higthContr">Abilita i cookie nel tuo browser</h1>
+                <img class="imageError" src="./Smarty_dir/templates/img/cookie.jpg">
             </div>
         </div>
         <div class="modal fade" id="cookieModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

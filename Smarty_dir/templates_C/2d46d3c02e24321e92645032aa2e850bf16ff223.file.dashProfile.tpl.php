@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2015-11-06 11:59:35
+<?php /* Smarty version Smarty-3.1.18, created on 2015-11-07 20:14:21
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/dashProfile.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1523663009563c88170304b1-72392566%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2d46d3c02e24321e92645032aa2e850bf16ff223' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/dashProfile.tpl',
-      1 => 1446300149,
+      1 => 1446923655,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.18',
+  'unifunc' => 'content_563c88170577a7_31174989',
   'variables' => 
   array (
     'username' => 0,
@@ -22,8 +24,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'userImage' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.18',
-  'unifunc' => 'content_563c88170577a7_31174989',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_563c88170577a7_31174989')) {function content_563c88170577a7_31174989($_smarty_tpl) {?><div class="row">
     <div class="col-lg-12">
@@ -68,7 +68,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                             <label>Immagine profilo</label> <br>
                             <img src="<?php echo $_smarty_tpl->tpl_vars['userImage']->value;?>
 " class="img-rounded" width="200px" height="150px">
-                            <input name="image" id="image" type="file">
+                            <input type="file" name="image" id="image" >
                         </div>
                         <div class="form-group col-lg-4 myTooltip" hidden>
                         </div>
@@ -78,7 +78,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     <div class="row">
                         <div class="form-group col-lg-6">
                             <label>Password</label>
-                            <input type="password" name="password" class="form-control" id="password" value="">
+                            <input type="password" name="password" class="form-control" id="password">
                         </div>
                         <div class="form-group col-lg-4 myTooltip" hidden>
                         </div>
@@ -87,7 +87,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     <div class="row">
                         <div class="form-group col-lg-6">
                             <label>Repeat Password</label>
-                            <input type="password" name="password_confirm" class="form-control" id="password_confirm" value="">
+                            <input type="password" name="password_confirm" class="form-control" id="password_confirm">
                         </div>
                         <div class="form-group col-lg-4 myTooltip" hidden>
                         </div>
@@ -99,7 +99,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     </div>
     <div class="modal fade" id="dashProfileModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
-        <div class="modal-content">
+          <div class="modal-content">
                     <div class="modal-header">
                         <h3 class="panel-title" id="myModalDashProfileTitle">Utente eliminato correttamente</h3>
                     </div>
@@ -108,7 +108,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     <div class="modal-footer">
                         <button type="button" class="btn" id="buttonDashProfileForm" data-dismiss="modal">Chiudi</button>
                     </div>
-                </div>
             </div>
         </div>
     </div>

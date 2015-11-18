@@ -1,14 +1,31 @@
 <?php
-
+/**
+ * classe MainView
+ *
+ * @package View
+ * @author Matteo Polsinelli
+ */
 class MainView extends View {
+
+	/**
+	* contiene l'html relativo al menu in alto a destra
+	* login-registrazione oppure nome_utente-logout
+	*
+	* @var string
+	*/
 	private $rightMenu;
+
+	/**
+	* contiene l'html relativo al contenuto centrale dell'applicazione web	*
+	* @var string
+	*/
 	private $content;
 
-	public function __construct()
-	{
-		 parent::__construct();
-	}
-
+	/**
+	 * metodo setRightMenuUser
+	 *
+	 * utilizzato per impostare il menu utente quando quest'ultimo è loggato
+	 */
 	public function setRightMenuUser()
 	{
 		$session = Singleton::getInstance("Session");
@@ -17,16 +34,31 @@ class MainView extends View {
 		$this->rightMenu = $this->fetch("logged.tpl");
 	}
 
+	/**
+	 * metodo setRightMenuGuest
+	 *
+	 * utilizzato per impostare il menu se nessun utente è loggato
+	 */
 	public function setRightMenuGuest()
 	{
 		$this->rightMenu = $this->fetch("notLogged.tpl");
 	}
 
+	/**
+	 * metodo setContent
+	 *
+	 * imposta il contenuto centrale della web application
+	 */
 	public function setContent($content)
 	{
 		$this->content = $content;
 	}
 
+	/**
+	 * metodo wakeUpController
+	 *
+	 * @return  string con il nome del controller - false se il controller non esiste
+	 */
 	public function wakeUpController()
 	{
 		if (isset($_REQUEST['controller']))
@@ -35,6 +67,11 @@ class MainView extends View {
 			return false;
 	}
 
+	/**
+	 * metodo displayPage
+	 *
+	 * crea la pagina dell'applicazione web con il contenuto e menu corretto.
+	 */
 	public function displayPage()
 	{
 		$this->assign('rightMenu', $this->rightMenu);

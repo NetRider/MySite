@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2015-11-06 17:54:02
+<?php /* Smarty version Smarty-3.1.18, created on 2015-11-10 16:53:11
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/articlesCards.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:79666954563c6a41c61a82-61278709%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '089f42d1e63e10c167c689607a892b026bdf43cf' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/articlesCards.tpl',
-      1 => 1446828840,
+      1 => 1447170064,
       2 => 'file',
     ),
   ),
@@ -30,12 +30,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <!-- /.row -->
 
     <!-- Cards Row -->
-    <div class="grid text-center">
-        <div class="grid-sizer" id="cardsAnchor">
-
-        </div>
+    <div class="grid text-center" id="mansoryContainer">
+        <div class="grid-sizer"></div>
     </div>
+        <img style="margin-left:50%;" src="Smarty_dir/templates/img/ajax-loader.gif" id="spinner">
 </div>
+
 <script src="Library/masonry.pkgd.min.js"></script>
 <script src="Library/handlebars-v4.0.4.js"></script>
 <script src="Library/imagesloaded.pkgd.min.js"></script>

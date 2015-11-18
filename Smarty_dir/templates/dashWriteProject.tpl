@@ -48,7 +48,7 @@
                                         {/foreach}
                                     </select>
                                 </div>
-                                <button type="submit" class="btn btn-default" id="saveProjectButton">Submit Button</button>
+                                <button type="submit" class="btn btn-default" id="saveProjectButton">Pubblica Progetto</button>
                             </form>
                         </div>
                     </div>

@@ -1,8 +1,18 @@
 <?php
-
+/**
+ * Home Controller File
+ *
+ * Questo file contiene il home controller
+ *
+ * @package Controller
+ * @author Matteo Polsinelli
+ */
 
 class HomeController extends Controller {
 
+	/**
+	 * Smista le richieste in arrivo dalla HomeView.
+	 */
 	public function executeTask()
 	{
 		$databaseAdapter = new Database();

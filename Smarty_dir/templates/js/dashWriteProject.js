@@ -1,7 +1,14 @@
 $(function(){
 	CKEDITOR.replace('editor1');
-	$("#projectForm").change(function(){
+
+	var form = $("#projectForm");
+
+	form.change(function(){
 		checkForm();
+	});
+
+	form.submit(function(event){
+		event.preventDefault();
 	});
 
 	$("#buttonDashProjectForm").click(function() {
@@ -54,7 +61,7 @@ function checkForm(){
 				contentType: false
 			}).done(function(data) {
 				$('#panelEffect').waitMe('hide');
-				
+
 				if(data == "1")
 				{
 					$("#myModalDashProjectTitle").text("Progetto caricato correttamente");

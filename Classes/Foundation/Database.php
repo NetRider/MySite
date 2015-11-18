@@ -6,16 +6,31 @@
      * Class Database
      * @package Foundation
      *
-     * Questa classe è responsabile della connessione al database e implementa le funzioni CRUD.
-     * Attualmente non supporta SQL query sanitation.
+     * @author Matteo Polsinelli
      */
-
 	class Database
     {
+        /**
+    	*
+    	* @var array
+    	*/
         protected $config;
+
+        /**
+    	*
+    	* @var string
+    	*/
         protected $dbConnection;
+
+        /**
+    	*
+    	* @var string
+    	*/
         protected $statement;
 
+        /**
+    	 * Costruttore di Database
+    	 */
         public function __construct() {
             //This variable is define in databaseConfig.php
             global $mysqlConfig;
@@ -23,6 +38,11 @@
             $this->config = $mysqlConfig;
         }
 
+        /**
+         * metodo connect
+    	 *
+    	 * esegue la connessione al database
+    	 */
         public function connect() {
             //if there is ad dbConnection object already, return early
             if ($this->dbConnection) {
@@ -35,12 +55,30 @@
             }
         }
 
-        //Probabilmente non è necessaria perché la connessione viene chiusa automaticamente
-        //dopo che lo script è terminato.
+        /**
+         * metodo disconnect
+    	 *
+    	 * esegue la disconnessione al database
+    	 */
         public function disconnect() {
             $this->dbConnection->close();
         }
 
+        /**
+         * metodo select
+    	 *
+         * crea la query (la stringa) di tipo select
+         *
+    	 * @param string table
+    	 * @param array $cond
+    	 * @param array $bind
+    	 * @param string $op
+    	 * @param string $order
+    	 * @param array $limit
+    	 * @param string $joinTalbe
+    	 * @param array $joinBind
+    	 * @param array $groupBy
+    	 */
         public function select($table, $cond, $bind, $op, $order, $limit, $joinTable, $joinBind, $groupBy) {
             $this->connect();
             $sql = "";
@@ -104,6 +142,14 @@
             return $this->executeQuery();
         }
 
+        /**
+         * metodo insert
+         *
+         * crea la query (la stringa) di tipo insert
+         *
+         * @param string $table
+         * @param array $bind
+         */
         public function insert($table, array $bind) {
 
             $this->connect();
@@ -127,6 +173,15 @@
                 return false;
         }
 
+        /**
+         * metodo update
+         *
+         * crea la query (la stringa) di tipo update
+         *
+         * @param string $table
+         * @param array $bind
+         * @param array $cond
+         */
         public function update($table, array $bind, array $cond) {
 
             $this->connect();
@@ -154,7 +209,14 @@
             else
                 return false;
         }
-
+        /**
+         * metodo delete
+         *
+         * crea la query (la stringa) di tipo delete
+         *
+         * @param string $table
+         * @param array $cond
+         */
         public function delete($table, array $cond) {
 
             $this->connect();
@@ -173,6 +235,13 @@
                 return false;
         }
 
+        /**
+         * metodo executeQuery
+         *
+         * esegue la query precedentemente creata di tipo delete
+         *
+         * @return array - di risultati
+         */
         public function executeQuery()
         {
             $result = $this->dbConnection->query($this->statement);
@@ -186,6 +255,11 @@
             return $results_array;
         }
 
+        /**
+         * metodo getLastId
+         *
+         * @return id - dell'ultimo elemento inserito
+         */
         public function getLastId()
         {
             return $this->dbConnection->insert_id;

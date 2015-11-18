@@ -1,0 +1,1182 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>API Documentation</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="css/template.css" rel="stylesheet" media="all">
+<script src="js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="js/bootstrap.js" type="text/javascript"></script><script src="js/template.js" type="text/javascript"></script><script src="js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="img/favicon.ico">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="index.html">API Documentation</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="packages/Controller.html"><i class="icon-folder-open"></i> Controller</a></li>
+<li><a href="packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="packages/Entity.html"><i class="icon-folder-open"></i> Entity</a></li>
+<li><a href="packages/Foundation.html"><i class="icon-folder-open"></i> Foundation</a></li>
+<li><a href="packages/Utility.html"><i class="icon-folder-open"></i> Utility</a></li>
+<li><a href="packages/View.html"><i class="icon-folder-open"></i> View</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">136</span></a></li>
+<li><a href="markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4"><ul class="side-nav nav nav-list">
+<li class="nav-header">Filter type</li>
+<li><div class="btn-group type-filter" data-toggle="buttons-checkbox">
+<button class="btn critical">Critical</button><button class="btn error">Error</button><button class="btn notice">Notice</button>
+</div></li>
+<li class="nav-header">Navigation</li>
+<li><a href="#Utility/Session.php"><i class="icon-file"></i>Utility/Session.php</a></li>
+<li><a href="#Entity/CommentEntity.php"><i class="icon-file"></i>Entity/CommentEntity.php</a></li>
+<li><a href="#View/HomeView.php"><i class="icon-file"></i>View/HomeView.php</a></li>
+<li><a href="#Foundation/ArticleMapper.php"><i class="icon-file"></i>Foundation/ArticleMapper.php</a></li>
+<li><a href="#Control/HomeController.php"><i class="icon-file"></i>Control/HomeController.php</a></li>
+<li><a href="#Entity/ArticleEntity.php"><i class="icon-file"></i>Entity/ArticleEntity.php</a></li>
+<li><a href="#View/UserAccessView.php"><i class="icon-file"></i>View/UserAccessView.php</a></li>
+<li><a href="#View/CommentView.php"><i class="icon-file"></i>View/CommentView.php</a></li>
+<li><a href="#View/DashboardView.php"><i class="icon-file"></i>View/DashboardView.php</a></li>
+<li><a href="#Foundation/CommentMapper.php"><i class="icon-file"></i>Foundation/CommentMapper.php</a></li>
+<li><a href="#View/ProjectView.php"><i class="icon-file"></i>View/ProjectView.php</a></li>
+<li><a href="#Entity/UserEntity.php"><i class="icon-file"></i>Entity/UserEntity.php</a></li>
+<li><a href="#Foundation/Database.php"><i class="icon-file"></i>Foundation/Database.php</a></li>
+<li><a href="#Control/ArticleController.php"><i class="icon-file"></i>Control/ArticleController.php</a></li>
+<li><a href="#View/InstallerView.php"><i class="icon-file"></i>View/InstallerView.php</a></li>
+<li><a href="#Foundation/UserMapper.php"><i class="icon-file"></i>Foundation/UserMapper.php</a></li>
+<li><a href="#Control/UserAccessController.php"><i class="icon-file"></i>Control/UserAccessController.php</a></li>
+<li><a href="#Utility/autoload.inc.php"><i class="icon-file"></i>Utility/autoload.inc.php</a></li>
+<li><a href="#Control/InstallerController.php"><i class="icon-file"></i>Control/InstallerController.php</a></li>
+<li><a href="#Control/ProjectController.php"><i class="icon-file"></i>Control/ProjectController.php</a></li>
+<li><a href="#Control/RegistrationController.php"><i class="icon-file"></i>Control/RegistrationController.php</a></li>
+<li><a href="#Foundation/ProjectMapper.php"><i class="icon-file"></i>Foundation/ProjectMapper.php</a></li>
+<li><a href="#View/MainView.php"><i class="icon-file"></i>View/MainView.php</a></li>
+<li><a href="#Foundation/ACLMapper.php"><i class="icon-file"></i>Foundation/ACLMapper.php</a></li>
+<li><a href="#Entity/ProjectEntity.php"><i class="icon-file"></i>Entity/ProjectEntity.php</a></li>
+<li><a href="#Control/MainController.php"><i class="icon-file"></i>Control/MainController.php</a></li>
+<li><a href="#View/RegistrationView.php"><i class="icon-file"></i>View/RegistrationView.php</a></li>
+<li><a href="#Control/CommentController.php"><i class="icon-file"></i>Control/CommentController.php</a></li>
+<li><a href="#Foundation/AbstractDataMapper.php"><i class="icon-file"></i>Foundation/AbstractDataMapper.php</a></li>
+<li><a href="#View/ArticleView.php"><i class="icon-file"></i>View/ArticleView.php</a></li>
+</ul></div>
+<div class="span8">
+<ul class="breadcrumb">
+<li>
+<a href=""><i class="icon-remove-sign"></i></a><span class="divider">\</span>
+</li>
+<li>Compilation Errors</li>
+</ul>
+<div class="package-contents">
+<a name="Utility/Session.php" id="Utility/Session.php"></a><h3>
+<i class="icon-file"></i>Utility/Session.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Entity/CommentEntity.php" id="Entity/CommentEntity.php"></a><h3>
+<i class="icon-file"></i>Entity/CommentEntity.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="View/HomeView.php" id="View/HomeView.php"></a><h3>
+<i class="icon-file"></i>View/HomeView.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Foundation/ArticleMapper.php" id="Foundation/ArticleMapper.php"></a><h3>
+<i class="icon-file"></i>Foundation/ArticleMapper.php<small style="float: right;padding-right: 10px;">9</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>22</td>
+<td>Argument $article is missing from the Docblock of insert</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>42</td>
+<td>Argument $authorId is missing from the Docblock of getAllArticlesByAuthorId</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>52</td>
+<td>Argument $id is missing from the Docblock of getArticleById</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>72</td>
+<td>Argument $projectId is missing from the Docblock of getArticlesDependenciesByProjectId</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>92</td>
+<td>Argument $id is missing from the Docblock of removeArticleById</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>112</td>
+<td>Argument $id is missing from the Docblock of getArticleImageById</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>136</td>
+<td>Argument $pageNumber is missing from the Docblock of getArticlesCardsByPageNumber</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>146</td>
+<td>Argument $row is missing from the Docblock of createEntity</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Control/HomeController.php" id="Control/HomeController.php"></a><h3>
+<i class="icon-file"></i>Control/HomeController.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Entity/ArticleEntity.php" id="Entity/ArticleEntity.php"></a><h3>
+<i class="icon-file"></i>Entity/ArticleEntity.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="View/UserAccessView.php" id="View/UserAccessView.php"></a><h3>
+<i class="icon-file"></i>View/UserAccessView.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="View/CommentView.php" id="View/CommentView.php"></a><h3>
+<i class="icon-file"></i>View/CommentView.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="View/DashboardView.php" id="View/DashboardView.php"></a><h3>
+<i class="icon-file"></i>View/DashboardView.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>135</td>
+<td>Argument $dependencies is missing from the Docblock of setProjectWritingPage</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents"></div>
+<div class="package-contents">
+<a name="Foundation/CommentMapper.php" id="Foundation/CommentMapper.php"></a><h3>
+<i class="icon-file"></i>Foundation/CommentMapper.php<small style="float: right;padding-right: 10px;">12</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>22</td>
+<td>Argument $comment is missing from the Docblock of insertArticleComment</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>22</td>
+<td>Argument $idArticle is missing from the Docblock of insertArticleComment</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>35</td>
+<td>Argument $comment is missing from the Docblock of insertProjectComment</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>35</td>
+<td>Argument $idProject is missing from the Docblock of insertProjectComment</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>48</td>
+<td>Argument $projectId is missing from the Docblock of getCommentsByProjectId</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>58</td>
+<td>Argument $articleId is missing from the Docblock of getCommentsByArticleId</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>68</td>
+<td>Argument $id is missing from the Docblock of removeCommentByArticleId</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>78</td>
+<td>Argument $id is missing from the Docblock of removeCommentById</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>88</td>
+<td>Argument $authorId is missing from the Docblock of getCommentsArticlesByAuthorId</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>98</td>
+<td>Argument $authorId is missing from the Docblock of getCommentsProjectsByAuthorId</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>128</td>
+<td>Argument $row is missing from the Docblock of createEntity</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="View/ProjectView.php" id="View/ProjectView.php"></a><h3>
+<i class="icon-file"></i>View/ProjectView.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>128</td>
+<td>Argument $dependencies is missing from the Docblock of assignProjectData</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Entity/UserEntity.php" id="Entity/UserEntity.php"></a><h3>
+<i class="icon-file"></i>Entity/UserEntity.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents">
+<a name="Foundation/Database.php" id="Foundation/Database.php"></a><h3>
+<i class="icon-file"></i>Foundation/Database.php<small style="float: right;padding-right: 10px;">4</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>17</td>
+<td>No summary for property $config</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>23</td>
+<td>No summary for property $dbConnection</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>29</td>
+<td>No summary for property $statement</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Control/ArticleController.php" id="Control/ArticleController.php"></a><h3>
+<i class="icon-file"></i>Control/ArticleController.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents"></div>
+<div class="package-contents">
+<a name="View/InstallerView.php" id="View/InstallerView.php"></a><h3>
+<i class="icon-file"></i>View/InstallerView.php<small style="float: right;padding-right: 10px;">12</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>3</td>
+<td>No summary for class \InstallerView</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>5</td>
+<td>No summary for method getTask()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>13</td>
+<td>No summary for method getUser()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>18</td>
+<td>No summary for method getPassword()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>23</td>
+<td>No summary for method getHost()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>28</td>
+<td>No summary for method getDatabaseName()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>33</td>
+<td>Argument $errorMessage is missing from the Docblock of displayForm</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>33</td>
+<td>Argument $projectDetails is missing from the Docblock of displayForm</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>33</td>
+<td>Argument $serverDetails is missing from the Docblock of displayForm</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>33</td>
+<td>No summary for method displayForm()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>41</td>
+<td>No summary for method installationCompleted()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Foundation/UserMapper.php" id="Foundation/UserMapper.php"></a><h3>
+<i class="icon-file"></i>Foundation/UserMapper.php<small style="float: right;padding-right: 10px;">34</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>3</td>
+<td>No summary for class \UserMapper</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>4</td>
+<td>No summary for property $entityTable</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>6</td>
+<td>Argument $user is missing from the Docblock of insert</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>6</td>
+<td>No summary for method insert()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>11</td>
+<td>Argument $name is missing from the Docblock of validateLogin</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>11</td>
+<td>Argument $password is missing from the Docblock of validateLogin</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>11</td>
+<td>No summary for method validateLogin()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>19</td>
+<td>No summary for method getAllUsers()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>24</td>
+<td>No summary for method getUsersDash()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>29</td>
+<td>Argument $userId is missing from the Docblock of updateUserRole</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>29</td>
+<td>Argument $userRole is missing from the Docblock of updateUserRole</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>29</td>
+<td>No summary for method updateUserRole()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>34</td>
+<td>Argument $username is missing from the Docblock of existUserName</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>34</td>
+<td>No summary for method existUserName()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>42</td>
+<td>Argument $username is missing from the Docblock of getUserImage</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>42</td>
+<td>No summary for method getUserImage()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>46</td>
+<td>Argument $email is missing from the Docblock of existUserEmail</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>46</td>
+<td>No summary for method existUserEmail()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>54</td>
+<td>Argument $id is missing from the Docblock of getUserById</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>54</td>
+<td>No summary for method getUserById()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>63</td>
+<td>Argument $username is missing from the Docblock of getUserByUsername</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>63</td>
+<td>No summary for method getUserByUsername()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>72</td>
+<td>Argument $username is missing from the Docblock of removeUser</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>72</td>
+<td>No summary for method removeUser()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>77</td>
+<td>No summary for method getNumberOfUsers()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>82</td>
+<td>Argument $userId is missing from the Docblock of updateUser</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>82</td>
+<td>Argument $username is missing from the Docblock of updateUser</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>82</td>
+<td>Argument $email is missing from the Docblock of updateUser</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>82</td>
+<td>Argument $image is missing from the Docblock of updateUser</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>82</td>
+<td>Argument $password is missing from the Docblock of updateUser</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>82</td>
+<td>No summary for method updateUser()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>87</td>
+<td>Argument $row is missing from the Docblock of createEntity</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>87</td>
+<td>No summary for method createEntity()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Control/UserAccessController.php" id="Control/UserAccessController.php"></a><h3>
+<i class="icon-file"></i>Control/UserAccessController.php<small style="float: right;padding-right: 10px;">5</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>12</td>
+<td>No summary for method executeTask()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>76</td>
+<td>Argument $username is missing from the Docblock of userAuthentication</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>76</td>
+<td>Argument $password is missing from the Docblock of userAuthentication</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>158</td>
+<td>No summary for method Upload()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Utility/autoload.inc.php" id="Utility/autoload.inc.php"></a><h3>
+<i class="icon-file"></i>Utility/autoload.inc.php<small style="float: right;padding-right: 10px;">3</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>3</td>
+<td>Argument $class_name is missing from the Docblock of __autoload</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>3</td>
+<td>No summary for function \__autoload()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Control/InstallerController.php" id="Control/InstallerController.php"></a><h3>
+<i class="icon-file"></i>Control/InstallerController.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>53</td>
+<td>Argument $view is missing from the Docblock of __construct</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Control/ProjectController.php" id="Control/ProjectController.php"></a><h3>
+<i class="icon-file"></i>Control/ProjectController.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Control/RegistrationController.php" id="Control/RegistrationController.php"></a><h3>
+<i class="icon-file"></i>Control/RegistrationController.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Foundation/ProjectMapper.php" id="Foundation/ProjectMapper.php"></a><h3>
+<i class="icon-file"></i>Foundation/ProjectMapper.php<small style="float: right;padding-right: 10px;">9</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>23</td>
+<td>Argument $project is missing from the Docblock of insertProject</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>23</td>
+<td>Argument $dependencies is missing from the Docblock of insertProject</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>63</td>
+<td>Argument $authorId is missing from the Docblock of getAllProjectsByAuthorId</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>73</td>
+<td>Argument $id is missing from the Docblock of getProjectById</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>83</td>
+<td>Argument $id is missing from the Docblock of removeProjectById</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>103</td>
+<td>Argument $pageNumber is missing from the Docblock of getProjectsCardsByPageNumber</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>133</td>
+<td>Argument $id is missing from the Docblock of getProjectImageById</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>157</td>
+<td>Argument $row is missing from the Docblock of createEntity</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="View/MainView.php" id="View/MainView.php"></a><h3>
+<i class="icon-file"></i>View/MainView.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>52</td>
+<td>Argument $content is missing from the Docblock of setContent</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Foundation/ACLMapper.php" id="Foundation/ACLMapper.php"></a><h3>
+<i class="icon-file"></i>Foundation/ACLMapper.php<small style="float: right;padding-right: 10px;">4</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>15</td>
+<td>Argument $roleId is missing from the Docblock of getRolePermissions</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>43</td>
+<td>Argument $row is missing from the Docblock of createEntity</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>43</td>
+<td>No summary for method createEntity()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Entity/ProjectEntity.php" id="Entity/ProjectEntity.php"></a><h3>
+<i class="icon-file"></i>Entity/ProjectEntity.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Control/MainController.php" id="Control/MainController.php"></a><h3>
+<i class="icon-file"></i>Control/MainController.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>18</td>
+<td>No summary for method getPage()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="View/RegistrationView.php" id="View/RegistrationView.php"></a><h3>
+<i class="icon-file"></i>View/RegistrationView.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Control/CommentController.php" id="Control/CommentController.php"></a><h3>
+<i class="icon-file"></i>Control/CommentController.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Foundation/AbstractDataMapper.php" id="Foundation/AbstractDataMapper.php"></a><h3>
+<i class="icon-file"></i>Foundation/AbstractDataMapper.php<small style="float: right;padding-right: 10px;">19</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>41</td>
+<td>Argument $cond is missing from the Docblock of find</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>41</td>
+<td>Argument $bind is missing from the Docblock of find</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>41</td>
+<td>Argument $op is missing from the Docblock of find</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>41</td>
+<td>Argument $order is missing from the Docblock of find</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>41</td>
+<td>Argument $limit is missing from the Docblock of find</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>41</td>
+<td>Argument $joinTable is missing from the Docblock of find</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>41</td>
+<td>Argument $joinBind is missing from the Docblock of find</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>41</td>
+<td>Argument $groupBy is missing from the Docblock of find</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>66</td>
+<td>Argument $cond is missing from the Docblock of returnAssociativeArray</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>66</td>
+<td>Argument $bind is missing from the Docblock of returnAssociativeArray</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>66</td>
+<td>Argument $op is missing from the Docblock of returnAssociativeArray</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>66</td>
+<td>Argument $order is missing from the Docblock of returnAssociativeArray</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>66</td>
+<td>Argument $limit is missing from the Docblock of returnAssociativeArray</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>66</td>
+<td>Argument $joinTable is missing from the Docblock of returnAssociativeArray</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>66</td>
+<td>Argument $joinBind is missing from the Docblock of returnAssociativeArray</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>66</td>
+<td>Argument $groupBy is missing from the Docblock of returnAssociativeArray</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>75</td>
+<td>Argument $row is missing from the Docblock of createEntity</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>75</td>
+<td>No summary for method createEntity()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="View/ArticleView.php" id="View/ArticleView.php"></a><h3>
+<i class="icon-file"></i>View/ArticleView.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.8.5</a> and<br>
+            generated on 2015-11-14T02:50:18+01:00.<br></footer></div>
+</div>
+</body>
+</html>

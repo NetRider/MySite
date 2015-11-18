@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2015-11-06 10:11:33
+<?php /* Smarty version Smarty-3.1.18, created on 2015-11-14 00:02:50
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/main.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1933232947563c687540b108-78166654%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9deaa0b50af1d1059bb0f70894b4df4121a30c68' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/main.tpl',
-      1 => 1446801088,
+      1 => 1447455767,
       2 => 'file',
     ),
   ),
@@ -39,9 +39,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <link href="Library/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom CSS -->
-        <link href="Smarty_dir/templates/css/heroic-features.css" rel="stylesheet">
+        <link href="Smarty_dir/templates/css/main.css" rel="stylesheet">
         <link href="Smarty_dir/templates/css/login.css" rel="stylesheet">
-        <link href="Smarty_dir/templates/css/3-col-portfolio.css" rel="stylesheet">
 
         <link href="Library/adminPanel/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
         <link href="Library/adminPanel/dist/css/timeline.css" rel="stylesheet">
@@ -51,11 +50,39 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <script src="Library/jquery-1.11.3.min.js"></script>
 
         <script src="Library/masonry.pkgd.min.js"></script>
-
-
     </head>
 
     <body>
+        <noscript>
+            <div class="errorDiv">
+                <div class="errorDivJsContent">
+                    <h1 class="higthContr">Attiva Javascript nel tuo browser</h1>
+                    <img class="imageError" src="./Smarty_dir/templates/img/javascript_logo.png">
+                </div>
+            </div>
+        </noscript>
+        <div class="errorDiv" id="cookie" hidden>
+            <div class="errorDivCooContent">
+                <h1 class="higthContr">Abilita i cookie nel tuo browser</h1>
+                <img class="imageError" src="./Smarty_dir/templates/img/cookie.jpg">
+            </div>
+        </div>
+        <div class="modal fade" id="cookieModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="panel-title">Informativa Utilizzo Cookie</h3>
+                        </div>
+                        <div class="modal-body">
+                            Questo sito utilizza cookie tecnici e di profilazione propri per le sue
+                            funzionalità. Chiudendo questo banner all’uso dei cookie.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn" data-dismiss="modal" id="cookieButton">Chiudi</button>
+                        </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -78,7 +105,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                             <a href="index.php?controller=Article&task=getArticlesCardsPage">Articoli</a>
                         </li>
                         <li>
-                            <a href="index.php?controller=Project&task=getProjectsCards">Progetti</a>
+                            <a href="index.php?controller=Project&task=getProjectsCardsPage">Progetti</a>
                         </li>
                     </ul>
                     <div id="rigthMenu">
@@ -116,7 +143,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox"> Remember me
+                                    <input type="checkbox" id="uRememberMe"> Remember me
                                 </label>
                             </div>
                         </form>
@@ -161,7 +188,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <script src="Smarty_dir/templates/js/login.js"></script>
         <script src="Library/adminPanel/bower_components/metisMenu/dist/metisMenu.min.js"></script>
         <script src="Library/adminPanel/dist/js/sb-admin-2.js"></script>
-
+        <script src="Library/jquery.cookie.js"></script>
+        <script src="Smarty_dir/templates/js/main.js"></script>
     </body>
 </html>
 <?php }} ?>

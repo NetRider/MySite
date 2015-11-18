@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2015-11-06 11:59:52
+<?php /* Smarty version Smarty-3.1.18, created on 2015-11-16 18:13:52
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/dashJobs.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1956468924563c8828b9e191-74991157%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6bd745393130a2552f1773fa974821502286951b' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/dashJobs.tpl',
-      1 => 1446302555,
+      1 => 1447432725,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.18',
+  'unifunc' => 'content_563c8828bd74e6_82399769',
   'variables' => 
   array (
     'articles' => 0,
@@ -23,8 +25,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'project' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.18',
-  'unifunc' => 'content_563c8828bd74e6_82399769',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_563c8828bd74e6_82399769')) {function content_563c8828bd74e6_82399769($_smarty_tpl) {?><div class="row">
     <div class="col-lg-12">
@@ -75,7 +75,7 @@ $_smarty_tpl->tpl_vars['article']->_loop = true;
                         </table>
                     </div>
 
-                    <button class="btn btn-danger" id="removeArticleButton">Rimuovi selezionati</button>
+                    <button class="btn btn-danger" id="removeArticleButton">Rimuovi selezionato</button>
 
                 </div>
             </div>
@@ -125,7 +125,7 @@ $_smarty_tpl->tpl_vars['project']->_loop = true;
                             </tbody>
                         </table>
                     </div>
-                    <button class="btn btn-danger" id="removeProjectButton">Rimuovi selezionati</button>
+                    <button class="btn btn-danger" id="removeProjectButton">Rimuovi selezionato</button>
                 </div>
             </div>
         </div>

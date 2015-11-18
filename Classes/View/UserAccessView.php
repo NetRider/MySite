@@ -1,13 +1,19 @@
 <?php
-
-
+/**
+ * UserAccess View File
+ *
+ * Questo file contiene il Registration View
+ *
+ * @package View
+ * @author Matteo Polsinelli
+ */
 class UserAccessView extends View {
 
-	public function __construct()
-	{
-		 parent::__construct();
-	}
-
+	/**
+	 * metodo getTask
+	 *
+	 * @return string con il task per il controller - false altrimenti
+	 */
 	public function getTask()
 	{
 		if(isset($_REQUEST['task']))
@@ -16,80 +22,113 @@ class UserAccessView extends View {
 			return false;
 	}
 
-	private function getRequest($key)
-	{
-		if(isset($_REQUEST[$key]))
-			return $_REQUEST[$key];
-		else
-			return false;
-	}
-
+	/**
+	 * metodo getUsername
+	 *
+	 * @return string ritorna il valore associato a "username" dentro $_REQUEST
+	 */
 	public function getUsername()
 	{
 		return $this->getRequest('username');
 	}
 
+	/**
+	 * metodo getUserId
+	 *
+	 * @return string ritorna il valore associato a "userid" dentro $_REQUEST
+	 */
 	public function getUserId()
 	{
 		return $this->getRequest('userid');
 	}
 
+	/**
+	 * metodo getUserPassword
+	 *
+	 * @return string ritorna il valore associato a "password" dentro $_REQUEST
+	 */
 	public function getUserPassword()
 	{
 		return $this->getRequest('password');
 	}
 
+	/**
+	 * metodo getUserEmail
+	 *
+	 * @return string ritorna il valore associato a "email" dentro $_REQUEST
+	 */
 	public function getUserEmail()
 	{
 		return $this->getRequest('email');
 	}
 
+	/**
+	 * metodo getUserRoleToUpdate
+	 *
+	 * @return string ritorna il valore associato a "idRole" dentro $_REQUEST
+	 */
 	public function getUserRoleToUpdate()
 	{
 		return $this->getRequest("idRole");
 	}
 
+	/**
+	 * metodo getUserIdForUpdate
+	 *
+	 * @return string ritorna il valore associato a "idUser" dentro $_REQUEST
+	 */
 	public function getUserIdForUpdate()
 	{
 		return $this->getRequest("idUser");
 	}
 
+	/**
+	 * metodo getUserToRemove
+	 *
+	 * @return string ritorna il valore associato a "userToRemove" dentro $_REQUEST
+	 */
 	public function userToRemove()
 	{
 		return $this->getRequest("userToRemove");
 	}
 
+	/**
+	 * metodo getUpdateImage
+	 *
+	 * @return string ritorna il valore associato a "image" dentro $_FILES
+	 */
 	public function getUpdateImage()
 	{
-		$imagePath = "";
-
-        if(is_uploaded_file($_FILES['image']['tmp_name'])) {
-			$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
-			if(!preg_match("/\.(gif|png|jpg|jpeg)$/", $ext))
-			{
-				$image = basename($_FILES["image"]["name"]);
-	            $imagePath = "Data/profile_images/" . $image;
-	            move_uploaded_file($_FILES["image"]["tmp_name"], $imagePath);
-			}
-
-        }
-
-		return $imagePath;
+		return $_FILES["image"];
 	}
 
+	/**
+	 * metodo getRememberMe
+	 *
+	 * @return string ritorna il valore associato a "rememberMe" dentro $_REQUEST
+	 */
   	public function getRememberMe()
 	{
 		return $this->getRequest("rememberMe");
 	}
 
+	/**
+	 * metodo login
+	 *
+	 * @return string Ritorna il template costruito con smarty
+	 */
 	public function login()
 	{
 		$session = Singleton::getInstance("Session");
 		$this->assign('username', $session->get('username'));
-		error_log(print_r("sono nel login", true));
 		return $this->fetch('correctLogin.tpl');
 	}
 
+	/**
+	 * metodo logut
+	 *
+	 * @return string Ritorna il template costruito con smarty
+	 */
 	public function logout()
 	{
 		$session = Singleton::getInstance("Session");

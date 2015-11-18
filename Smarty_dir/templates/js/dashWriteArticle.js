@@ -1,8 +1,16 @@
 $(function(){
 	CKEDITOR.replace('editorArticle');
-	$("#articleForm").change(function(){
+
+	var form = $("#articleForm");
+
+	form.change(function(){
 		checkForm();
 	});
+
+	form.submit(function(event){
+		event.preventDefault();
+	});
+
 
 	jQuery.validator.addMethod('filesize', function(value, element, param) {
     return this.optional(element) || (element.files[0].size <= param);

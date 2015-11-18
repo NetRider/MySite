@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2015-11-06 11:59:36
+<?php /* Smarty version Smarty-3.1.18, created on 2015-11-13 20:12:04
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/dashWriteArticle.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1710407736563c8818ccc579-02301893%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9e960ad2520dd0fce7084259c2260e6b075388ed' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/MySite/Smarty_dir/templates/dashWriteArticle.tpl',
-      1 => 1446378271,
+      1 => 1447441046,
       2 => 'file',
     ),
   ),
@@ -15,13 +15,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.18',
+  'unifunc' => 'content_563c8818d14e15_84477239',
   'variables' => 
   array (
     'userid' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.18',
-  'unifunc' => 'content_563c8818d14e15_84477239',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_563c8818d14e15_84477239')) {function content_563c8818d14e15_84477239($_smarty_tpl) {?><link type="text/css" rel="stylesheet" href="Library/waitMe.css">
 <script src="Library/ckeditor/ckeditor.js"></script>
@@ -64,7 +64,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                                     <label class="errorLabel"></label>
                                     <input type="file" name="image">
                                 </div>
-                                <button type="submit" class="btn btn-default" id="saveProjectButton" data-toggle="modal" data-target="#statusArticle">Submit Button</button>
+                                <button type="submit" class="btn btn-default" id="saveProjectButton" data-toggle="modal" data-target="#statusArticle">Pubblica Articoli</button>
                             </form>
                         </div>
                     </div>

@@ -1,0 +1,58 @@
+<?php
+
+
+
+	class CommentEntity
+	{
+		private $text;
+        private $date;
+        private $userId;
+
+		public function __construct($text, $date, $userId){
+			$this->text = $text;
+            $this->date = $date;
+            $this->userId = $userId;
+		}
+
+		//GET FUNCTIONS
+
+		public function getText(){
+			return $this->text;
+		}
+
+        public function getDate(){
+            return $this->date;
+        }
+
+        public function getUserId(){
+            return $this->userId;
+        }
+
+        public function getArticleId()
+        {
+            return $this->articleID;
+        }
+
+		//SET FUNCTIONS
+
+		public function setText($text){
+			$this->text = $text;
+		}
+
+		public function setUserId($userId)
+		{
+			$this->userId = $userId;
+		}
+
+        public function setArticleId($articleId)
+        {
+            $this->articleID = $articleId;
+        }
+
+        public function setDate($date)
+        {
+           $this->date = $date;
+        }
+	}
+?>
+

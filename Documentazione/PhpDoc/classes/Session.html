@@ -1,0 +1,304 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>API Documentation » \Session</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">API Documentation</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/Controller.html"><i class="icon-folder-open"></i> Controller</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/Entity.html"><i class="icon-folder-open"></i> Entity</a></li>
+<li><a href="../packages/Foundation.html"><i class="icon-folder-open"></i> Foundation</a></li>
+<li><a href="../packages/Utility.html"><i class="icon-folder-open"></i> Utility</a></li>
+<li><a href="../packages/View.html"><i class="icon-folder-open"></i> View</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">136</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<div xmlns:php="http://php.net/xsl" class="btn-toolbar">
+<div class="btn-group visibility" data-toggle="buttons-checkbox">
+<button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button>
+</div>
+<div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+</div>
+<ul xmlns:php="http://php.net/xsl" class="side-nav nav nav-list">
+<li class="nav-header">
+<i title="Methods" class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method___construct" title="__construct() :: Costruttore di Session"><span class="description">Costruttore di Session</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_checkPermission" title="checkPermission() :: Metodo checkPermission"><span class="description">Metodo checkPermission</span><pre>checkPermission()</pre></a></li>
+<li class="method public "><a href="#method_get" title="get() :: Metodo get"><span class="description">Metodo get</span><pre>get()</pre></a></li>
+<li class="method public "><a href="#method_getAllPermissions" title="getAllPermissions() :: Metodo getAllPermissions"><span class="description">Metodo getAllPermissions</span><pre>getAllPermissions()</pre></a></li>
+<li class="method public "><a href="#method_getUserEmail" title="getUserEmail() :: Metodo getUserEmail"><span class="description">Metodo getUserEmail</span><pre>getUserEmail()</pre></a></li>
+<li class="method public "><a href="#method_getUserId" title="getUserId() :: Metodo getUserId"><span class="description">Metodo getUserId</span><pre>getUserId()</pre></a></li>
+<li class="method public "><a href="#method_getUserImage" title="getUserImage() :: Metodo getUserImage"><span class="description">Metodo getUserImage</span><pre>getUserImage()</pre></a></li>
+<li class="method public "><a href="#method_getUserPassword" title="getUserPassword() :: Metodo getPassword"><span class="description">Metodo getPassword</span><pre>getUserPassword()</pre></a></li>
+<li class="method public "><a href="#method_getUsername" title="getUsername() :: Metodo getUsername"><span class="description">Metodo getUsername</span><pre>getUsername()</pre></a></li>
+<li class="method public "><a href="#method_login" title="login() :: Metodo login"><span class="description">Metodo login</span><pre>login()</pre></a></li>
+<li class="method public "><a href="#method_logout" title="logout() :: Metodo logut"><span class="description">Metodo logut</span><pre>logout()</pre></a></li>
+<li class="method public "><a href="#method_set" title="set() :: Metodo set"><span class="description">Metodo set</span><pre>set()</pre></a></li>
+<li class="method public "><a href="#method_setRememberMe" title="setRememberMe() :: Metodo setRememberMe"><span class="description">Metodo setRememberMe</span><pre>setRememberMe()</pre></a></li>
+<li class="method public "><a href="#method_userIsLogged" title="userIsLogged() :: Metodo userIsLogged"><span class="description">Metodo userIsLogged</span><pre>userIsLogged()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul><li class="method private "><a href="#method_updateSessionCookie" title="updateSessionCookie() :: Aggiorna i cookie."><span class="description">Aggiorna i cookie.</span><pre>updateSessionCookie()</pre></a></li></ul>
+</li>
+<li class="nav-header">
+<i title="Properties" class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul>
+<li class="property private "><a href="#property_lifetime" title="$lifetime() :: durata del cookie"><span class="description"></span><pre>$lifetime</pre></a></li>
+<li class="property private "><a href="#property_user" title="$user() :: utente loggato"><span class="description"></span><pre>$user</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a xmlns:php="http://php.net/xsl" id="\Session"></a><ul xmlns:php="http://php.net/xsl" class="breadcrumb">
+<li>
+<a href="../index.html"><i title="Classes" class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/Session.html">Session</a>
+</li>
+</ul>
+<div xmlns:php="http://php.net/xsl" class="element class">
+<p class="short_description">classe Session</p>
+<div class="details">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/Utility.html">Utility</a></td>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="">Matteo Polsinelli</a></td>
+</tr>
+</table>
+<h3>
+<i title="Methods" class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___construct"></a><div class="element clickable method public method___construct " data-toggle="collapse" data-target=".method___construct .collapse" title="public">
+<h2>Costruttore di Session</h2>
+<pre>__construct() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>Crea una sessione e l'utente relativo se loggato</p></div></div></div>
+</div>
+<a id="method_checkPermission"></a><div class="element clickable method public method_checkPermission " data-toggle="collapse" data-target=".method_checkPermission .collapse" title="public">
+<h2>Metodo checkPermission</h2>
+<pre>checkPermission($privilage) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Controllo se l'utente ha un determinato permesso</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$privilage</h4></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_get"></a><div class="element clickable method public method_get " data-toggle="collapse" data-target=".method_get .collapse" title="public">
+<h2>Metodo get</h2>
+<pre>get($key) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$key</h4></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a id="method_getAllPermissions"></a><div class="element clickable method public method_getAllPermissions " data-toggle="collapse" data-target=".method_getAllPermissions .collapse" title="public">
+<h2>Metodo getAllPermissions</h2>
+<pre>getAllPermissions() : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Ritorna tutti i permessi dell'utente</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_getUserEmail"></a><div class="element clickable method public method_getUserEmail " data-toggle="collapse" data-target=".method_getUserEmail .collapse" title="public">
+<h2>Metodo getUserEmail</h2>
+<pre>getUserEmail() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getUserId"></a><div class="element clickable method public method_getUserId " data-toggle="collapse" data-target=".method_getUserId .collapse" title="public">
+<h2>Metodo getUserId</h2>
+<pre>getUserId() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getUserImage"></a><div class="element clickable method public method_getUserImage " data-toggle="collapse" data-target=".method_getUserImage .collapse" title="public">
+<h2>Metodo getUserImage</h2>
+<pre>getUserImage() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getUserPassword"></a><div class="element clickable method public method_getUserPassword " data-toggle="collapse" data-target=".method_getUserPassword .collapse" title="public">
+<h2>Metodo getPassword</h2>
+<pre>getUserPassword() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getUsername"></a><div class="element clickable method public method_getUsername " data-toggle="collapse" data-target=".method_getUsername .collapse" title="public">
+<h2>Metodo getUsername</h2>
+<pre>getUsername() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_login"></a><div class="element clickable method public method_login " data-toggle="collapse" data-target=".method_login .collapse" title="public">
+<h2>Metodo login</h2>
+<pre>login($username, $rememberMe) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$username</h4></div>
+<div class="subelement argument"><h4>$rememberMe</h4></div>
+</div></div>
+</div>
+<a id="method_logout"></a><div class="element clickable method public method_logout " data-toggle="collapse" data-target=".method_logout .collapse" title="public">
+<h2>Metodo logut</h2>
+<pre>logout() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_set"></a><div class="element clickable method public method_set " data-toggle="collapse" data-target=".method_set .collapse" title="public">
+<h2>Metodo set</h2>
+<pre>set($key, $value) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Associa un valore ad uan chiave in $_SESSION</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$key</h4></div>
+<div class="subelement argument"><h4>$value</h4></div>
+</div></div>
+</div>
+<a id="method_setRememberMe"></a><div class="element clickable method public method_setRememberMe " data-toggle="collapse" data-target=".method_setRememberMe .collapse" title="public">
+<h2>Metodo setRememberMe</h2>
+<pre>setRememberMe(boolean $value) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>boolean</code>
+</div>
+</div></div>
+</div>
+<a id="method_userIsLogged"></a><div class="element clickable method public method_userIsLogged " data-toggle="collapse" data-target=".method_userIsLogged .collapse" title="public">
+<h2>Metodo userIsLogged</h2>
+<pre>userIsLogged() : \bool;</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>\bool;</code></div>
+</div></div>
+</div>
+<a id="method_updateSessionCookie"></a><div class="element clickable method private method_updateSessionCookie " data-toggle="collapse" data-target=".method_updateSessionCookie .collapse" title="private">
+<h2>Aggiorna i cookie.</h2>
+<pre>updateSessionCookie() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>Questo metodo aggiorna i cookie quando è attivato rememberMe</p></div></div></div>
+</div>
+<h3>
+<i title="Properties" class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_lifetime"> </a><div class="element clickable property private property_lifetime" data-toggle="collapse" data-target=".property_lifetime .collapse" title="private">
+<h2>durata del cookie</h2>
+<pre>$lifetime : string</pre>
+<div class="row collapse"><div class="detail-description">
+<h3>Default</h3>
+<div class="subelement argument"></div>
+</div></div>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_user"> </a><div class="element clickable property private property_user" data-toggle="collapse" data-target=".property_user .collapse" title="private">
+<h2>utente loggato</h2>
+<pre>$user : \User</pre>
+<div class="row collapse"><div class="detail-description">
+<h3>Default</h3>
+<div class="subelement argument"></div>
+</div></div>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.8.5</a> and<br>
+            generated on 2015-11-14T02:50:18+01:00.<br></footer></div>
+</div>
+</body>
+</html>

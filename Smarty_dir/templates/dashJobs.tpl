@@ -39,7 +39,7 @@
                         </table>
                     </div>
 
-                    <button class="btn btn-danger" id="removeArticleButton">Rimuovi selezionati</button>
+                    <button class="btn btn-danger" id="removeArticleButton">Rimuovi selezionato</button>
 
                 </div>
             </div>
@@ -81,7 +81,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <button class="btn btn-danger" id="removeProjectButton">Rimuovi selezionati</button>
+                    <button class="btn btn-danger" id="removeProjectButton">Rimuovi selezionato</button>
                 </div>
             </div>
         </div>

@@ -10,8 +10,6 @@ class UserMapper extends AbstractDataMapper {
 
     public function validateLogin($name, $password)
     {
-        error_log("sono dentro a validateLogin");
-
         if($this->find(array("username"=>$name, "password"=>$password)))
             return true;
         else

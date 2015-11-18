@@ -1,0 +1,48 @@
+<?php
+/**
+ * Controller File
+ *
+ * Questo file contiene la classe astratta Controller
+ *
+ * @package Controller
+ * @author Matteo Polsinelli
+ */
+
+ /**
+ * La classe astratta Controller.
+ *
+ * Viene implementata da tutti i controllori.
+ *
+ *
+ */
+abstract Class Controller {
+
+	/**
+	* Ogni controller al suo interno ha un oggetto View relativo.
+	*
+	* @var View
+	*/
+	protected $view;
+
+	/**
+	* Il costruttore della classe astratta controller.
+	*
+	* Viene richiamato dalle classi che estendono Controller.
+	* Inizializza la view relativa al controller
+	* 
+	* @param View $view
+	*/
+	public function __construct(View $view)
+	{
+		$this->view = $view;
+	}
+
+	/**
+	* Metodo astratto della classe.
+	*
+	* Deve essere implementato da ogni classe figlio.
+	*
+	*/
+	abstract public function executeTask();
+}
+

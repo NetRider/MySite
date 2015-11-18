@@ -1,0 +1,225 @@
+<?php
+/**
+ * classe ProjectEntity
+ *
+ * @package Entity
+ * @author Matteo Polsinelli
+ */
+class ProjectEntity {
+
+	/**
+	* numero intero identificativo del progetto gestito da Database
+	* @var int
+	*/
+	private $id;
+
+	/**
+	* numero intero identificativo dell'autore del progetto gestito da Database
+	*
+	* @var int
+	*/
+	private $userId;
+
+	/**
+	* il titolo del progetto
+	*
+	* @var string
+	*/
+	private $title;
+
+	/**
+	* il testo del progetto
+	*
+	* @var string
+	*/
+	private $text;
+
+	/**
+	* la data di inserimento del progetto
+	*
+	* @var string
+	*/
+	private $date;
+
+	/**
+	*la descrizione del progetto
+	*
+	* @var string
+	*/
+	private $description;
+
+	/**
+	* il path dell'immagine all'interno del file system
+	* 
+	* @var string
+	*/
+	private $image;
+
+
+	/**
+	* Costruttore di ProjectEntity
+	*
+	* Crea un nuovo progetto
+	*
+	* @param int $userId
+	* @param string $title
+	* @param string $description
+	* @param string $text
+	* @param string $date
+	* @param string $image
+	*/
+	public function __construct($userId, $title, $description, $text, $date, $image) {
+		$this->userId = $userId;
+		$this->title = $title;
+		$this->description = $description;
+		$this->text = $text;
+		$this->date = $date;
+		$this->image = $image;
+		$this->id = -1;
+	}
+
+	/**
+	 * metodo getTitle
+	 *
+	 * ritorna il titolo del progetto
+	 *
+	 * @return string
+	 */
+	 public function getTitle() {
+		 return $this->title;
+	}
+
+	/**
+	 * metodo getText
+	 *
+	 * ritorna il testo del progetto
+	 *
+	 * @return string
+	 */
+	 public function getText() {
+		return $this->text;
+	}
+
+	/**
+	 * metodo getDate
+	 *
+	 * ritorna la data del progetto
+	 *
+	 * @return string
+	 */
+	 public function getDate() {
+		return $this->date;
+	 }
+
+	/**
+	 * metodo getId
+	 *
+	 * ritorna l'id dell'progetto. Se non è stato impostato ritorna il valore -1
+	 *
+	 * @return int
+	 */
+	 public function getId() {
+
+		 return $this->id;
+	 }
+
+	 /**
+ 	 * metodo getAuthorId
+ 	 *
+ 	 * ritorna l'id dell'autore del progetto
+ 	 *
+ 	 * @return int
+ 	 */
+	 public function getAuthorId() {
+		return $this->userId;
+	 }
+
+	/**
+	* metodo getDescription
+	*
+	* ritorna la descrizione del progetto
+	*
+	* @return string
+	*/
+	public function getDescription() {
+		return $this->description;
+	}
+
+	/**
+	* metodo getImage
+	*
+	* ritorna il path dell'immagine del progetto
+	*
+	* @return string
+	*/
+	public function getImage() {
+		return $this->image;
+	}
+
+	/**
+	 * metodo setTitle
+	 *
+	 * imposta il titolo del progetto
+	 *
+	 * @param string $title
+	 */
+	public function setTitle($title) {
+		$this->title = $title;
+	}
+
+	/**
+	 * metodo setText
+	 *
+	 * imposta il testo del progetto
+	 *
+	 * @param string $title
+	 */
+	public function setText($text) {
+		$this->text = $text;
+	}
+
+	/**
+	 * metodo setDate
+	 *
+	 * imposta la data del progetto
+	 *
+	 * @param string $date
+	 */
+	public function setDate($date) {
+		$this->date = $date;
+	}
+
+	/**
+	 * metodo setId
+	 *
+	 * imposta l'id del progetto gestito dal database
+	 *
+	 * @param int $id
+	 */
+	public function setId($id){
+		$this->id = $id;
+	}
+
+	/**
+	 * metodo setDescription
+	 *
+	 * imposta la descrizione del progetto
+	 *
+	 * @param string $id
+	 */
+	public function setDescription($description) {
+		$this->description = $description;
+	}
+
+	/**
+	 * metodo setImage
+	 *
+	 * imposta il path dell'immagine del progetto
+	 *
+	 * @param string $id
+	 */
+	public function setImage($imge) {
+		$this->image = $image;
+	}
+}
+

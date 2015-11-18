@@ -1,16 +1,26 @@
 <?php
-
-
-
+/**
+ * Project View File
+ *
+ * Questo file contiene il Project View
+ *
+ * @package View
+ * @author Matteo Polsinelli
+ */
 class ProjectView extends View {
 
+	/**
+	* contiene il nome del template da caricare
+	*
+	* @var string
+	*/
 	private $template;
 
-	public function __construct()
-	{
-		 parent::__construct();
-	}
-
+	/**
+	 * metodo getTask
+	 *
+	 * @return string con il task per il controller - false altrimenti
+	 */
 	public function getTask()
 	{
 		if(isset($_REQUEST['task']))
@@ -19,51 +29,102 @@ class ProjectView extends View {
 			return false;
 	}
 
+	/**
+	 * metodo getProjectId
+	 *
+	 * @return string ritorna il valore associato a "Id" dentro $_REQUEST
+	 */
 	public function getProjectId()
 	{
 		return $this->getRequest('Id');
 	}
 
+	/**
+	 * metodo getProjectDependencies
+	 *
+	 * @return string ritorna il valore associato a "idDependencies" dentro $_REQUEST
+	 */
 	public function getProjectDependencies()
 	{
 		return $this->getRequest('idDependencies');
-
 	}
 
+	/**
+	 * metodo getProjectDescription
+	 *
+	 * @return string ritorna il valore associato a "description" dentro $_REQUEST
+	 */
 	public function getProjectDescription()
 	{
 		return $this->getRequest('description');
-
 	}
 
+	/**
+	 * metodo getProjectText
+	 *
+	 * @return string ritorna il valore associato a "text" dentro $_REQUEST
+	 */
 	public function getProjectText()
 	{
 		return $this->getRequest('text');
-
 	}
 
+	/**
+	 * metodo getProjectTitlet
+	 *
+	 * @return string ritorna il valore associato a "title" dentro $_REQUEST
+	 */
 	public function getProjectTitle()
 	{
 		return $this->getRequest('title');
-
 	}
 
+	/**
+	 * metodo getPageNumber
+	 *
+	 * @return string ritorna il valore associato a "page" dentro $_REQUEST
+	 */
 	public function getPageNumber()
 	{
 		return $this->getRequest('page');
 	}
 
+	/**
+	 * metodo setTemplate
+	 *
+	 * imposta il template da visualizzare
+	 *
+	 * @param string template
+	 */
 	public function setTemplate($template)
 	{
 		$this->template = $template;
 	}
 
+	/**
+	 * metodo getProjectToRemove
+	 *
+	 * @return string ritorna il valore associato a "projectToRemove" dentro $_REQUEST
+	 *
+	 */
 	public function getProjectToRemove()
 	{
 		return $this->getRequest('projectToRemove');
 	}
 
-
+	/**
+	 * metodo assignProjectData
+	 *
+	 * assegna tutti i dati per la visualizzazione del progetto
+	 *
+	 * @param int
+	 * @param string
+	 * @param string
+	 * @param string
+	 * @param string
+	 * @param string
+	 * @param array
+	 */
 	public function assignProjectData($projectId, $title, $text, $author, $image, $date, $comments, $dependencies)
 	{
 		$session = Singleton::getInstance("Session");
@@ -87,33 +148,23 @@ class ProjectView extends View {
 		$this->assign('comments', $comments);
 	}
 
+	/**
+	 * metodo getProjectImage
+	 *
+	 * @return string ritorna il valore associato a "image" dentro $_REQUEST
+	 */
 	public function getProjectImage()
 	{
-        if(is_uploaded_file($_FILES['image']['tmp_name']))
-		{
-            $image = basename($_FILES["image"]["name"]);
-            $target_file = "Data/projects_images/" . $image;
-            move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
-			return $image;
-        }else
-		{
-			return "default_project_image.jpg";
-		}
+		return $_FILES['image'];
 	}
 
-	public function assignProjectsCards($projectsCards)
-	{
-		$this->assign('projectsCards', $projectsCards);
-	}
-
-	private function getRequest($key)
-	{
-		if(isset($_REQUEST[$key]))
-			return $_REQUEST[$key];
-		else
-			return false;
-	}
-
+	/**
+	 * metodo getContent
+	 *
+	 * crea la pagina html
+	 *
+	 * @return string Ritorna il template costruito con smarty
+	 */
 	public function getContent()
 	{
 		return $this->fetch($this->template . '.tpl');

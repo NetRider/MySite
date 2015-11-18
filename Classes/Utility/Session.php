@@ -1,13 +1,33 @@
 <?php
-
+/**
+ * classe Session
+ *
+ * @package Utility
+ * @author Matteo Polsinelli
+ */
 class Session {
+    /**
+	* durata del cookie
+	*
+	* @var string
+	*/
     private $lifetime;
+
+    /**
+	* utente loggato
+	*
+	* @var User
+	*/
     private $user;
 
+    /**
+	 * Costruttore di Session
+	 *
+	 * Crea una sessione e l'utente relativo se loggato
+	 *
+	 */
     public function __construct()
     {
-        error_log("sono nel costruttore di session");
-
         $this->lifetime = 60*60*24*30; // 30 days
         session_start();
 
@@ -21,36 +41,38 @@ class Session {
     }
 
     /**
-     *  Updates the cookie.
+     *  Aggiorna i cookie.
      *
-     *  When the "rememberMe" session variable is changed, this method should be called to
-     *  update the cookie.
+     * Questo metodo aggiorna i cookie quando è attivato rememberMe
      */
     private function updateSessionCookie()
     {
         if($this->get("rememberMe"))
         {
-            error_log("sto facendo l'update del cookie");
-            /* Overwriting of the cookie created by session_start().*/
             setcookie(session_name(), session_id(), time()+$this->lifetime, "/");
-            /*
-             *
-            *
-            * Example : cookie with a lifetime of 30 minutes.
-            * -> at 17:00 cookie created (expire date : someday at 17:30)
-            * -> at 17:05 page refreshed (expire date : someday at 17:35).
-            *    without setcookie() the expiration date would not be changed
-            */
         }
         else
             setcookie(session_name(), session_id(), 0, "/"); // expires on browser close
     }
 
+    /**
+     * Metodo set
+     *
+     * Associa un valore ad uan chiave in $_SESSION
+     * @param string
+     * @param string
+     */
     public function set($key, $value)
     {
         $_SESSION[$key]=$value;
     }
 
+    /**
+     * Metodo get
+     *
+     * @param string
+     * @return mixed
+     */
     public function get($key)
     {
         if(isset($_SESSION[$key]))
@@ -60,9 +82,7 @@ class Session {
     }
 
     /**
-     * Sets the desired behaviour of the session.
-     *
-     * If $value is true the session will last $this->lifetime, otherwise it will last only until browser quit.
+     * Metodo setRememberMe
      *
      * @param bool $value
      */
@@ -72,41 +92,84 @@ class Session {
         $this->updateSessionCookie();
     }
 
+    /**
+     * Metodo getUserId
+     *
+     * @return string
+     */
     public function getUserId()
     {
         return $this->user->getId();
     }
 
+    /**
+     * Metodo getUserImage
+     *
+     * @return string
+     */
     public function getUserImage()
     {
         return $this->user->getImage();
     }
 
+    /**
+     * Metodo getUserEmail
+     *
+     * @return string
+     */
     public function getUserEmail()
     {
         return $this->user->getEmail();
     }
 
+    /**
+     * Metodo getUsername
+     *
+     * @return string
+     */
     public function getUsername()
     {
         return $this->user->getUsername();
     }
 
+    /**
+     * Metodo getPassword
+     *
+     * @return string
+     */
     public function getUserPassword()
     {
         return $this->user->getPassword();
     }
 
+    /**
+     * Metodo checkPermission
+     *
+     * Controllo se l'utente ha un determinato permesso
+     *
+     * @param string
+     * @return string
+     */
     public function checkPermission($privilage)
     {
         return $this->user->hasPermission($privilage);
     }
 
+    /**
+     * Metodo getAllPermissions
+     *
+     * Ritorna tutti i permessi dell'utente
+     *
+     * @return array
+     */
     public function getAllPermissions()
     {
         return $this->user->getPermissions();
     }
 
+    /**
+     * Metodo logut
+     */
     public function logout()
     {
         //clear all session variables
@@ -116,6 +179,12 @@ class Session {
         $this->updateSessionCookie();
     }
 
+    /**
+     * Metodo login
+     *
+     * @param $username
+     * @param $remeberMe
+     */
     public function login($username, $rememberMe)
     {
         $this->set("username",$username);
@@ -123,6 +192,16 @@ class Session {
             $this->set("rememberMe", $rememberMe);
     }
 
+    public function updateUser($username)
+    {
+        $this->set("username", $username);
+    }
+
+    /**
+     * Metodo userIsLogged
+     *
+     *@return bool;
+     */
     public function userIsLogged()
     {
         if($this->get("username"))
